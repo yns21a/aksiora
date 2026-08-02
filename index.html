@@ -626,12 +626,7 @@
               <div class="cal-tz">
                 <label>Fuseau horaire</label>
                 <select id="calTz" name="tz">
-                  <option>France (heure de Paris)</option>
-                  <option>Belgique (Bruxelles)</option>
-                  <option>Suisse (Zurich)</option>
-                  <option>Luxembourg</option>
                   <option>Canada – Toronto</option>
-                  <option>Maroc (Casablanca)</option>
                 </select>
               </div>
             </div>
@@ -944,8 +939,23 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     measurementId: "G-E03P203DPQ"
   };
 </script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  try {
+    var cfg = window.AKSIORA_FIREBASE || {};
+    if (cfg.apiKey && cfg.apiKey.indexOf('TA_') !== 0) {
+      var app = initializeApp(cfg);
+      var db = getFirestore(app, 'default');   /* base nommée "default" (et non "(default)") */
+      var ref = doc(db, 'aksiora', 'config');
+      window.AKSIORA_FS = {
+        save: function(data){ return setDoc(ref, data); },
+        watch: function(cb, err){ return onSnapshot(ref, cb, err); }
+      };
+      window.dispatchEvent(new Event('aksiora-fs-ready'));
+    }
+  } catch (e) { console.warn('Firebase init:', e); }
+</script>
 
 <script>
 (function(){
@@ -980,13 +990,10 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   function mergeCfg(r){var d=clone(DEF);if(r){for(var k in r){d[k]=r[k];}}return d;}
   var CFG=load();window.AKSIORA_CFG=CFG;
   /* --- Firebase : synchronisation en ligne (optionnelle) --- */
-  var db=null,FB=window.AKSIORA_FIREBASE||{};
-  var FB_ON=!!(FB.apiKey&&FB.apiKey.indexOf('TA_')!==0&&typeof firebase!=='undefined');
-  if(FB_ON){try{firebase.initializeApp(FB);db=firebase.firestore();}catch(e){db=null;FB_ON=false;}}
-  function fbDoc(){return db.collection('aksiora').doc('config');}
+  var FS=window.AKSIORA_FS||null;
   function pubCfg(){var c=clone(CFG);delete c.password;return c;}
   var fbTimer;
-  function persist(){try{localStorage.setItem(KEY,JSON.stringify(CFG));}catch(e){}if(db){clearTimeout(fbTimer);fbTimer=setTimeout(function(){fbDoc().set(pubCfg()).catch(function(){});},600);}}
+  function persist(){try{localStorage.setItem(KEY,JSON.stringify(CFG));}catch(e){}if(FS){clearTimeout(fbTimer);fbTimer=setTimeout(function(){FS.save(pubCfg()).catch(function(){});},600);}}
   function setPath(p,v){var ks=p.split('.'),o=CFG;for(var i=0;i<ks.length-1;i++)o=o[ks[i]];o[ks[ks.length-1]]=v;}
   function getPath(p){var ks=p.split('.'),o=CFG;for(var i=0;i<ks.length;i++){o=o?o[ks[i]]:undefined;}return o;}
   function shade(hex,pct){hex=(hex||'#22a55a').replace('#','');if(hex.length===3)hex=hex.split('').map(function(x){return x+x;}).join('');var r=parseInt(hex.substr(0,2),16),g=parseInt(hex.substr(2,2),16),b=parseInt(hex.substr(4,2),16),f=pct/100;function a(c){return Math.max(0,Math.min(255,Math.round(pct<0?c*(1+f):c+(255-c)*f)));}return '#'+[a(r),a(g),a(b)].map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
@@ -1085,9 +1092,11 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   var _p=q('#calPrev');if(_p)_p.addEventListener('click',function(){viewM--;if(viewM<0){viewM=11;viewY--;}renderCal();});
   var _n=q('#calNext');if(_n)_n.addEventListener('click',function(){viewM++;if(viewM>11){viewM=0;viewY++;}renderCal();});
   var _bf=q('#bookingForm');if(_bf)_bf.addEventListener('reset',function(){setTimeout(function(){selDate=null;var bt=q('#bookTime');if(bt)bt.value='';var bd=q('#bookDate');if(bd)bd.value='';renderCal();renderSlots();},0);});
-  function setSync(){var el=q('#syncStatus');if(!el)return;if(db){el.innerHTML='☁️ Sync en ligne <b>activée</b> — tes modifications sont partagées avec les visiteurs, en temps réel.';el.className='sync-ok';}else{el.innerHTML='💾 Mode local — les modifications restent sur cet appareil. Configure Firebase (voir le guide) pour les partager.';el.className='sync-off';}}
-  if(db){fbDoc().onSnapshot(function(snap){if(snap.metadata&&snap.metadata.hasPendingWrites)return;if(snap.exists){var pw=CFG.password;CFG=mergeCfg(snap.data());CFG.password=pw;window.AKSIORA_CFG=CFG;try{localStorage.setItem(KEY,JSON.stringify(CFG));}catch(e){}applyCfg();}else{fbDoc().set(pubCfg()).catch(function(){});}},function(){});}
+  function setSync(){var el=q('#syncStatus');if(!el)return;if(FS){el.innerHTML='☁️ Sync en ligne <b>activée</b> — tes modifications sont partagées avec les visiteurs, en temps réel.';el.className='sync-ok';}else{el.innerHTML='💾 Mode local — les modifications restent sur cet appareil.';el.className='sync-off';}}
+  function startSync(){if(!FS)return;FS.watch(function(snap){if(snap.metadata&&snap.metadata.hasPendingWrites)return;if(snap.exists()){var pw=CFG.password;CFG=mergeCfg(snap.data());CFG.password=pw;window.AKSIORA_CFG=CFG;try{localStorage.setItem(KEY,JSON.stringify(CFG));}catch(e){}applyCfg();}else{FS.save(pubCfg()).catch(function(){});}},function(){});}
+  function bindFS(){FS=window.AKSIORA_FS;setSync();startSync();}
   setSync();
+  if(window.AKSIORA_FS){bindFS();}else{window.addEventListener('aksiora-fs-ready',bindFS);}
   applyCfg();
   if(location.hash==='#admin')openGate();
 })();
