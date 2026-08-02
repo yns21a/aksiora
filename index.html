@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKSIORA — Lavage & désinfection de poubelles</title>
+<meta name="description" content="AKSIORA : service professionnel de lavage, désinfection et désodorisation de vos poubelles. Écologique, rapide et sans effort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0f3d24;
+    --green-800:#14532d;
+    --green-700:#1b7a43;
+    --green-600:#22a55a;
+    --green-500:#2fbf6c;
+    --lime:#7ed957;
+    --lime-soft:#d9f7e2;
+    --bg:#f2faf5;
+    --bg-2:#eafaf0;
+    --white:#ffffff;
+    --ink:#123324;
+    --muted:#5c7a68;
+    --line:#dcefe2;
+    --shadow:0 12px 34px rgba(16,79,45,.10);
+    --shadow-lg:0 24px 60px rgba(16,79,45,.18);
+    --radius:18px;
+  }
+
+  /* ===== MODE SOMBRE ===== */
+  html[data-theme="dark"]{
+    --green-900:#eafaf0;
+    --green-800:#cdeed9;
+    --green-700:#4ecb84;
+    --lime-soft:#1b3126;
+    --bg:#0e1712;
+    --bg-2:#121d17;
+    --white:#16221b;
+    --ink:#e8f3ec;
+    --muted:#9fb8a9;
+    --line:#26382e;
+    --shadow:0 12px 34px rgba(0,0,0,.55);
+    --shadow-lg:0 24px 60px rgba(0,0,0,.65);
+  }
+  html[data-theme="dark"] header{background:rgba(13,21,17,.82)}
+  html[data-theme="dark"] .hero{background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+  html[data-theme="dark"] .chat-input input{color:var(--ink)}
+  html[data-theme="dark"] .admin-card input{color:var(--ink)}
+  html[data-theme="dark"] .placeholder-tag{background:#3a3320;color:#f0d68a}
+  html[data-theme="dark"] .chat-fab .ping{color:#0f3d24}
+
+  /* Bouton de thème */
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .theme-btn{width:42px;height:42px;border-radius:12px;border:1.6px solid var(--line);background:var(--white);display:grid;place-items:center;cursor:pointer;color:var(--green-800);transition:transform .18s ease,border-color .18s ease}
+  .theme-btn:hover{transform:translateY(-2px);border-color:var(--green-500)}
+  .theme-btn svg{width:20px;height:20px}
+  .theme-btn .ic-sun{display:none}
+  html[data-theme="dark"] .theme-btn .ic-moon{display:none}
+  html[data-theme="dark"] .theme-btn .ic-sun{display:block}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%}
+  .wrap{width:min(1150px,92%);margin-inline:auto}
+  section{padding:88px 0}
+  .eyebrow{
+    display:inline-block;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    font-size:.72rem;color:var(--green-700);background:var(--lime-soft);
+    padding:7px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  h1,h2,h3{color:var(--green-900);line-height:1.15;font-weight:700}
+  h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800}
+  .lead{color:var(--muted);font-size:1.05rem;max-width:620px}
+  .center{text-align:center}
+  .center .lead{margin-inline:auto}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:0;
+    font-family:inherit;font-weight:600;font-size:.98rem;padding:14px 26px;border-radius:999px;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--green-600),var(--green-700));color:#fff;box-shadow:0 10px 24px rgba(34,165,90,.35)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(34,165,90,.42)}
+  .btn-ghost{background:var(--white);color:var(--green-800);border:1.6px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-3px);border-color:var(--green-500);box-shadow:var(--shadow)}
+  .btn-lg{padding:16px 32px;font-size:1.05rem}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:60;background:rgba(255,255,255,.85);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.32rem;color:var(--green-900);letter-spacing:.02em}
+  .logo .mark{
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--green-600),var(--lime));box-shadow:0 6px 16px rgba(34,165,90,.35)
+  }
+  .logo .mark svg{width:23px;height:23px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-weight:500;color:var(--green-900);font-size:.96rem;position:relative}
+  .nav-links a:hover{color:var(--green-600)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--green-600);transition:width .2s}
+  .nav-links a:hover::after{width:100%}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2.5px;background:var(--green-900);border-radius:2px;transition:.25s}
+
+  /* Hero */
+  .hero{position:relative;background:
+      radial-gradient(1200px 500px at 85% -10%,var(--bg-2),transparent 60%),
+      linear-gradient(180deg,var(--white), var(--bg));
+    padding-top:60px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.5rem);letter-spacing:-.5px}
+  .hero h1 .hl{background:linear-gradient(120deg,var(--green-600),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{margin-top:18px;font-size:1.12rem}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .trust{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+  .trust div{display:flex;flex-direction:column}
+  .trust b{font-size:1.6rem;color:var(--green-800);font-weight:800}
+  .trust span{font-size:.82rem;color:var(--muted)}
+
+  /* Hero visual */
+  .hero-visual{position:relative;display:grid;place-items:center}
+  .blob{
+    width:min(440px,90%);aspect-ratio:1;border-radius:42% 58% 55% 45%/45% 45% 55% 55%;
+    background:linear-gradient(135deg,var(--green-500),var(--lime));
+    box-shadow:var(--shadow-lg);display:grid;place-items:center;animation:morph 9s ease-in-out infinite;
+  }
+  @keyframes morph{0%,100%{border-radius:42% 58% 55% 45%/45% 45% 55% 55%}50%{border-radius:58% 42% 40% 60%/55% 55% 45% 45%}}
+  .blob .bin{width:56%;filter:drop-shadow(0 18px 24px rgba(15,61,36,.35))}
+  .badge-float{
+    position:absolute;background:var(--white);border-radius:14px;box-shadow:var(--shadow);
+    padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.86rem;color:var(--green-900)
+  }
+  .badge-float .dot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--lime-soft)}
+  .bf-1{top:8%;left:-2%;animation:bob 4s ease-in-out infinite}
+  .bf-2{bottom:10%;right:-4%;animation:bob 4s ease-in-out .8s infinite}
+  .bf-3{bottom:38%;left:-8%;animation:bob 4s ease-in-out 1.6s infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+
+  /* Features */
+  .features{background:var(--white)}
+  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
+  .feat{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .feat .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--lime-soft);margin-bottom:16px}
+  .feat .ic svg{width:26px;height:26px;stroke:var(--green-700)}
+  .feat h3{font-size:1.08rem;margin-bottom:8px}
+  .feat p{color:var(--muted);font-size:.93rem}
+
+  /* Steps */
+  .steps{background:linear-gradient(180deg,var(--bg),var(--white))}
+  .step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
+  .step{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;text-align:center}
+  .step .num{
+    width:46px;height:46px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
+    font-weight:800;color:#fff;background:linear-gradient(135deg,var(--green-600),var(--green-700));font-size:1.1rem
+  }
+  .step h3{font-size:1.02rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.9rem}
+
+  /* Pricing */
+  .pricing{background:var(--white)}
+  .note{
+    margin:14px auto 0;max-width:640px;font-size:.86rem;color:var(--green-700);
+    background:var(--lime-soft);border-radius:12px;padding:10px 16px;text-align:center
+  }
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;align-items:stretch}
+  .plan{
+    display:flex;flex-direction:column;background:var(--white);border:1.6px solid var(--line);border-radius:22px;
+    padding:34px 30px;transition:transform .2s, box-shadow .2s;position:relative
+  }
+  .plan:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .plan.pop{border-color:var(--green-500);box-shadow:var(--shadow-lg)}
+  .plan.pop::before{
+    content:"Le plus choisi";position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    background:linear-gradient(135deg,var(--green-600),var(--lime));color:#fff;font-size:.72rem;font-weight:700;
+    padding:6px 16px;border-radius:999px;letter-spacing:.04em;box-shadow:0 8px 18px rgba(34,165,90,.4)
+  }
+  .plan .pname{font-weight:700;color:var(--green-800);font-size:1.15rem}
+  .plan .pdesc{color:var(--muted);font-size:.88rem;margin-top:4px;min-height:38px}
+  .plan .price{margin:18px 0 6px;font-size:2.5rem;font-weight:800;color:var(--green-900);line-height:1}
+  .plan .price small{font-size:.95rem;font-weight:500;color:var(--muted)}
+  .plan .price-tag{font-size:.78rem;color:var(--green-600);font-weight:600}
+  .plan ul{list-style:none;margin:22px 0 26px;display:flex;flex-direction:column;gap:12px}
+  .plan li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;color:var(--ink)}
+  .plan li svg{flex:0 0 auto;width:19px;height:19px;stroke:var(--green-600);margin-top:2px}
+  .plan .btn{width:100%;justify-content:center;margin-top:auto}
+
+  /* Schedule + Contact */
+  .info{background:linear-gradient(180deg,var(--white),var(--bg))}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:44px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+  .card h3{font-size:1.25rem;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .card h3 svg{width:24px;height:24px;stroke:var(--green-700)}
+  .hours{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .hours .row{display:flex;justify-content:space-between;padding:13px 18px;font-size:.95rem}
+  .hours .row:nth-child(odd){background:var(--bg)}
+  .hours .row.closed{color:#b23b3b}
+  .hours .row b{color:var(--green-800);font-weight:600}
+  .hours .open-pill{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:600;color:var(--green-700);background:var(--lime-soft);padding:5px 12px;border-radius:999px;margin-top:16px}
+  .hours .open-pill .live{width:9px;height:9px;border-radius:50%;background:var(--green-500);box-shadow:0 0 0 0 rgba(47,191,108,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,191,108,.6)}70%{box-shadow:0 0 0 10px rgba(47,191,108,0)}100%{box-shadow:0 0 0 0 rgba(47,191,108,0)}}
+  .contact-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:16px}
+  .contact-list li{display:flex;align-items:center;gap:14px;font-size:.98rem}
+  .contact-list .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;background:var(--lime-soft)}
+  .contact-list .ic svg{width:21px;height:21px;stroke:var(--green-700)}
+  .contact-list small{display:block;color:var(--muted);font-size:.78rem}
+  .placeholder-tag{font-size:.68rem;color:#b98a1f;background:#fff5db;padding:2px 8px;border-radius:6px;margin-left:6px;font-weight:600}
+
+  /* Booking */
+  .booking{background:#0f3d24;color:#eafaf0;position:relative;overflow:hidden}
+  .booking::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 15% 0%,rgba(126,217,87,.18),transparent 60%)}
+  .booking .wrap{position:relative}
+  .booking h2{color:#fff}
+  .booking .lead{color:#bfe6cd}
+  .form{margin-top:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);border-radius:22px;padding:34px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1 / -1}
+  .field label{font-size:.85rem;font-weight:500;color:#d6f2e0}
+  .field input,.field select,.field textarea{
+    font-family:inherit;font-size:.96rem;color:#fff;background:rgba(255,255,255,.08);
+    border:1.4px solid rgba(255,255,255,.18);border-radius:12px;padding:13px 15px;outline:none;transition:.2s
+  }
+  .field input::placeholder,.field textarea::placeholder{color:#9fc7ac}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime);background:rgba(255,255,255,.12)}
+  .field select option{color:#123324}
+  .form .btn{margin-top:22px}
+  .form-msg{margin-top:16px;font-size:.92rem;color:var(--lime);display:none}
+  /* Booker (calendrier + créneaux) */
+  .booker{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:18px;margin-top:10px}
+  .cal,.slots{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .cal-head b{font-size:1.02rem;color:#fff}
+  .cal-nav{display:flex;gap:6px}
+  .cal-nav button{width:32px;height:32px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font-size:1.15rem;line-height:1;display:grid;place-items:center;transition:.15s;font-family:inherit}
+  .cal-nav button:hover:not(:disabled){background:rgba(255,255,255,.15)}
+  .cal-nav button:disabled{opacity:.3;cursor:not-allowed}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .cal-dow span{text-align:center;font-size:.72rem;color:#8fb3a0;padding:6px 0}
+  .cal-day{aspect-ratio:1;border:0;background:none;color:#eafaf0;font-family:inherit;font-size:.9rem;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:.15s}
+  .cal-day:hover:not(:disabled){background:rgba(126,217,87,.22)}
+  .cal-day.off{color:#4d6a58;text-decoration:line-through;cursor:not-allowed}
+  .cal-day.muted{color:#2c4034;cursor:default}
+  .cal-day.today{box-shadow:inset 0 0 0 1.5px rgba(126,217,87,.55)}
+  .cal-day.sel{background:linear-gradient(135deg,var(--green-500),var(--lime));color:#06230f;font-weight:700}
+  .cal-tz{margin-top:14px}
+  .cal-tz label{display:block;font-size:.78rem;color:#bfe6cd;margin-bottom:6px}
+  .cal-tz select{width:100%;padding:11px 13px;border-radius:10px;border:1.4px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:.88rem;outline:none}
+  .cal-tz select:focus{border-color:var(--lime)}
+  .cal-tz select option{color:#123324}
+  .slots-head{font-size:.98rem;color:#fff;font-weight:600;margin-bottom:12px;min-height:24px}
+  .slots-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:320px;overflow-y:auto}
+  .slot{padding:12px 8px;border-radius:10px;border:1.4px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#eafaf0;font-family:inherit;font-size:.92rem;cursor:pointer;transition:.15s;text-align:center}
+  .slot:hover{border-color:var(--lime);background:rgba(126,217,87,.15)}
+  .slot.sel{background:linear-gradient(135deg,var(--green-500),var(--lime));border-color:transparent;color:#06230f;font-weight:700}
+  .slots-empty{grid-column:1 / -1;color:#bfe6cd;font-size:.9rem;padding:8px 2px;line-height:1.5}
+  @media (max-width:640px){.booker{grid-template-columns:1fr}}
+
+  /* ===== Optimisation téléphone ===== */
+  html{-webkit-text-size-adjust:100%}
+  body{-webkit-tap-highlight-color:rgba(0,0,0,0)}
+  @media (max-width:640px){
+    .logo{font-size:1.16rem;gap:9px}
+    .logo .mark{width:34px;height:34px;border-radius:10px}
+    .logo .mark svg{width:20px;height:20px}
+    .hero{padding-top:32px}
+    section{padding:54px 0}
+    .hero h1{font-size:2rem}
+    .hero p.lead{font-size:1rem}
+    .hero-cta{flex-direction:column;width:100%;gap:12px}
+    .hero-cta .btn{width:100%;justify-content:center}
+    .trust{gap:14px}
+    .trust b{font-size:1.4rem}
+    .feat,.step{padding:22px 20px}
+    .card{padding:26px 22px}
+    .plan{padding:28px 24px}
+    .form{padding:22px 18px}
+    .form-grid{gap:14px}
+    .booker{gap:14px}
+    .cal,.slots{padding:14px}
+    .slots-list{max-height:none}
+    .form .btn-lg{width:100%;justify-content:center}
+    .chat-fab{width:58px;height:58px;right:16px;bottom:16px}
+    .chat-panel{width:94vw;right:3vw;height:78vh;bottom:14px}
+    .admin-drawer{width:100vw}
+    .hours .row{padding:12px 15px}
+  }
+  @media (max-width:380px){
+    .wrap{width:94%}
+    .hero h1{font-size:1.78rem}
+    .cal,.slots{padding:11px}
+    .cal-day{font-size:.82rem}
+    .slot{padding:10px 6px;font-size:.85rem}
+    .slots-list{gap:8px}
+    .admin-2{flex-direction:column;gap:0}
+    .trust{gap:10px}
+    .trust b{font-size:1.22rem}
+    .trust span{font-size:.74rem}
+  }
+
+  /* Footer */
+  footer{background:#0b2c1a;color:#a9c9b6;padding:54px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+  .foot-grid h4{color:#fff;font-size:1rem;margin-bottom:14px}
+  .foot-grid a,.foot-grid p{display:block;color:#a9c9b6;font-size:.92rem;margin-bottom:9px}
+  .foot-grid a:hover{color:var(--lime)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:22px;text-align:center;font-size:.85rem;color:#7fa38d}
+
+  /* Chat widget */
+  .chat-fab{
+    position:fixed;bottom:26px;right:26px;z-index:90;width:64px;height:64px;border-radius:50%;border:0;cursor:pointer;
+    background:linear-gradient(135deg,var(--green-600),var(--green-700));box-shadow:0 14px 30px rgba(16,79,45,.4);
+    display:grid;place-items:center;transition:transform .2s
+  }
+  .chat-fab:hover{transform:scale(1.07)}
+  .chat-fab svg{width:30px;height:30px}
+  .chat-fab .ping{position:absolute;top:-3px;right:-3px;width:20px;height:20px;background:var(--lime);color:var(--green-900);border-radius:50%;font-size:.72rem;font-weight:800;display:grid;place-items:center;border:2px solid #fff}
+  .chat-panel{
+    position:fixed;bottom:26px;right:26px;z-index:95;width:min(380px,92vw);height:min(560px,80vh);
+    background:var(--white);border-radius:22px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;
+    transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transition:.25s ease
+  }
+  .chat-panel.open{transform:none;opacity:1;pointer-events:auto}
+  .chat-head{background:linear-gradient(135deg,var(--green-700),var(--green-600));color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px}
+  .chat-head .av{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center}
+  .chat-head .av svg{width:24px;height:24px}
+  .chat-head b{font-size:1rem;display:block}
+  .chat-head small{font-size:.78rem;opacity:.9;display:flex;align-items:center;gap:6px}
+  .chat-head small .live{width:8px;height:8px;border-radius:50%;background:var(--lime)}
+  .chat-head .x{margin-left:auto;background:none;border:0;color:#fff;cursor:pointer;font-size:1.4rem;line-height:1;opacity:.85}
+  .chat-head .x:hover{opacity:1}
+  .chat-body{flex:1;overflow-y:auto;padding:18px;background:var(--bg);display:flex;flex-direction:column;gap:12px}
+  .msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.92rem;line-height:1.5;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .msg.bot{background:var(--white);color:var(--ink);border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
+  .msg.user{background:linear-gradient(135deg,var(--green-600),var(--green-700));color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+  .msg b{color:var(--green-700)}
+  .msg.user b{color:#eafaf0}
+  .quick{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px;background:var(--bg)}
+  .quick button{font-family:inherit;font-size:.82rem;color:var(--green-800);background:var(--white);border:1.4px solid var(--line);border-radius:999px;padding:8px 13px;cursor:pointer;transition:.18s}
+  .quick button:hover{border-color:var(--green-500);background:var(--lime-soft)}
+  .chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--white)}
+  .chat-input input{flex:1;font-family:inherit;font-size:.93rem;border:1.4px solid var(--line);border-radius:999px;padding:12px 16px;outline:none;color:var(--ink);background:var(--white)}
+  .chat-input input:focus{border-color:var(--green-500)}
+  .chat-input button{border:0;cursor:pointer;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green-600),var(--green-700));display:grid;place-items:center;flex:0 0 auto}
+  .chat-input button svg{width:20px;height:20px}
+  .typing{display:flex;gap:4px;padding:12px 15px;background:var(--white);border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;align-self:flex-start;width:fit-content}
+  .typing span{width:7px;height:7px;border-radius:50%;background:var(--green-500);animation:blink 1.2s infinite both}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+
+  /* Reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Responsive */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero .lead{margin-inline:auto}
+    .hero-cta,.trust{justify-content:center}
+    .hero-visual{order:-1}
+    .feat-grid,.step-grid{grid-template-columns:repeat(2,1fr)}
+    .price-grid{grid-template-columns:1fr;max-width:440px;margin-inline:auto}
+    .info-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    section{padding:60px 0}
+    .nav-links{position:fixed;inset:74px 0 auto 0;background:var(--white);flex-direction:column;gap:0;padding:10px 0;border-bottom:1px solid var(--line);box-shadow:var(--shadow);transform:translateY(-140%);transition:.3s;height:auto}
+    .nav-links.show{transform:none}
+    .nav-links a{padding:14px 24px;width:100%}
+    .nav-links a::after{display:none}
+    .burger{display:flex}
+    .nav .btn{display:none}
+    .feat-grid,.step-grid,.form-grid,.foot-grid{grid-template-columns:1fr}
+    .trust{gap:18px}
+  }
+</style>
+</head>
+<body>
+<script>(function(){try{var t=localStorage.getItem('aksiora_theme');if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#accueil" class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+      </span>
+      <span class="js-brand">AKSIORA</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#etapes">Comment ça marche</a>
+      <a href="#offres">Offres</a>
+      <a href="#horaires">Horaires</a>
+      <a href="#reserver">Réserver</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Basculer thème clair / sombre" title="Mode clair / sombre">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="#reserver" class="btn btn-primary">Réserver un lavage</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="accueil">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Lavage & désinfection de poubelles</span>
+      <h1>Des poubelles <span class="hl">propres, saines</span> et sans odeurs</h1>
+      <p class="lead">AKSIORA nettoie, désinfecte et désodorise vos bacs à ordures directement chez vous. Un service écologique qui élimine 99 % des bactéries — sans effort de votre part.</p>
+      <div class="hero-cta">
+        <a href="#reserver" class="btn btn-primary btn-lg">Réserver maintenant</a>
+        <a href="#offres" class="btn btn-ghost btn-lg">Voir les offres</a>
+      </div>
+      <div class="trust">
+        <div><b>99%</b><span>de bactéries éliminées</span></div>
+        <div><b>100%</b><span>eau recyclée & écolo</span></div>
+        <div><b>4.9/5</b><span>satisfaction clients</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="blob">
+        <svg class="bin" viewBox="0 0 24 24" fill="none" stroke="#0f3d24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+      </div>
+      <div class="badge-float bf-1"><span class="dot">🫧</span> Désinfecté à 99%</div>
+      <div class="badge-float bf-2"><span class="dot">🌿</span> 100% écologique</div>
+      <div class="badge-float bf-3"><span class="dot">⚡</span> En 15 min chrono</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES / FEATURES ================= -->
+<section class="features" id="services">
+  <div class="wrap center">
+    <span class="eyebrow">Pourquoi AKSIORA</span>
+    <h2>Un lavage complet, écologique et sans souci</h2>
+    <p class="lead">Nous prenons soin de vos poubelles pour que vous n'ayez plus jamais à le faire.</p>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 4 7 10a7 7 0 0 1-14 0c0-6 7-10 7-10z"/></svg></div>
+        <h3>Nettoyage en profondeur</h3>
+        <p>Eau à haute pression et haute température pour déloger toute la saleté incrustée.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3a9 9 0 1 0 9 9"/></svg></div>
+        <h3>Désinfection 99%</h3>
+        <p>Traitement antibactérien qui élimine germes, microbes et mauvaises odeurs.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
+        <h3>100% écologique</h3>
+        <p>Produits biodégradables et eau récupérée puis traitée. Zéro rejet dans les égouts.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Rapide & à domicile</h3>
+        <p>Nous intervenons devant chez vous, le jour de collecte. Aucun déplacement requis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEPS ================= -->
+<section class="steps" id="etapes">
+  <div class="wrap center">
+    <span class="eyebrow">Comment ça marche</span>
+    <h2>Simple comme 1, 2, 3, 4</h2>
+    <div class="step-grid">
+      <div class="step reveal"><div class="num">1</div><h3>Vous réservez</h3><p>Choisissez une formule et une date via le formulaire ou l'assistant.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>On se déplace</h3><p>Notre équipe vient le jour de collecte, juste après le passage des éboueurs.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>On lave & désinfecte</h3><p>Lavage haute pression, désinfection et désodorisation en quelques minutes.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>Poubelle impeccable</h3><p>Vous retrouvez un bac propre, sain et parfumé. Rien à nettoyer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING / OFFRES ================= -->
+<section class="pricing" id="offres">
+  <div class="wrap center">
+    <span class="eyebrow">Nos offres</span>
+    <h2>Des formules pour chaque besoin</h2>
+    <p class="lead">Choisissez la formule qui vous convient. Sans engagement, résiliable à tout moment.</p>
+    <!-- ⚠️ PRIX À PERSONNALISER : remplacez les montants ci-dessous par vos tarifs réels -->
+    <div class="note">💡 Tarifs affichés à titre d'exemple — communiquez-nous vos prix réels pour les remplacer.</div>
+    <div class="price-grid">
+
+      <!-- OFFRE 1 -->
+      <div class="plan reveal">
+        <div class="pname">Ponctuel</div>
+        <div class="pdesc">Un lavage à la demande, quand vous en avez besoin.</div>
+        <div class="price">15€ <small>/ poubelle</small></div>
+        <div class="price-tag">Paiement unique</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Lavage haute pression</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Désinfection antibactérienne</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Désodorisation parfumée</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Sans engagement</li>
+        </ul>
+        <a href="#reserver" class="btn btn-ghost">Choisir</a>
+      </div>
+
+      <!-- OFFRE 2 (populaire) -->
+      <div class="plan pop reveal">
+        <div class="pname">Abonnement mensuel</div>
+        <div class="pdesc">Un lavage chaque mois, en toute tranquillité.</div>
+        <div class="price">12€ <small>/ mois</small></div>
+        <div class="price-tag">Soit 1 passage / mois</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tout de la formule Ponctuel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Passage automatique programmé</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tarif réduit vs ponctuel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Rappel avant chaque passage</li>
+        </ul>
+        <a href="#reserver" class="btn btn-primary">Choisir cette formule</a>
+      </div>
+
+      <!-- OFFRE 3 -->
+      <div class="plan reveal">
+        <div class="pname">Pro & Collectivités</div>
+        <div class="pdesc">Immeubles, entreprises, restaurants, syndics.</div>
+        <div class="price">Sur devis</div>
+        <div class="price-tag">Volume & bacs multiples</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Bacs en grand nombre</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Contrat sur mesure</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Facturation mensuelle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Interlocuteur dédié</li>
+        </ul>
+        <a href="#reserver" class="btn btn-ghost">Demander un devis</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= HORAIRES + CONTACT ================= -->
+<section class="info" id="horaires">
+  <div class="wrap center">
+    <span class="eyebrow">Disponibilité & contact</span>
+    <h2>Quand et comment nous joindre</h2>
+    <div class="info-grid" style="text-align:left">
+
+      <div class="card reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Horaires de disponibilité</h3>
+        <p class="lead" style="font-size:.95rem">Nos équipes interviennent sur rendez-vous, aux horaires ci-dessous.</p>
+        <div class="hours">
+          <div class="row closed" data-day="0"><b>Lundi</b><span>Indisponible</span></div>
+          <div class="row" data-day="1"><b>Mardi</b><span>08h00 – 20h00</span></div>
+          <div class="row closed" data-day="2"><b>Mercredi</b><span>Indisponible</span></div>
+          <div class="row" data-day="3"><b>Jeudi</b><span>08h00 – 20h00</span></div>
+          <div class="row" data-day="4"><b>Vendredi</b><span>08h00 – 20h00</span></div>
+          <div class="row" data-day="5"><b>Samedi</b><span>08h00 – 20h00</span></div>
+          <div class="row" data-day="6"><b>Dimanche</b><span>08h00 – 20h00</span></div>
+        </div>
+        <span class="open-pill" id="openPill"><span class="live"></span> <span id="openText">Vérification…</span></span>
+      </div>
+
+      <div class="card reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg> Coordonnées</h3>
+        <ul class="contact-list">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg></span><div><b>06 00 00 00 00</b><span class="placeholder-tag">à remplacer</span><small>Appel & WhatsApp</small></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><div><b>contact@aksiora.fr</b><span class="placeholder-tag">à remplacer</span><small>Réponse sous 24h</small></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Zone d'intervention : votre ville</b><span class="placeholder-tag">à remplacer</span><small>Et communes alentour</small></div></li>
+        </ul>
+        <a href="#reserver" class="btn btn-primary" style="margin-top:24px">Prendre rendez-vous</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOKING ================= -->
+<section class="booking" id="reserver">
+  <div class="wrap center">
+    <span class="eyebrow" style="background:rgba(126,217,87,.2);color:#d9f7e2">Réservation</span>
+    <h2>Réservez votre lavage</h2>
+    <p class="lead">Remplissez le formulaire, nous vous recontactons pour confirmer votre créneau.</p>
+    <form class="form" id="bookingForm" style="text-align:left" onsubmit="return submitBooking(event)">
+      <div class="form-grid">
+        <div class="field"><label>Nom complet</label><input type="text" name="nom" placeholder="Votre nom" required></div>
+        <div class="field"><label>Téléphone</label><input type="tel" name="tel" placeholder="06 00 00 00 00" required></div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="vous@email.com"></div>
+        <div class="field"><label>Formule souhaitée</label>
+          <select name="formule" required>
+            <option value="" disabled selected>Choisir une formule</option>
+            <option>Ponctuel</option>
+            <option>Abonnement mensuel</option>
+            <option>Pro & Collectivités</option>
+          </select>
+        </div>
+        <div class="field full"><label>Adresse d'intervention</label><input type="text" name="adresse" placeholder="N°, rue, ville" required></div>
+        <div class="field full">
+          <label>Choisissez votre date et créneau <span style="color:#8fb3a0;font-weight:400">(rendez-vous ~40 min)</span></label>
+          <div class="booker">
+            <div class="cal">
+              <div class="cal-head">
+                <b id="calMonth">—</b>
+                <div class="cal-nav">
+                  <button type="button" id="calPrev" aria-label="Mois précédent">&#8249;</button>
+                  <button type="button" id="calNext" aria-label="Mois suivant">&#8250;</button>
+                </div>
+              </div>
+              <div class="cal-grid cal-dow"><span>l</span><span>m</span><span>m</span><span>j</span><span>v</span><span>s</span><span>d</span></div>
+              <div class="cal-grid" id="calDays"></div>
+              <div class="cal-tz">
+                <label>Fuseau horaire</label>
+                <select id="calTz" name="tz">
+                  <option>France (heure de Paris)</option>
+                  <option>Belgique (Bruxelles)</option>
+                  <option>Suisse (Zurich)</option>
+                  <option>Luxembourg</option>
+                  <option>Canada – Toronto</option>
+                  <option>Maroc (Casablanca)</option>
+                </select>
+              </div>
+            </div>
+            <div class="slots">
+              <div class="slots-head" id="slotsHead">Sélectionnez une date</div>
+              <div class="slots-list" id="slotsList"></div>
+            </div>
+          </div>
+          <input type="hidden" id="bookDate" name="date">
+          <input type="hidden" id="bookTime" name="heure">
+        </div>
+        <div class="field"><label>Nombre de poubelles</label><input type="number" name="nombre" min="1" value="1"></div>
+        <div class="field full"><label>Message (optionnel)</label><textarea name="message" rows="3" placeholder="Précisez vos besoins…"></textarea></div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Envoyer ma demande</button>
+      <p class="form-msg" id="formMsg">✅ Merci ! Votre demande a bien été enregistrée. Nous vous recontactons très vite.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a href="#accueil" class="logo" style="color:#fff;margin-bottom:14px">
+        <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></span>
+        <span class="js-brand">AKSIORA</span>
+      </a>
+      <p>Le lavage écologique de poubelles à domicile. Des bacs propres, sains et sans odeurs, en toute simplicité.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="#services">Services</a>
+      <a href="#offres">Offres & tarifs</a>
+      <a href="#horaires">Horaires</a>
+      <a href="#reserver">Réserver</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>📞 06 00 00 00 00</p>
+      <p>✉️ contact@aksiora.fr</p>
+      <p>📍 Votre ville & alentours</p>
+    </div>
+  </div>
+  <div class="foot-bottom" id="footSecret">© 2026 <span class="js-brand">AKSIORA</span> — Tous droits réservés. Site de démonstration.</div>
+</footer>
+
+<!-- ================= CHAT WIDGET ================= -->
+<button class="chat-fab" id="chatFab" aria-label="Ouvrir l'assistant">
+  <span class="ping">1</span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg></span>
+    <div><b>Assistant <span class="js-brand">AKSIORA</span></b><small><span class="live"></span> En ligne — répond en direct</small></div>
+    <button class="x" id="chatClose" aria-label="Fermer">&times;</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="quick" id="quickReplies">
+    <button data-q="Quels sont vos tarifs ?">💶 Tarifs</button>
+    <button data-q="Quels sont vos horaires ?">🕘 Horaires</button>
+    <button data-q="Comment réserver ?">📅 Réserver</button>
+    <button data-q="Est-ce écologique ?">🌿 Écologie</button>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Écrivez votre message…" autocomplete="off">
+    <button id="chatSend" aria-label="Envoyer"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
+
+<script>
+/* ---------- Menu mobile ---------- */
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>navLinks.classList.toggle('show'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('show')));
+
+/* ---------- Thème clair / sombre ---------- */
+const themeBtn=document.getElementById('themeBtn');
+if(themeBtn)themeBtn.addEventListener('click',()=>{const cur=document.documentElement.getAttribute('data-theme')||'light';const t=cur==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('aksiora_theme',t);}catch(e){}});
+
+/* ---------- Reveal on scroll ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- Statut ouvert / fermé (Lun–Ven 9h–17h) ---------- */
+(function(){
+  const now=new Date(),day=now.getDay(),h=now.getHours();
+  const open=day>=1&&day<=5&&h>=9&&h<17;
+  const t=document.getElementById('openText'),p=document.getElementById('openPill');
+  if(open){t.textContent='Ouvert actuellement — nous pouvons intervenir';}
+  else{t.textContent='Fermé pour le moment — laissez une demande, on vous rappelle';p.querySelector('.live').style.background='#e2a03f';}
+})();
+
+/* ---------- Formulaire de réservation (démo) ---------- */
+function submitBooking(e){
+  e.preventDefault();
+  var f=e.target,d=f.querySelector('#bookDate'),t=f.querySelector('#bookTime'),msg=document.getElementById('formMsg');
+  var extra='';
+  if(d&&d.value&&t&&t.value){extra=' Créneau souhaité : le '+d.value+' à '+t.value+' (~40 min).';}
+  msg.textContent='✅ Merci ! Votre demande a bien été enregistrée.'+extra+' Nous vous recontactons très vite.';
+  msg.style.display='block';
+  f.querySelector('button[type=submit]').textContent='Demande envoyée ✓';
+  setTimeout(function(){f.reset();},1200);
+  return false;
+}
+
+/* ================= ASSISTANT IA ================= */
+const chatFab=document.getElementById('chatFab'),chatPanel=document.getElementById('chatPanel'),
+      chatClose=document.getElementById('chatClose'),chatBody=document.getElementById('chatBody'),
+      chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend'),
+      quick=document.getElementById('quickReplies'),ping=chatFab.querySelector('.ping');
+let greeted=false;
+
+function openChat(){
+  chatPanel.classList.add('open');chatFab.style.display='none';ping.style.display='none';
+  if(!greeted){greeted=true;setTimeout(()=>botSay("Bonjour 👋 Je suis l'assistant AKSIORA. Je peux vous renseigner sur nos <b>tarifs</b>, nos <b>horaires</b>, la <b>réservation</b> ou notre démarche <b>écologique</b>. Que puis-je faire pour vous ?"),350);}
+  setTimeout(()=>chatInput.focus(),300);
+}
+function closeChat(){chatPanel.classList.remove('open');chatFab.style.display='grid';}
+chatFab.addEventListener('click',openChat);
+chatClose.addEventListener('click',closeChat);
+
+function addMsg(text,who){
+  const d=document.createElement('div');d.className='msg '+who;d.innerHTML=text;
+  chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;
+}
+function botSay(text){
+  const t=document.createElement('div');t.className='typing';t.innerHTML='<span></span><span></span><span></span>';
+  chatBody.appendChild(t);chatBody.scrollTop=chatBody.scrollHeight;
+  setTimeout(()=>{t.remove();addMsg(text,'bot');},650+Math.random()*400);
+}
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+
+/* Base de connaissances -> réponses par mots-clés */
+function getReply(msg){
+  const m=norm(msg);
+  const has=(...k)=>k.some(x=>m.includes(x));
+  if(has('bonjour','salut','coucou','bonsoir','hello','hey')) return "Bonjour et bienvenue chez AKSIORA 😊 Souhaitez-vous connaître nos <b>tarifs</b>, nos <b>horaires</b>, ou <b>réserver</b> un lavage ?";
+  if(has('tarif','prix','cout','coute','combien','formule','offre','abonnement')){var c=window.AKSIORA_CFG;if(c&&c.plans){var s=c.plans.map(function(p){return '• <b>'+p.name+'</b> — '+p.price+(p.unit?' '+p.unit:'');}).join('<br>');return "Voici nos formules 💶 :<br>"+s+"<br><br>Souhaitez-vous <b>réserver</b> ?";}return "Nos formules : Ponctuel, Abonnement mensuel et Pro & Collectivités. Souhaitez-vous <b>réserver</b> ?";}
+  if(has('horaire','heure','ouvert','ouverture','dispo','disponib','quand','jour')){var c=window.AKSIORA_CFG;if(c&&c.days){var o=c.days.filter(function(d){return d.on;});if(!o.length)return "Nous sommes actuellement fermés. Laissez une demande, on vous rappelle !";var nm=o.map(function(d){return d.key.toLowerCase();});function fl(a){return a.length<=1?(a[0]||''):a.slice(0,-1).join(', ')+' et '+a[a.length-1];}var same=o.every(function(d){return d.h===o[0].h;});return "Nous intervenons le <b>"+fl(nm)+"</b> 🕘"+(same?(", "+o[0].h):"")+". Vous pouvez laisser une demande à tout moment, on vous rappelle !";}return "Contactez-nous pour connaître nos disponibilités 🕘.";}
+  if(has('reserv','rendez','commander','prendre','booking','creneau','planifier')) return "Pour réserver, c'est simple 📅 : cliquez sur <b>« Réserver »</b> en haut de page ou remplissez le formulaire en bas. Indiquez votre adresse, la formule et la date souhaitée — on confirme rapidement !";
+  if(has('ecolo','ecologi','environnement','eau','produit','bio','planete','nature')) return "Notre démarche est <b>100% écologique</b> 🌿 : produits biodégradables, eau récupérée puis traitée, et zéro rejet dans les égouts. Propre pour vous <b>et</b> pour la planète.";
+  if(has('zone','ville','secteur','deplace','adresse','ou ','region','commune','livraison')) return "Nous intervenons dans votre ville et les communes alentour 📍. Donnez-moi votre adresse dans le formulaire de réservation et nous confirmerons la couverture.";
+  if(has('comment','marche','fonctionne','etape','process','deroul')) return "En 4 étapes ⚙️ : 1) vous réservez, 2) on se déplace le jour de collecte, 3) on lave & désinfecte, 4) vous retrouvez une poubelle impeccable. Aucun effort de votre part !";
+  if(has('desinfect','bacteri','microbe','odeur','sale','propre','hygiene','sain')) return "Notre traitement élimine <b>99% des bactéries</b> 🫧 et neutralise les mauvaises odeurs grâce à un lavage haute pression + désinfectant + désodorisant.";
+  if(has('contact','telephone','numero','appeler','mail','email','joindre','whatsapp')){var c=window.AKSIORA_CFG,tel=(c&&c.phone)?c.phone:'06 00 00 00 00',em=(c&&c.email)?c.email:'contact@aksiora.fr';return "Vous pouvez nous joindre au <b>"+tel+"</b> 📞 (appel & WhatsApp) ou par email à <b>"+em+"</b> ✉️. Réponse sous 24h !";}
+  if(has('paiement','payer','carte','especes','facture')) return "Le paiement se fait à la prestation. Pour les abonnements, un prélèvement mensuel est possible, et les pros reçoivent une facturation dédiée. 💳";
+  if(has('annul','resili','engagement','stop')) return "Nos formules sont <b>sans engagement</b> ✅ : vous pouvez suspendre ou résilier votre abonnement à tout moment, sans frais.";
+  if(has('merci','super','parfait','genial','cool','ok','d accord','daccord')) return "Avec plaisir 😊 N'hésitez pas si vous avez d'autres questions. À très vite chez AKSIORA !";
+  if(has('particulier','maison','entreprise','immeuble','restaurant','syndic','pro')) return "Nous servons aussi bien les <b>particuliers</b> que les <b>professionnels</b> 🏢 (immeubles, restaurants, syndics…). Pour les volumes importants, demandez un devis via la formule Pro & Collectivités.";
+  return "Bonne question ! Je peux vous aider sur : <b>tarifs</b> 💶, <b>horaires</b> 🕘, <b>réservation</b> 📅, <b>écologie</b> 🌿, <b>zone d'intervention</b> 📍 ou <b>contact</b> 📞. Sur quoi puis-je vous renseigner ? Pour une demande précise, laissez vos coordonnées via le formulaire et un conseiller vous répondra.";
+}
+
+function send(text){
+  text=(text||'').trim();if(!text)return;
+  addMsg(text,'user');chatInput.value='';
+  botSay(getReply(text));
+}
+chatSend.addEventListener('click',()=>send(chatInput.value));
+chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')send(chatInput.value);});
+quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!greeted){greeted=true;}send(b.dataset.q);}));
+</script>
+
+<!-- ================= PANNEAU ADMIN ================= -->
+<style>
+  .admin-overlay{position:fixed;inset:0;z-index:200;background:rgba(11,44,26,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
+  .admin-overlay.show{display:flex}
+  .admin-card{background:var(--white);border-radius:20px;padding:34px;width:min(380px,92vw);text-align:center;box-shadow:var(--shadow-lg)}
+  .admin-card.shake{animation:ashake .4s}
+  @keyframes ashake{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+  .admin-lock{font-size:2.4rem;line-height:1}
+  .admin-card h3{margin:12px 0 4px}
+  .admin-card>p{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+  .admin-card input{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:1rem;outline:none;text-align:center;color:var(--ink);background:var(--white)}
+  .admin-card input:focus{border-color:var(--green-500)}
+  .admin-err{color:#c0392b;font-size:.85rem;margin-top:10px;display:none}
+  .admin-actions{display:flex;gap:10px;margin-top:18px}
+  .admin-actions .btn{flex:1;justify-content:center}
+  .admin-card small{display:block;margin-top:16px;color:var(--muted);font-size:.74rem}
+  .admin-drawer{position:fixed;top:0;right:0;z-index:201;height:100vh;width:min(440px,100vw);background:var(--white);box-shadow:-20px 0 60px rgba(0,0,0,.28);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s ease}
+  .admin-drawer.show{transform:none}
+  .admin-dh{display:flex;align-items:center;gap:10px;padding:18px 20px;background:linear-gradient(135deg,var(--green-700),var(--green-600));color:#fff}
+  .admin-dh b{font-size:1.05rem}
+  .admin-dh #adminSaved{margin-left:auto;font-size:.76rem;background:rgba(255,255,255,.22);padding:4px 10px;border-radius:999px;opacity:0;transition:.3s}
+  .admin-dh #adminSaved.on{opacity:1}
+  .admin-dh .xbtn{background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer;line-height:1;opacity:.9}
+  .admin-dh .xbtn:hover{opacity:1}
+  .admin-db{flex:1;overflow-y:auto;padding:20px}
+  .admin-group{margin-bottom:22px}
+  .admin-group>h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green-700);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .admin-f{margin-bottom:13px}
+  .admin-f>label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:5px}
+  .admin-f input,.admin-f textarea{width:100%;padding:10px 12px;border:1.4px solid var(--line);border-radius:10px;font-family:inherit;font-size:.9rem;outline:none;background:var(--white);color:var(--ink)}
+  .admin-f input:focus,.admin-f textarea:focus{border-color:var(--green-500)}
+  .admin-f input[type=color]{height:46px;padding:4px;cursor:pointer}
+  .admin-plan{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+  .admin-plan .pt{font-weight:600;color:var(--green-800);font-size:.85rem;margin-bottom:10px}
+  .admin-2{display:flex;gap:10px}
+  .admin-2 .admin-f{flex:1}
+  .admin-note{font-size:.74rem;color:var(--muted);background:var(--bg);border-radius:8px;padding:9px 11px;margin-top:8px;border:1px solid var(--line)}
+  .admin-day{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .admin-chk{display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--ink);min-width:118px;cursor:pointer;user-select:none}
+  .admin-chk input{width:auto;accent-color:var(--green-600);cursor:pointer}
+  .admin-day>input[type=text]{flex:1;padding:9px 11px;border:1.4px solid var(--line);border-radius:9px;font-family:inherit;font-size:.86rem;background:var(--white);color:var(--ink);outline:none}
+  .admin-day>input[type=text]:focus{border-color:var(--green-500)}
+  .admin-df{display:flex;gap:10px;padding:16px 20px;border-top:1px solid var(--line)}
+  #syncStatus{font-size:.8rem;padding:10px 12px;border-radius:10px;margin-bottom:16px;line-height:1.45}
+  #syncStatus.sync-ok{background:rgba(46,191,108,.14);color:var(--green-700);border:1px solid rgba(46,191,108,.32)}
+  #syncStatus.sync-off{background:#fff5db;color:#8a6d1f;border:1px solid #ecd9a0}
+  .admin-df .btn{flex:1;justify-content:center}
+</style>
+
+<div class="admin-overlay" id="adminGate">
+  <div class="admin-card" id="adminCard">
+    <div class="admin-lock">🔒</div>
+    <h3>Espace administrateur</h3>
+    <p>Entrez le mot de passe pour modifier le site.</p>
+    <input type="password" id="adminPass" placeholder="Mot de passe" autocomplete="off">
+    <div class="admin-err" id="adminErr">Mot de passe incorrect.</div>
+    <div class="admin-actions">
+      <button class="btn btn-ghost" id="gateCancel">Annuler</button>
+      <button class="btn btn-primary" id="gateEnter">Entrer</button>
+    </div>
+    <small>Raccourci : Ctrl / Cmd + Shift + A</small>
+  </div>
+</div>
+
+<div class="admin-drawer" id="adminPanel">
+  <div class="admin-dh">
+    <b>⚙️ Administration</b>
+    <span id="adminSaved">Enregistré ✓</span>
+    <button class="xbtn" id="adminClose2" aria-label="Fermer">&times;</button>
+  </div>
+  <div class="admin-db">
+    <div id="syncStatus" class="sync-off">…</div>
+    <div class="admin-group">
+      <h4>Général</h4>
+      <div class="admin-f"><label>Nom de la marque</label><input type="text" data-k="brand"></div>
+      <div class="admin-f"><label>Couleur principale</label><input type="color" data-k="color"></div>
+    </div>
+    <div class="admin-group">
+      <h4>Accueil</h4>
+      <div class="admin-f"><label>Titre principal</label><input type="text" data-k="heroTitle"></div>
+      <div class="admin-note">Astuce : placez un mot entre *astérisques* pour l'afficher en vert. Ex : Des poubelles *propres* et saines.</div>
+      <div class="admin-f" style="margin-top:12px"><label>Sous-titre</label><textarea rows="3" data-k="heroLead"></textarea></div>
+    </div>
+    <div class="admin-group">
+      <h4>Offres & tarifs</h4>
+      <div class="admin-plan">
+        <div class="pt">Formule 1</div>
+        <div class="admin-f"><label>Nom</label><input type="text" data-k="plans.0.name"></div>
+        <div class="admin-f"><label>Description</label><input type="text" data-k="plans.0.desc"></div>
+        <div class="admin-2"><div class="admin-f"><label>Prix</label><input type="text" data-k="plans.0.price"></div><div class="admin-f"><label>Unité</label><input type="text" data-k="plans.0.unit"></div></div>
+        <div class="admin-f"><label>Sous-texte</label><input type="text" data-k="plans.0.tag"></div>
+      </div>
+      <div class="admin-plan">
+        <div class="pt">Formule 2</div>
+        <div class="admin-f"><label>Nom</label><input type="text" data-k="plans.1.name"></div>
+        <div class="admin-f"><label>Description</label><input type="text" data-k="plans.1.desc"></div>
+        <div class="admin-2"><div class="admin-f"><label>Prix</label><input type="text" data-k="plans.1.price"></div><div class="admin-f"><label>Unité</label><input type="text" data-k="plans.1.unit"></div></div>
+        <div class="admin-f"><label>Sous-texte</label><input type="text" data-k="plans.1.tag"></div>
+      </div>
+      <div class="admin-plan">
+        <div class="pt">Formule 3</div>
+        <div class="admin-f"><label>Nom</label><input type="text" data-k="plans.2.name"></div>
+        <div class="admin-f"><label>Description</label><input type="text" data-k="plans.2.desc"></div>
+        <div class="admin-2"><div class="admin-f"><label>Prix</label><input type="text" data-k="plans.2.price"></div><div class="admin-f"><label>Unité</label><input type="text" data-k="plans.2.unit"></div></div>
+        <div class="admin-f"><label>Sous-texte</label><input type="text" data-k="plans.2.tag"></div>
+      </div>
+    </div>
+    <div class="admin-group">
+      <h4>Horaires & contact</h4>
+      <label style="display:block;font-size:.8rem;color:var(--muted);margin-bottom:8px">Disponibilité par jour</label>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.0.on"> Lundi</label><input type="text" data-k="days.0.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.1.on"> Mardi</label><input type="text" data-k="days.1.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.2.on"> Mercredi</label><input type="text" data-k="days.2.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.3.on"> Jeudi</label><input type="text" data-k="days.3.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.4.on"> Vendredi</label><input type="text" data-k="days.4.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.5.on"> Samedi</label><input type="text" data-k="days.5.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.6.on"> Dimanche</label><input type="text" data-k="days.6.h" placeholder="ex : 08h00 – 20h00"></div>
+      <div class="admin-f" style="margin-top:10px"><label>Texte pour un jour indisponible</label><input type="text" data-k="closedLabel"></div>
+      <div class="admin-f"><label>Téléphone</label><input type="text" data-k="phone"></div>
+      <div class="admin-f"><label>Email</label><input type="text" data-k="email"></div>
+      <div class="admin-f"><label>Zone d'intervention</label><input type="text" data-k="zone"></div>
+    </div>
+    <div class="admin-group">
+      <h4>Sécurité</h4>
+      <div class="admin-f"><label>Mot de passe administrateur</label><input type="text" data-k="password"></div>
+      <div class="admin-note">🔒 Protection basique côté navigateur. Pour une vraie sécurité (comptes, données protégées), un serveur est nécessaire.</div>
+    </div>
+  </div>
+  <div class="admin-df">
+    <button class="btn btn-ghost" id="adminReset">Réinitialiser</button>
+    <button class="btn btn-primary" id="adminDone">Terminé</button>
+  </div>
+</div>
+
+<!-- ===== FIREBASE : synchronisation en ligne ===== -->
+<script>
+  /* 🔧 COLLE ICI TA CONFIG FIREBASE (voir le guide). Tant que c'est laissé tel quel, le site fonctionne en local. */
+  window.AKSIORA_FIREBASE = {
+    apiKey: "AIzaSyDbO7BXecBgiUi0Nq7wTOVg9tJwsvubVa4",
+    authDomain: "aksiora.firebaseapp.com",
+    projectId: "aksiora",
+    storageBucket: "aksiora.firebasestorage.app",
+    messagingSenderId: "705475379538",
+    appId: "1:705475379538:web:71bf0c94df2b934cebfa8b",
+    measurementId: "G-E03P203DPQ"
+  };
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+(function(){
+  var KEY='aksiora_cfg';
+  var DEF={
+    password:"aksiora2026",
+    brand:"AKSIORA",
+    heroTitle:"Des poubelles *propres, saines* et sans odeurs",
+    heroLead:"AKSIORA nettoie, désinfecte et désodorise vos bacs à ordures directement chez vous. Un service écologique qui élimine 99 % des bactéries — sans effort de votre part.",
+    color:"#22a55a",
+    plans:[
+      {name:"Ponctuel",desc:"Un lavage à la demande, quand vous en avez besoin.",price:"15€",unit:"/ poubelle",tag:"Paiement unique"},
+      {name:"Abonnement mensuel",desc:"Un lavage chaque mois, en toute tranquillité.",price:"12€",unit:"/ mois",tag:"Soit 1 passage / mois"},
+      {name:"Pro & Collectivités",desc:"Immeubles, entreprises, restaurants, syndics.",price:"Sur devis",unit:"",tag:"Volume & bacs multiples"}
+    ],
+    closedLabel:"Indisponible",
+    days:[
+      {key:"Lundi",on:false,h:"08h00 – 20h00"},
+      {key:"Mardi",on:true,h:"08h00 – 20h00"},
+      {key:"Mercredi",on:false,h:"08h00 – 20h00"},
+      {key:"Jeudi",on:true,h:"08h00 – 20h00"},
+      {key:"Vendredi",on:true,h:"08h00 – 20h00"},
+      {key:"Samedi",on:true,h:"08h00 – 20h00"},
+      {key:"Dimanche",on:true,h:"08h00 – 20h00"}
+    ],
+    phone:"06 00 00 00 00",
+    email:"contact@aksiora.fr",
+    zone:"votre ville"
+  };
+  function clone(o){return JSON.parse(JSON.stringify(o));}
+  function load(){try{var s=localStorage.getItem(KEY);if(s){var d=clone(DEF),p=JSON.parse(s);for(var k in p){d[k]=p[k];}return d;}}catch(e){}return clone(DEF);}
+  function mergeCfg(r){var d=clone(DEF);if(r){for(var k in r){d[k]=r[k];}}return d;}
+  var CFG=load();window.AKSIORA_CFG=CFG;
+  /* --- Firebase : synchronisation en ligne (optionnelle) --- */
+  var db=null,FB=window.AKSIORA_FIREBASE||{};
+  var FB_ON=!!(FB.apiKey&&FB.apiKey.indexOf('TA_')!==0&&typeof firebase!=='undefined');
+  if(FB_ON){try{firebase.initializeApp(FB);db=firebase.firestore();}catch(e){db=null;FB_ON=false;}}
+  function fbDoc(){return db.collection('aksiora').doc('config');}
+  function pubCfg(){var c=clone(CFG);delete c.password;return c;}
+  var fbTimer;
+  function persist(){try{localStorage.setItem(KEY,JSON.stringify(CFG));}catch(e){}if(db){clearTimeout(fbTimer);fbTimer=setTimeout(function(){fbDoc().set(pubCfg()).catch(function(){});},600);}}
+  function setPath(p,v){var ks=p.split('.'),o=CFG;for(var i=0;i<ks.length-1;i++)o=o[ks[i]];o[ks[ks.length-1]]=v;}
+  function getPath(p){var ks=p.split('.'),o=CFG;for(var i=0;i<ks.length;i++){o=o?o[ks[i]]:undefined;}return o;}
+  function shade(hex,pct){hex=(hex||'#22a55a').replace('#','');if(hex.length===3)hex=hex.split('').map(function(x){return x+x;}).join('');var r=parseInt(hex.substr(0,2),16),g=parseInt(hex.substr(2,2),16),b=parseInt(hex.substr(4,2),16),f=pct/100;function a(c){return Math.max(0,Math.min(255,Math.round(pct<0?c*(1+f):c+(255-c)*f)));}return '#'+[a(r),a(g),a(b)].map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+  function parseHours(wh){var m=(wh||'').match(/(\d{1,2})\s*h/gi),s=9,e=17;if(m&&m.length>=2){s=parseInt(m[0],10);e=parseInt(m[1],10);}else if(m&&m.length===1){s=parseInt(m[0],10);}return {s:s,e:e};}
+  var FRM=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var FRD=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  var viewY=null,viewM=null,selDate=null;
+  function bkPad(x){return (x<10?'0':'')+x;}
+  function ymd(d){return d.getFullYear()+'-'+bkPad(d.getMonth()+1)+'-'+bkPad(d.getDate());}
+  function startToday(){var n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate());}
+  function dayIdx(d){var jd=d.getDay();return (jd===0)?6:jd-1;}
+  function isAvail(d){if(d.getTime()<startToday().getTime())return false;var dy=(CFG.days||[])[dayIdx(d)];return !!(dy&&dy.on);}
+  function bkRange(str){var re=/(\d{1,2})\s*[h:.]\s*(\d{2})?/g,m,t=[];while((m=re.exec(str||''))){t.push(parseInt(m[1],10)*60+(m[2]?parseInt(m[2],10):0));}if(t.length>=2)return{s:t[0],e:t[1]};if(t.length===1)return{s:t[0],e:t[0]+480};return{s:480,e:1200};}
+  function bkFmt(m){return bkPad(Math.floor(m/60))+'h'+bkPad(m%60);}
+  function slotsFor(d){var dy=(CFG.days||[])[dayIdx(d)];if(!dy||!dy.on)return[];var r=bkRange(dy.h),a=[],t;for(t=r.s;t+40<=r.e;t+=40)a.push(t);return a;}
+  function pickDate(d){selDate=d;var bd=q('#bookDate');if(bd)bd.value=ymd(d);var bt=q('#bookTime');if(bt)bt.value='';renderCal();renderSlots();}
+  function renderCal(){
+    var host=q('#calDays'),mlab=q('#calMonth');if(!host)return;
+    var today=startToday();
+    if(viewY==null){viewY=today.getFullYear();viewM=today.getMonth();}
+    if(mlab)mlab.textContent=FRM[viewM]+' '+viewY;
+    host.innerHTML='';
+    var first=new Date(viewY,viewM,1),offset=(first.getDay()+6)%7,start=new Date(viewY,viewM,1-offset),i;
+    for(i=0;i<42;i++){
+      var d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
+      var b=document.createElement('button');b.type='button';b.className='cal-day';b.textContent=d.getDate();
+      if(d.getMonth()!==viewM){b.className+=' muted';b.disabled=true;}
+      else{
+        if(d.getTime()===today.getTime())b.className+=' today';
+        if(!isAvail(d)){b.className+=' off';b.disabled=true;}
+        else{(function(dd){b.addEventListener('click',function(){pickDate(dd);});})(d);}
+        if(selDate&&d.getTime()===selDate.getTime())b.className+=' sel';
+      }
+      host.appendChild(b);
+    }
+    var prev=q('#calPrev');if(prev){var canPrev=(viewY>today.getFullYear())||(viewY===today.getFullYear()&&viewM>today.getMonth());prev.disabled=!canPrev;}
+  }
+  function renderSlots(){
+    var head=q('#slotsHead'),list=q('#slotsList');if(!list)return;
+    list.innerHTML='';
+    if(!selDate){if(head)head.textContent='Sélectionnez une date';list.innerHTML='<div class="slots-empty">Choisissez un jour disponible dans le calendrier.</div>';return;}
+    if(head)head.textContent=FRD[selDate.getDay()]+' '+selDate.getDate()+' '+FRM[selDate.getMonth()];
+    var s=slotsFor(selDate);
+    if(!s.length){list.innerHTML='<div class="slots-empty">Aucun créneau disponible ce jour.</div>';return;}
+    s.forEach(function(m){var b=document.createElement('button');b.type='button';b.className='slot';b.textContent=bkFmt(m);b.addEventListener('click',function(){var bt=q('#bookTime');if(bt)bt.value=bkFmt(m);qa('.slot',list).forEach(function(x){x.classList.remove('sel');});b.className='slot sel';});list.appendChild(b);});
+  }
+  function refreshBooker(){if(selDate&&!isAvail(selDate)){selDate=null;var bd=q('#bookDate');if(bd)bd.value='';var bt=q('#bookTime');if(bt)bt.value='';}renderCal();renderSlots();}
+  function q(s,r){return (r||document).querySelector(s);}
+  function qa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+  function updateBadge(){var t=q('#openText'),p=q('#openPill');if(!t)return;var n=new Date(),jd=n.getDay(),idx=(jd===0)?6:jd-1,dy=(CFG.days||[])[idx],open=false;if(dy&&dy.on){var h=parseHours(dy.h),hr=n.getHours();open=hr>=h.s&&hr<h.e;}var live=p?q('.live',p):null;if(open){t.textContent='Ouvert actuellement — nous pouvons intervenir';if(live)live.style.background='var(--green-500)';}else{t.textContent='Fermé pour le moment — laissez une demande, on vous rappelle';if(live)live.style.background='#e2a03f';}}
+  function applyCfg(){
+    qa('.js-brand').forEach(function(e){e.textContent=CFG.brand;});
+    document.title=CFG.brand+" — Lavage & désinfection de poubelles";
+    var h1=q('#accueil h1');if(h1)h1.innerHTML=(CFG.heroTitle||'').replace(/\*(.+?)\*/g,'<span class="hl">$1</span>');
+    var hl=q('#accueil p.lead');if(hl)hl.textContent=CFG.heroLead;
+    var rs=document.documentElement.style;
+    if(CFG.color===DEF.color){rs.removeProperty('--green-600');rs.removeProperty('--green-700');rs.removeProperty('--green-500');}
+    else{rs.setProperty('--green-600',CFG.color);rs.setProperty('--green-700',shade(CFG.color,-16));rs.setProperty('--green-500',shade(CFG.color,12));}
+    var plans=qa('.price-grid .plan');
+    CFG.plans.forEach(function(p,i){var el=plans[i];if(!el)return;var n=q('.pname',el),d=q('.pdesc',el),pr=q('.price',el),tg=q('.price-tag',el);if(n)n.textContent=p.name;if(d)d.textContent=p.desc;if(pr)pr.innerHTML=p.price+(p.unit?' <small>'+p.unit+'</small>':'');if(tg)tg.textContent=p.tag;});
+    var _rows=qa('#horaires .hours .row');(CFG.days||[]).forEach(function(dy,i){var el=_rows[i];if(!el)return;var sp=q('span',el);if(dy.on){el.classList.remove('closed');if(sp)sp.textContent=dy.h;}else{el.classList.add('closed');if(sp)sp.textContent=(CFG.closedLabel||'Indisponible');}});
+    var cl=qa('#horaires .contact-list li');
+    if(cl[0]){q('b',cl[0]).textContent=CFG.phone;var t0=q('.placeholder-tag',cl[0]);if(t0)t0.style.display=(CFG.phone!==DEF.phone)?'none':'';}
+    if(cl[1]){q('b',cl[1]).textContent=CFG.email;var t1=q('.placeholder-tag',cl[1]);if(t1)t1.style.display=(CFG.email!==DEF.email)?'none':'';}
+    if(cl[2]){q('b',cl[2]).textContent="Zone d'intervention : "+CFG.zone;var t2=q('.placeholder-tag',cl[2]);if(t2)t2.style.display=(CFG.zone!==DEF.zone)?'none':'';}
+    var fp=qa('footer .foot-grid > div:last-child p');
+    if(fp[0])fp[0].textContent="📞 "+CFG.phone;
+    if(fp[1])fp[1].textContent="✉️ "+CFG.email;
+    if(fp[2])fp[2].textContent="📍 "+CFG.zone;
+    updateBadge();
+    refreshBooker();
+    window.AKSIORA_CFG=CFG;
+  }
+  var gate=q('#adminGate'),card=q('#adminCard'),pass=q('#adminPass'),err=q('#adminErr'),panel=q('#adminPanel'),saved=q('#adminSaved');
+  function openGate(){if(panel.classList.contains('show'))return;gate.classList.add('show');pass.value='';err.style.display='none';setTimeout(function(){pass.focus();},60);}
+  function closeGate(){gate.classList.remove('show');}
+  function tryEnter(){if(pass.value===CFG.password){closeGate();openPanel();}else{err.style.display='block';card.classList.add('shake');setTimeout(function(){card.classList.remove('shake');},430);}}
+  function populate(){qa('#adminPanel [data-k]').forEach(function(inp){var v=getPath(inp.dataset.k);if(inp.type==='checkbox'){inp.checked=!!v;}else{inp.value=(v==null?'':v);}});}
+  function openPanel(){populate();panel.classList.add('show');}
+  function closePanel(){panel.classList.remove('show');}
+  var st;function flashSaved(txt){saved.textContent=txt||'Enregistré ✓';saved.classList.add('on');clearTimeout(st);st=setTimeout(function(){saved.classList.remove('on');},1400);}
+  q('#gateEnter').addEventListener('click',tryEnter);
+  q('#gateCancel').addEventListener('click',closeGate);
+  pass.addEventListener('keydown',function(e){if(e.key==='Enter')tryEnter();});
+  gate.addEventListener('click',function(e){if(e.target===gate)closeGate();});
+  q('#adminClose2').addEventListener('click',closePanel);
+  q('#adminDone').addEventListener('click',closePanel);
+  q('#adminReset').addEventListener('click',function(){if(confirm('Réinitialiser tout le contenu aux valeurs par défaut ?')){CFG=clone(DEF);window.AKSIORA_CFG=CFG;persist();applyCfg();populate();flashSaved('Réinitialisé');}});
+  qa('#adminPanel [data-k]').forEach(function(inp){function hnd(){var v=inp.type==='checkbox'?inp.checked:inp.value;setPath(inp.dataset.k,v);applyCfg();persist();flashSaved();}inp.addEventListener('input',hnd);inp.addEventListener('change',hnd);});
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='A'||e.key==='a'||e.code==='KeyA')){e.preventDefault();openGate();}
+    if(e.key==='Escape'){closeGate();closePanel();}
+  });
+  var fs=q('#footSecret'),fc=0,fct;
+  if(fs)fs.addEventListener('click',function(){fc++;clearTimeout(fct);fct=setTimeout(function(){fc=0;},600);if(fc>=3){fc=0;openGate();}});
+  var _p=q('#calPrev');if(_p)_p.addEventListener('click',function(){viewM--;if(viewM<0){viewM=11;viewY--;}renderCal();});
+  var _n=q('#calNext');if(_n)_n.addEventListener('click',function(){viewM++;if(viewM>11){viewM=0;viewY++;}renderCal();});
+  var _bf=q('#bookingForm');if(_bf)_bf.addEventListener('reset',function(){setTimeout(function(){selDate=null;var bt=q('#bookTime');if(bt)bt.value='';var bd=q('#bookDate');if(bd)bd.value='';renderCal();renderSlots();},0);});
+  function setSync(){var el=q('#syncStatus');if(!el)return;if(db){el.innerHTML='☁️ Sync en ligne <b>activée</b> — tes modifications sont partagées avec les visiteurs, en temps réel.';el.className='sync-ok';}else{el.innerHTML='💾 Mode local — les modifications restent sur cet appareil. Configure Firebase (voir le guide) pour les partager.';el.className='sync-off';}}
+  if(db){fbDoc().onSnapshot(function(snap){if(snap.metadata&&snap.metadata.hasPendingWrites)return;if(snap.exists){var pw=CFG.password;CFG=mergeCfg(snap.data());CFG.password=pw;window.AKSIORA_CFG=CFG;try{localStorage.setItem(KEY,JSON.stringify(CFG));}catch(e){}applyCfg();}else{fbDoc().set(pubCfg()).catch(function(){});}},function(){});}
+  setSync();
+  applyCfg();
+  if(location.hash==='#admin')openGate();
+})();
+</script>
+</body>
+</html>
