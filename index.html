@@ -240,7 +240,30 @@
   .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime);background:rgba(255,255,255,.12)}
   .field select option{color:#123324}
   .form .btn{margin-top:22px}
-  .form-msg{margin-top:16px;font-size:.92rem;color:var(--lime);display:none}
+  .form-msg{margin-top:16px;font-size:.92rem;color:var(--lime);display:none;line-height:1.55}
+  /* Tunnel de réservation */
+  .steps-bar{display:flex;gap:8px;margin-bottom:22px}
+  .stp{flex:1;display:flex;align-items:center;gap:8px;font-size:.82rem;color:#9fc7ac;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+  .stp>span:first-child{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.15);display:grid;place-items:center;font-weight:700;font-size:.78rem;flex:0 0 auto}
+  .stp.on{color:#fff;border-color:var(--lime);background:rgba(126,217,87,.14)}
+  .stp.on>span:first-child{background:linear-gradient(135deg,var(--green-500),var(--lime));color:#06230f}
+  .stp.done>span:first-child{background:var(--green-500);color:#06230f}
+  .step-panel{animation:fade .3s ease}
+  .step-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+  .step-actions .btn{flex:1;justify-content:center;min-width:150px}
+  .step-err{color:#ffcf87;font-size:.88rem;margin-top:12px;min-height:1em}
+  .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .pay-opt{display:flex;align-items:center;gap:12px;padding:16px;border-radius:14px;border:1.6px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);cursor:pointer;transition:.15s}
+  .pay-opt:hover{border-color:var(--lime)}
+  .pay-opt input{accent-color:var(--green-500);width:18px;height:18px;flex:0 0 auto}
+  .pay-opt b{color:#fff;display:block;font-size:1rem}
+  .pay-opt small{color:#bfe6cd;font-size:.8rem}
+  .pay-opt.sel{border-color:var(--lime);background:rgba(126,217,87,.16)}
+  .recap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:9px}
+  .recap .r{display:flex;justify-content:space-between;gap:12px;font-size:.92rem}
+  .recap .r span{color:#bfe6cd}
+  .recap .r b{color:#fff;text-align:right}
+  @media(max-width:640px){.steps-bar{gap:5px}.stp{font-size:.72rem;padding:8px 9px}.stp .t{display:none}.pay-grid{grid-template-columns:1fr}}
   /* Booker (calendrier + créneaux) */
   .booker{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:18px;margin-top:10px}
   .cal,.slots{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px}
@@ -596,53 +619,87 @@
     <span class="eyebrow" style="background:rgba(126,217,87,.2);color:#d9f7e2">Réservation</span>
     <h2>Réservez votre lavage</h2>
     <p class="lead">Remplissez le formulaire, nous vous recontactons pour confirmer votre créneau.</p>
-    <form class="form" id="bookingForm" style="text-align:left" onsubmit="return submitBooking(event)">
-      <div class="form-grid">
-        <div class="field"><label>Nom complet</label><input type="text" name="nom" placeholder="Votre nom" required></div>
-        <div class="field"><label>Téléphone</label><input type="tel" name="tel" placeholder="06 00 00 00 00" required></div>
-        <div class="field"><label>Email</label><input type="email" name="email" placeholder="vous@email.com"></div>
-        <div class="field"><label>Formule souhaitée</label>
-          <select name="formule" required>
-            <option value="" disabled selected>Choisir une formule</option>
-            <option>Ponctuel</option>
-            <option>Abonnement mensuel</option>
-            <option>Pro & Collectivités</option>
-          </select>
-        </div>
-        <div class="field full"><label>Adresse d'intervention</label><input type="text" name="adresse" placeholder="N°, rue, ville" required></div>
-        <div class="field full">
-          <label>Choisissez votre date et créneau <span style="color:#8fb3a0;font-weight:400">(rendez-vous ~40 min)</span></label>
-          <div class="booker">
-            <div class="cal">
-              <div class="cal-head">
-                <b id="calMonth">—</b>
-                <div class="cal-nav">
-                  <button type="button" id="calPrev" aria-label="Mois précédent">&#8249;</button>
-                  <button type="button" id="calNext" aria-label="Mois suivant">&#8250;</button>
+    <form class="form" id="bookingForm" style="text-align:left" onsubmit="return false">
+      <div class="steps-bar">
+        <div class="stp on" data-s="1"><span>1</span><span class="t">Réservation</span></div>
+        <div class="stp" data-s="2"><span>2</span><span class="t">Paiement</span></div>
+        <div class="stp" data-s="3"><span>3</span><span class="t">Confirmation</span></div>
+      </div>
+
+      <div class="step-panel" data-step="1">
+        <div class="form-grid">
+          <div class="field"><label>Nom complet</label><input type="text" name="nom" placeholder="Votre nom" required></div>
+          <div class="field"><label>Téléphone</label><input type="tel" name="tel" placeholder="06 00 00 00 00" required></div>
+          <div class="field"><label>Email</label><input type="email" name="email" placeholder="vous@email.com" required></div>
+          <div class="field"><label>Formule souhaitée</label>
+            <select name="formule" required>
+              <option value="" disabled selected>Choisir une formule</option>
+              <option>Ponctuel</option>
+              <option>Abonnement mensuel</option>
+              <option>Pro & Collectivités</option>
+            </select>
+          </div>
+          <div class="field full"><label>Adresse d'intervention</label><input type="text" name="adresse" placeholder="N°, rue, ville" required></div>
+          <div class="field full">
+            <label>Choisissez votre date et créneau <span style="color:#8fb3a0;font-weight:400">(rendez-vous ~40 min)</span></label>
+            <div class="booker">
+              <div class="cal">
+                <div class="cal-head">
+                  <b id="calMonth">—</b>
+                  <div class="cal-nav">
+                    <button type="button" id="calPrev" aria-label="Mois précédent">&#8249;</button>
+                    <button type="button" id="calNext" aria-label="Mois suivant">&#8250;</button>
+                  </div>
+                </div>
+                <div class="cal-grid cal-dow"><span>l</span><span>m</span><span>m</span><span>j</span><span>v</span><span>s</span><span>d</span></div>
+                <div class="cal-grid" id="calDays"></div>
+                <div class="cal-tz">
+                  <label>Fuseau horaire</label>
+                  <select id="calTz" name="tz">
+                    <option>Canada – Toronto</option>
+                  </select>
                 </div>
               </div>
-              <div class="cal-grid cal-dow"><span>l</span><span>m</span><span>m</span><span>j</span><span>v</span><span>s</span><span>d</span></div>
-              <div class="cal-grid" id="calDays"></div>
-              <div class="cal-tz">
-                <label>Fuseau horaire</label>
-                <select id="calTz" name="tz">
-                  <option>Canada – Toronto</option>
-                </select>
+              <div class="slots">
+                <div class="slots-head" id="slotsHead">Sélectionnez une date</div>
+                <div class="slots-list" id="slotsList"></div>
               </div>
             </div>
-            <div class="slots">
-              <div class="slots-head" id="slotsHead">Sélectionnez une date</div>
-              <div class="slots-list" id="slotsList"></div>
-            </div>
+            <input type="hidden" id="bookDate" name="date">
+            <input type="hidden" id="bookTime" name="heure">
           </div>
-          <input type="hidden" id="bookDate" name="date">
-          <input type="hidden" id="bookTime" name="heure">
+          <div class="field"><label>Nombre de poubelles</label><input type="number" name="nombre" min="1" value="1"></div>
+          <div class="field full"><label>Message (optionnel)</label><textarea name="message" rows="3" placeholder="Précisez vos besoins…"></textarea></div>
         </div>
-        <div class="field"><label>Nombre de poubelles</label><input type="number" name="nombre" min="1" value="1"></div>
-        <div class="field full"><label>Message (optionnel)</label><textarea name="message" rows="3" placeholder="Précisez vos besoins…"></textarea></div>
+        <div class="step-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="toStep2">Continuer vers le paiement →</button>
+        </div>
+        <p class="step-err" id="err1"></p>
       </div>
-      <button type="submit" class="btn btn-primary btn-lg">Envoyer ma demande</button>
-      <p class="form-msg" id="formMsg">✅ Merci ! Votre demande a bien été enregistrée. Nous vous recontactons très vite.</p>
+
+      <div class="step-panel" data-step="2" hidden>
+        <h3 style="color:#fff;margin-bottom:6px">Mode de paiement</h3>
+        <p class="lead" style="font-size:.9rem;color:#bfe6cd;margin-bottom:6px">Le paiement s'effectue sur place, le jour de la prestation.</p>
+        <div class="pay-grid">
+          <label class="pay-opt"><input type="radio" name="paiement" value="Espèces"><div><b>💵 Espèces</b><small>En liquide, à la prestation</small></div></label>
+          <label class="pay-opt"><input type="radio" name="paiement" value="Carte bancaire"><div><b>💳 Carte bancaire</b><small>Par carte, à la prestation</small></div></label>
+        </div>
+        <div class="step-actions">
+          <button type="button" class="btn btn-ghost" id="back1">← Retour</button>
+          <button type="button" class="btn btn-primary" id="toStep3">Voir le récapitulatif →</button>
+        </div>
+        <p class="step-err" id="err2"></p>
+      </div>
+
+      <div class="step-panel" data-step="3" hidden>
+        <h3 style="color:#fff;margin-bottom:12px">Récapitulatif</h3>
+        <div class="recap" id="recap"></div>
+        <div class="step-actions">
+          <button type="button" class="btn btn-ghost" id="back2">← Retour</button>
+          <button type="button" class="btn btn-primary btn-lg" id="confirmBtn">Confirmer la réservation ✓</button>
+        </div>
+        <p class="form-msg" id="formMsg"></p>
+      </div>
     </form>
   </div>
 </section>
@@ -912,7 +969,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       <div class="admin-f" style="margin-top:10px"><label>Texte pour un jour indisponible</label><input type="text" data-k="closedLabel"></div>
       <div class="admin-f"><label>Téléphone</label><input type="text" data-k="phone"></div>
       <div class="admin-f"><label>Email</label><input type="text" data-k="email"></div>
-      <div class="admin-f"><label>Zone d'intervention</label><input type="text" data-k="zone"></div>
+      <div class="admin-f"><label>Zone d'intervention</label><input type="text" data-k="zone">Châteauguay, Mercier, Montréal, Longueuil</div>
     </div>
     <div class="admin-group">
       <h4>Sécurité</h4>
@@ -939,9 +996,23 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     measurementId: "G-E03P203DPQ"
   };
 </script>
+
+<!-- ===== EMAILJS : envoi des emails de confirmation ===== -->
+<script>
+  /* 🔧 COLLE ICI TES CLÉS EMAILJS (voir le guide). Tant que c'est laissé tel quel, la réservation marche mais aucun email n'est envoyé. */
+  window.AKSIORA_EMAILJS = {
+    publicKey: "E6-HIGUKbAZaKCO3D",
+    serviceId: "service_spr5xxh",
+    templateId: "template_30ysuir"
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  try{ if(window.emailjs && window.AKSIORA_EMAILJS && window.AKSIORA_EMAILJS.publicKey.indexOf('TA_')!==0){ emailjs.init({publicKey: window.AKSIORA_EMAILJS.publicKey}); } }catch(e){}
+</script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
   try {
     var cfg = window.AKSIORA_FIREBASE || {};
     if (cfg.apiKey && cfg.apiKey.indexOf('TA_') !== 0) {
@@ -950,7 +1021,8 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       var ref = doc(db, 'aksiora', 'config');
       window.AKSIORA_FS = {
         save: function(data){ return setDoc(ref, data); },
-        watch: function(cb, err){ return onSnapshot(ref, cb, err); }
+        watch: function(cb, err){ return onSnapshot(ref, cb, err); },
+        addBooking: function(data){ return addDoc(collection(db, 'aksiora_bookings'), data); }
       };
       window.dispatchEvent(new Event('aksiora-fs-ready'));
     }
@@ -1099,6 +1171,75 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   if(window.AKSIORA_FS){bindFS();}else{window.addEventListener('aksiora-fs-ready',bindFS);}
   applyCfg();
   if(location.hash==='#admin')openGate();
+})();
+</script>
+
+<!-- ===== Tunnel de réservation (étapes) ===== -->
+<script>
+(function(){
+  var form=document.getElementById('bookingForm'); if(!form) return;
+  var panels=form.querySelectorAll('.step-panel');
+  var stps=form.querySelectorAll('.steps-bar .stp');
+  function show(n){
+    panels.forEach(function(p){ p.hidden=(parseInt(p.getAttribute('data-step'),10)!==n); });
+    stps.forEach(function(s){ var si=parseInt(s.getAttribute('data-s'),10); s.classList.toggle('on',si===n); s.classList.toggle('done',si<n); });
+    var sec=document.getElementById('reserver'); if(sec&&n>1) sec.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function val(name){ var el=form.querySelector('[name="'+name+'"]'); return el?String(el.value||'').trim():''; }
+  function gather(){
+    return {
+      nom:val('nom'),tel:val('tel'),email:val('email'),adresse:val('adresse'),formule:val('formule'),
+      date:(document.getElementById('bookDate')||{}).value||'',heure:(document.getElementById('bookTime')||{}).value||'',
+      nombre:val('nombre')||'1',message:val('message'),
+      paiement:(form.querySelector('[name="paiement"]:checked')||{}).value||''
+    };
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  var e1=document.getElementById('err1');
+  document.getElementById('toStep2').addEventListener('click',function(){
+    var d=gather(),miss=[];
+    if(!d.nom)miss.push('nom');if(!d.tel)miss.push('téléphone');if(!d.email)miss.push('email');if(!d.adresse)miss.push('adresse');if(!d.formule)miss.push('formule');if(!d.date||!d.heure)miss.push('date et créneau');
+    if(miss.length){e1.textContent='Merci de compléter : '+miss.join(', ')+'.';return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){e1.textContent='Adresse email invalide.';return;}
+    e1.textContent='';show(2);
+  });
+  document.getElementById('back1').addEventListener('click',function(){show(1);});
+  form.querySelectorAll('.pay-opt input').forEach(function(r){r.addEventListener('change',function(){form.querySelectorAll('.pay-opt').forEach(function(o){o.classList.remove('sel');});if(r.checked)r.closest('.pay-opt').classList.add('sel');});});
+  var e2=document.getElementById('err2');
+  document.getElementById('toStep3').addEventListener('click',function(){
+    var d=gather();
+    if(!d.paiement){e2.textContent='Choisis un mode de paiement.';return;}
+    e2.textContent='';buildRecap(d);show(3);
+  });
+  document.getElementById('back2').addEventListener('click',function(){show(2);});
+  function row(l,v){return '<div class="r"><span>'+l+'</span><b>'+esc(v||'—')+'</b></div>';}
+  function buildRecap(d){
+    document.getElementById('recap').innerHTML=row('Nom',d.nom)+row('Téléphone',d.tel)+row('Email',d.email)+row('Adresse',d.adresse)+row('Formule',d.formule)+row('Date',d.date)+row('Heure',d.heure)+row('Poubelles',d.nombre)+row('Paiement',d.paiement)+(d.message?row('Message',d.message):'');
+  }
+  var msg=document.getElementById('formMsg'),btn=document.getElementById('confirmBtn');
+  btn.addEventListener('click',function(){
+    var d=gather();
+    btn.disabled=true;btn.textContent='Envoi en cours…';
+    var b={nom:d.nom,tel:d.tel,email:d.email,adresse:d.adresse,formule:d.formule,date:d.date,heure:d.heure,nombre:d.nombre,message:d.message,paiement:d.paiement,createdAt:new Date().toISOString(),status:'nouveau'};
+    Promise.resolve()
+      .then(function(){ if(window.AKSIORA_FS&&window.AKSIORA_FS.addBooking){return window.AKSIORA_FS.addBooking(b).catch(function(){});} })
+      .then(function(){ return sendEmails(b).catch(function(){return false;}); })
+      .then(function(sent){
+        msg.style.display='block';
+        msg.innerHTML='✅ <b>Réservation confirmée !</b> '+(sent?'Un email de confirmation vient de t\'être envoyé (et à AKSIORA).':'Nous te recontactons pour confirmer.')+'<br>📅 '+esc(d.date)+' à '+esc(d.heure)+' · '+esc(d.formule)+' · Paiement : '+esc(d.paiement);
+        btn.textContent='Réservation confirmée ✓';
+        stps.forEach(function(s){s.classList.add('done');s.classList.remove('on');});
+      });
+  });
+  function sendEmails(b){
+    var C=window.AKSIORA_EMAILJS;
+    if(!(C&&C.publicKey&&C.publicKey.indexOf('TA_')!==0&&window.emailjs))return Promise.resolve(false);
+    var base={nom:b.nom,tel:b.tel,email:b.email,adresse:b.adresse,formule:b.formule,date:b.date,heure:b.heure,nombre:b.nombre,paiement:b.paiement,message:b.message||'—'};
+    var p=emailjs.send(C.serviceId,C.templateId,Object.assign({to_email:'aaksiora@gmail.com',heading:'Nouvelle réservation reçue'},base));
+    if(b.email)p=p.then(function(){return emailjs.send(C.serviceId,C.templateId,Object.assign({to_email:b.email,heading:'Confirmation de votre réservation AKSIORA'},base));});
+    return p.then(function(){return true;});
+  }
+  show(1);
 })();
 </script>
 </body>
