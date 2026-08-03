@@ -227,6 +227,36 @@
   .plan li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;color:var(--ink)}
   .plan li svg{flex:0 0 auto;width:19px;height:19px;stroke:var(--green-600);margin-top:2px}
   .plan .btn{width:100%;justify-content:center;margin-top:auto}
+  /* Bouton oeil + aperçu au survol */
+  .eye-wrap{position:absolute;top:16px;right:16px;z-index:5}
+  .plan-eye{width:38px;height:38px;border-radius:50%;border:1.6px solid var(--line);background:var(--white);color:var(--green-700);display:grid;place-items:center;cursor:pointer;transition:transform .18s,border-color .18s,color .18s}
+  .plan-eye svg{width:19px;height:19px}
+  .plan-eye:hover{transform:scale(1.09);border-color:var(--green-500);color:var(--green-600)}
+  .eye-pop{position:absolute;top:44px;right:0;width:212px;background:var(--white);border-radius:14px;padding:8px;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.97);transition:opacity .2s,transform .2s;z-index:6}
+  .eye-wrap:hover .eye-pop{opacity:1;visibility:visible;transform:none}
+  .eye-pop-img{aspect-ratio:4/3;border-radius:10px;display:grid;place-items:center;position:relative;color:#fff;overflow:hidden}
+  .eye-pop-img>svg{width:54px;height:54px;opacity:.96;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3))}
+  .eye-pop-badge{position:absolute;top:8px;left:8px;background:rgba(255,255,255,.94);color:#0d2a1c;font-weight:700;font-size:.72rem;padding:3px 9px;border-radius:999px}
+  .eye-pop-price{position:absolute;bottom:8px;right:8px;color:#fff;font-weight:800;font-size:.82rem;padding:3px 9px;border-radius:8px}
+  .eye-ind .eye-pop-img{background:linear-gradient(135deg,#475569,#94a3b8);border:3px solid #64748b}
+  .eye-ind .eye-pop-price{background:#64748b}
+  .eye-res .eye-pop-img{background:linear-gradient(135deg,#15803d,#4ade80);border:3px solid #22a55a}
+  .eye-res .eye-pop-price{background:#22a55a}
+  .eye-app .eye-pop-img{background:linear-gradient(135deg,#0e7490,#22d3ee);border:3px solid #0891b2}
+  .eye-app .eye-pop-price{background:#0891b2}
+  /* Modal aperçu poubelle */
+  .pv-overlay{position:fixed;inset:0;background:rgba(6,12,9,.72);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+  .pv-overlay.show{display:flex}
+  .pv-box{position:relative;width:min(420px,92vw);background:var(--white);border-radius:20px;padding:20px;box-shadow:var(--shadow-lg);animation:pvIn .25s ease}
+  @keyframes pvIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+  .pv-close{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:0;background:var(--bg-2);color:var(--ink);font-size:1.35rem;line-height:1;cursor:pointer;z-index:2}
+  .pv-close:hover{background:var(--line)}
+  .pv-img{aspect-ratio:4/3;border-radius:14px;display:grid;place-items:center;border:3px solid var(--pv-accent,#64748b);position:relative;overflow:hidden;color:#fff}
+  .pv-img svg{width:86px;height:86px;opacity:.96;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))}
+  .pv-badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);color:#0d2a1c;font-weight:700;font-size:.85rem;padding:5px 12px;border-radius:999px}
+  .pv-price{position:absolute;bottom:12px;right:12px;background:var(--pv-accent,#64748b);color:#fff;font-weight:800;font-size:1.05rem;padding:5px 12px;border-radius:10px}
+  .pv-label{margin-top:16px;font-weight:700;color:var(--green-900);font-size:1.05rem}
+  .pv-note{margin-top:4px;color:var(--muted);font-size:.84rem}
 
   /* Schedule + Contact */
   .info{background:linear-gradient(180deg,var(--white),var(--bg))}
@@ -472,9 +502,9 @@
     <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#etapes">Comment ça marche</a>
-      <a href="#offres">Offres</a>
+      <a href="#offres">Nos Offres</a>
       <a href="#photos">Photos</a>
-      <a href="#avis">Avis</a>
+      <a href="#avis">Avis des clients</a>
       <a href="#horaires">Horaires</a>
       <a href="#reserver">Réserver</a>
     </nav>
@@ -573,6 +603,18 @@
 
       <!-- OFFRE 1 -->
       <div class="plan reveal">
+        <div class="eye-wrap">
+          <button class="plan-eye" type="button" data-variant="ind" aria-label="Aperçu de l'image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <div class="eye-pop eye-ind">
+            <div class="eye-pop-img">
+              <span class="eye-pop-badge">Industriel</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              <span class="eye-pop-price">150$</span>
+            </div>
+          </div>
+        </div>
         <div class="pname">Industriel</div>
         <div class="pdesc">Immeubles, entreprises, restaurants, syndics.</div>
         <div class="price">150$</div>
@@ -588,6 +630,18 @@
 
       <!-- OFFRE 2 (populaire) -->
       <div class="plan pop reveal">
+        <div class="eye-wrap">
+          <button class="plan-eye" type="button" data-variant="res" aria-label="Aperçu de l'image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <div class="eye-pop eye-res">
+            <div class="eye-pop-img">
+              <span class="eye-pop-badge">Résidentiel</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              <span class="eye-pop-price">35$</span>
+            </div>
+          </div>
+        </div>
         <div class="pname">Résidentiel</div>
         <div class="pdesc">Un lavage chaque mois, en toute tranquillité.</div>
         <div class="price">35$</div>
@@ -603,6 +657,18 @@
 
       <!-- OFFRE 3 -->
       <div class="plan reveal">
+        <div class="eye-wrap">
+          <button class="plan-eye" type="button" data-variant="app" aria-label="Aperçu de l'image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <div class="eye-pop eye-app">
+            <div class="eye-pop-img">
+              <span class="eye-pop-badge">Appartement</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              <span class="eye-pop-price">40$</span>
+            </div>
+          </div>
+        </div>
         <div class="pname">Appartement</div>
         <div class="pdesc">Un lavage à la demande, quand vous en avez besoin.</div>
         <div class="price">40$</div>
@@ -616,6 +682,20 @@
         <a href="#reserver" class="btn btn-ghost">Demander un devis</a>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Aperçu image poubelle -->
+  <div class="pv-overlay" id="planPreview" role="dialog" aria-modal="true" aria-label="Aperçu de l'image">
+    <div class="pv-box">
+      <button class="pv-close" id="pvClose" type="button" aria-label="Fermer">&times;</button>
+      <div class="pv-img" id="pvImg">
+        <span class="pv-badge" id="pvBadge">Industriel</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+        <span class="pv-price" id="pvPrice">150$</span>
+      </div>
+      <div class="pv-label" id="pvLabel">Aperçu de la formule</div>
+      <div class="pv-note" id="pvNote">Ici s'affichera la vraie photo de la poubelle de cette formule.</div>
     </div>
   </div>
 </section>
@@ -1307,7 +1387,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     /* Étapes */
     "Simple comme 1, 2, 3, 4":"As easy as 1, 2, 3, 4","Vous réservez":"You book","Choisissez une formule et une date via le formulaire ou l'assistant.":"Choose a plan and a date via the form or the assistant.","On se déplace":"We come to you","Notre équipe vient le jour de collecte, juste après le passage des éboueurs.":"Our team comes on collection day, right after the garbage truck.","On lave & désinfecte":"We wash & disinfect","Lavage haute pression, désinfection et désodorisation en quelques minutes.":"High-pressure wash, disinfection and deodorizing in minutes.","Poubelle impeccable":"Spotless bin","Vous retrouvez un bac propre, sain et parfumé. Rien à nettoyer.":"You get a clean, sanitary, fresh-smelling bin. Nothing to clean.",
     /* Offres */
-    "Nos offres":"Our plans","Des formules pour chaque besoin":"Plans for every need","Choisissez la formule qui vous convient. Sans engagement, résiliable à tout moment.":"Choose the plan that suits you. No commitment, cancel anytime.","Industriel":"Industrial","Résidentiel":"Residential","Commercial (Appartement)":"Commercial (Apartment)","Immeubles, entreprises, restaurants, syndics.":"Buildings, businesses, restaurants, property managers.","Un lavage chaque mois, en toute tranquillité.":"A wash every month, worry-free.","Un lavage à la demande, quand vous en avez besoin.":"A wash on demand, whenever you need it.","/ poubelle":"/ bin","Lavage haute pression":"High-pressure wash","Désinfection antibactérienne":"Antibacterial disinfection","Désodorisation parfumée":"Scented deodorizing","Sans engagement":"No commitment","Tout de la formule Ponctuel":"Everything in the One-time plan","Passage automatique programmé":"Automatic scheduled visits","Tarif réduit vs ponctuel":"Reduced rate vs one-time","Rappel avant chaque passage":"Reminder before each visit","Bacs en grand nombre":"Large number of bins","Contrat sur mesure":"Custom contract","Facturation mensuelle":"Monthly billing","Interlocuteur dédié":"Dedicated contact","Choisir":"Choose","Choisir cette formule":"Choose this plan","Demander un devis":"Request a quote","💡 Tarifs affichés à titre d'exemple — communiquez-nous vos prix réels pour les remplacer.":"💡 Example prices shown — send us your real prices to replace them.",
+    "Nos offres":"Our plans","Des formules pour chaque besoin":"Plans for every need","Choisissez la formule qui vous convient. Sans engagement, résiliable à tout moment.":"Choose the plan that suits you. No commitment, cancel anytime.","Industriel":"Industrial","Résidentiel":"Residential","Commercial (Appartement)":"Commercial (Apartment)","Appartement":"Apartment","Immeubles, entreprises, restaurants, syndics.":"Buildings, businesses, restaurants, property managers.","Un lavage chaque mois, en toute tranquillité.":"A wash every month, worry-free.","Un lavage à la demande, quand vous en avez besoin.":"A wash on demand, whenever you need it.","/ poubelle":"/ bin","Lavage haute pression":"High-pressure wash","Désinfection antibactérienne":"Antibacterial disinfection","Désodorisation parfumée":"Scented deodorizing","Sans engagement":"No commitment","Tout de la formule Ponctuel":"Everything in the One-time plan","Passage automatique programmé":"Automatic scheduled visits","Tarif réduit vs ponctuel":"Reduced rate vs one-time","Rappel avant chaque passage":"Reminder before each visit","Bacs en grand nombre":"Large number of bins","Contrat sur mesure":"Custom contract","Facturation mensuelle":"Monthly billing","Interlocuteur dédié":"Dedicated contact","Choisir":"Choose","Choisir cette formule":"Choose this plan","Demander un devis":"Request a quote","💡 Tarifs affichés à titre d'exemple — communiquez-nous vos prix réels pour les remplacer.":"💡 Example prices shown — send us your real prices to replace them.",
     /* Galerie */
     "Galerie":"Gallery","Nos interventions en images":"Our work in pictures","Avant / après : vos bacs retrouvent une seconde jeunesse.":"Before / after: your bins look brand new.","Avant":"Before","Après":"After","Haute pression":"High pressure","Désinfection":"Disinfection","Notre équipe":"Our team","Résultat écologique":"Eco-friendly result","📷 Images d'illustration — remplacez-les par vos vraies photos quand vous voulez.":"📷 Placeholder images — replace them with your own photos anytime.",
     /* Avis */
@@ -1350,6 +1430,42 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   if(saved==='en') setLang('en');
   /* ré-applique après le chargement async de la config (Firebase) qui réécrit certains textes */
   [400,1200,2500].forEach(function(ms){ setTimeout(function(){ if(window.__lang==='en') walk(document.body,EN); },ms); });
+})();
+</script>
+
+<!-- ================= APERÇU IMAGE POUBELLE (formules) ================= -->
+<script>
+(function(){
+  var VAR={
+    ind:{accent:'#64748b',grad:'linear-gradient(135deg,#475569,#94a3b8)'},
+    res:{accent:'#22a55a',grad:'linear-gradient(135deg,#15803d,#4ade80)'},
+    app:{accent:'#0891b2',grad:'linear-gradient(135deg,#0e7490,#22d3ee)'}
+  };
+  var TXT={
+    fr:{label:'Aperçu de la formule',note:"Ici s'affichera la vraie photo de la poubelle de cette formule."},
+    en:{label:'Plan preview',note:"The real photo of this plan's bin will appear here."}
+  };
+  var ov=document.getElementById('planPreview'); if(!ov) return;
+  var img=document.getElementById('pvImg'), badge=document.getElementById('pvBadge'),
+      price=document.getElementById('pvPrice'), label=document.getElementById('pvLabel'), note=document.getElementById('pvNote');
+  function openPv(name,pr,v){
+    var c=VAR[v]||VAR.ind, lang=(window.__lang==='en')?'en':'fr';
+    img.style.background=c.grad; img.style.setProperty('--pv-accent',c.accent);
+    badge.textContent=name; price.textContent=pr;
+    label.textContent=TXT[lang].label; note.textContent=TXT[lang].note;
+    ov.classList.add('show');
+  }
+  function closePv(){ ov.classList.remove('show'); }
+  document.querySelectorAll('.plan-eye').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.preventDefault();
+      var p=b.closest('.plan');
+      openPv(p.querySelector('.pname').textContent.trim(), p.querySelector('.price').textContent.trim(), b.getAttribute('data-variant'));
+    });
+  });
+  document.getElementById('pvClose').addEventListener('click',closePv);
+  ov.addEventListener('click',function(e){ if(e.target===ov) closePv(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePv(); });
 })();
 </script>
 </body>
