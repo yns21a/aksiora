@@ -966,6 +966,8 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     serviceId: "service_spr5xxh",
     templateId: "template_30ysuir"
   };
+  /* 🔧 URL du script Google (enregistre les réservations + envoie le rappel 24h). Voir le guide. */
+  window.AKSIORA_SHEET_URL = "https://script.google.com/macros/s/AKfycbz54XhOeZB1uS5SBJUzFGgIfAtBFgmLwUMzO2y0rL1Pv4HHFFeDsqMfcN8r7knZoknzqA/exec";
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
@@ -1182,7 +1184,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     btn.disabled=true;btn.textContent='Envoi en cours…';
     var b={nom:d.nom,tel:d.tel,email:d.email,adresse:d.adresse,formule:d.formule,date:d.date,heure:d.heure,nombre:d.nombre,message:d.message,paiement:d.paiement,createdAt:new Date().toISOString(),status:'nouveau'};
     Promise.resolve()
-      .then(function(){ if(window.AKSIORA_FS&&window.AKSIORA_FS.addBooking){return window.AKSIORA_FS.addBooking(b).catch(function(){});} })
+      .then(function(){ var u=window.AKSIORA_SHEET_URL; if(u && u.indexOf('TON_')!==0){ return fetch(u,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(b)}).catch(function(){}); } })
       .then(function(){ return sendEmails(b).catch(function(){return false;}); })
       .then(function(sent){
         msg.style.display='block';
