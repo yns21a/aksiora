@@ -824,7 +824,7 @@ function getReply(msg){
   const m=norm(msg);
   const has=(...k)=>k.some(x=>m.includes(x));
   if(has('bonjour','salut','coucou','bonsoir','hello','hey')) return "Bonjour et bienvenue chez AKSIORA 😊 Souhaitez-vous connaître nos <b>tarifs</b>, nos <b>horaires</b>, ou <b>réserver</b> un lavage ?";
-  if(has('tarif','prix','cout','coute','combien','formule','offre','abonnement')){var c=window.AKSIORA_CFG;if(c&&c.plans){var s=c.plans.map(function(p){return '• <b>'+p.name+'</b> — '+p.price+(p.unit?' '+p.unit:'');}).join('<br>');return "Voici nos formules 💶 :<br>"+s+"<br><br>Souhaitez-vous <b>réserver</b> ?";}return "Nos formules : Ponctuel, Abonnement mensuel et Pro & Collectivités. Souhaitez-vous <b>réserver</b> ?";}
+  if(has('tarif','prix','cout','coute','combien','formule','offre','abonnement')){var _p=document.querySelectorAll('.price-grid .plan'),s='';_p.forEach(function(el){var nm=el.querySelector('.pname'),pr=el.querySelector('.price');if(nm&&pr){s+='• <b>'+nm.textContent.trim()+'</b> — '+pr.textContent.trim()+'<br>';}});return s?("Voici nos formules 💶 :<br>"+s+"<br>Souhaitez-vous <b>réserver</b> ?"):"Contactez-nous pour connaître nos tarifs. Souhaitez-vous <b>réserver</b> ?";}
   if(has('horaire','heure','ouvert','ouverture','dispo','disponib','quand','jour')){var c=window.AKSIORA_CFG;if(c&&c.days){var o=c.days.filter(function(d){return d.on;});if(!o.length)return "Nous sommes actuellement fermés. Laissez une demande, on vous rappelle !";var nm=o.map(function(d){return d.key.toLowerCase();});function fl(a){return a.length<=1?(a[0]||''):a.slice(0,-1).join(', ')+' et '+a[a.length-1];}var same=o.every(function(d){return d.h===o[0].h;});return "Nous intervenons le <b>"+fl(nm)+"</b> 🕘"+(same?(", "+o[0].h):"")+". Vous pouvez laisser une demande à tout moment, on vous rappelle !";}return "Contactez-nous pour connaître nos disponibilités 🕘.";}
   if(has('reserv','rendez','commander','prendre','booking','creneau','planifier')) return "Pour réserver, c'est simple 📅 : cliquez sur <b>« Réserver »</b> en haut de page ou remplissez le formulaire en bas. Indiquez votre adresse, la formule et la date souhaitée — on confirme rapidement !";
   if(has('ecolo','ecologi','environnement','eau','produit','bio','planete','nature')) return "Notre démarche est <b>100% écologique</b> 🌿 : produits biodégradables, eau récupérée puis traitée, et zéro rejet dans les égouts. Propre pour vous <b>et</b> pour la planète.";
@@ -933,45 +933,6 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       <div class="admin-f" style="margin-top:12px"><label>Sous-titre</label><textarea rows="3" data-k="heroLead"></textarea></div>
     </div>
     <div class="admin-group">
-      <h4>Offres & tarifs</h4>
-      <div class="admin-plan">
-        <div class="pt">Formule 1</div>
-        <div class="admin-f"><label>Nom</label><input type="text" data-k="plans.0.name"></div>
-        <div class="admin-f"><label>Description</label><input type="text" data-k="plans.0.desc"></div>
-        <div class="admin-2"><div class="admin-f"><label>Prix</label><input type="text" data-k="plans.0.price"></div><div class="admin-f"><label>Unité</label><input type="text" data-k="plans.0.unit"></div></div>
-        <div class="admin-f"><label>Sous-texte</label><input type="text" data-k="plans.0.tag"></div>
-      </div>
-      <div class="admin-plan">
-        <div class="pt">Formule 2</div>
-        <div class="admin-f"><label>Nom</label><input type="text" data-k="plans.1.name"></div>
-        <div class="admin-f"><label>Description</label><input type="text" data-k="plans.1.desc"></div>
-        <div class="admin-2"><div class="admin-f"><label>Prix</label><input type="text" data-k="plans.1.price"></div><div class="admin-f"><label>Unité</label><input type="text" data-k="plans.1.unit"></div></div>
-        <div class="admin-f"><label>Sous-texte</label><input type="text" data-k="plans.1.tag"></div>
-      </div>
-      <div class="admin-plan">
-        <div class="pt">Formule 3</div>
-        <div class="admin-f"><label>Nom</label><input type="text" data-k="plans.2.name"></div>
-        <div class="admin-f"><label>Description</label><input type="text" data-k="plans.2.desc"></div>
-        <div class="admin-2"><div class="admin-f"><label>Prix</label><input type="text" data-k="plans.2.price"></div><div class="admin-f"><label>Unité</label><input type="text" data-k="plans.2.unit"></div></div>
-        <div class="admin-f"><label>Sous-texte</label><input type="text" data-k="plans.2.tag"></div>
-      </div>
-    </div>
-    <div class="admin-group">
-      <h4>Horaires & contact</h4>
-      <label style="display:block;font-size:.8rem;color:var(--muted);margin-bottom:8px">Disponibilité par jour</label>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.0.on"> Lundi</label><input type="text" data-k="days.0.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.1.on"> Mardi</label><input type="text" data-k="days.1.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.2.on"> Mercredi</label><input type="text" data-k="days.2.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.3.on"> Jeudi</label><input type="text" data-k="days.3.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.4.on"> Vendredi</label><input type="text" data-k="days.4.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.5.on"> Samedi</label><input type="text" data-k="days.5.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-day"><label class="admin-chk"><input type="checkbox" data-k="days.6.on"> Dimanche</label><input type="text" data-k="days.6.h" placeholder="ex : 08h00 – 20h00"></div>
-      <div class="admin-f" style="margin-top:10px"><label>Texte pour un jour indisponible</label><input type="text" data-k="closedLabel"></div>
-      <div class="admin-f"><label>Téléphone</label><input type="text" data-k="phone"></div>
-      <div class="admin-f"><label>Email</label><input type="text" data-k="email"></div>
-      <div class="admin-f"><label>Zone d'intervention</label><input type="text" data-k="zone">Châteauguay, Mercier, Montréal, Longueuil</div>
-    </div>
-    <div class="admin-group">
       <h4>Sécurité</h4>
       <div class="admin-f"><label>Mot de passe administrateur</label><input type="text" data-k="password"></div>
       <div class="admin-note">🔒 Protection basique côté navigateur. Pour une vraie sécurité (comptes, données protégées), un serveur est nécessaire.</div>
@@ -1055,7 +1016,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     ],
     phone:"06 00 00 00 00",
     email:"aaksiora@gmail.com",
-    zone:"votre ville"
+    zone:"Châteauguay, Mercier, Montréal, Longueuil"
   };
   function clone(o){return JSON.parse(JSON.stringify(o));}
   function load(){try{var s=localStorage.getItem(KEY);if(s){var d=clone(DEF),p=JSON.parse(s);for(var k in p){d[k]=p[k];}return d;}}catch(e){}return clone(DEF);}
@@ -1124,8 +1085,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     var rs=document.documentElement.style;
     if(CFG.color===DEF.color){rs.removeProperty('--green-600');rs.removeProperty('--green-700');rs.removeProperty('--green-500');}
     else{rs.setProperty('--green-600',CFG.color);rs.setProperty('--green-700',shade(CFG.color,-16));rs.setProperty('--green-500',shade(CFG.color,12));}
-    var plans=qa('.price-grid .plan');
-    CFG.plans.forEach(function(p,i){var el=plans[i];if(!el)return;var n=q('.pname',el),d=q('.pdesc',el),pr=q('.price',el),tg=q('.price-tag',el);if(n)n.textContent=p.name;if(d)d.textContent=p.desc;if(pr)pr.innerHTML=p.price+(p.unit?' <small>'+p.unit+'</small>':'');if(tg)tg.textContent=p.tag;});
+    /* Offres : pilotées directement par le HTML (édite les cartes ci-dessus), plus d'écrasement automatique. */
     var _rows=qa('#horaires .hours .row');(CFG.days||[]).forEach(function(dy,i){var el=_rows[i];if(!el)return;var sp=q('span',el);if(dy.on){el.classList.remove('closed');if(sp)sp.textContent=dy.h;}else{el.classList.add('closed');if(sp)sp.textContent=(CFG.closedLabel||'Indisponible');}});
     var cl=qa('#horaires .contact-list li');
     if(cl[0]){q('b',cl[0]).textContent=CFG.phone;var t0=q('.placeholder-tag',cl[0]);if(t0)t0.style.display=(CFG.phone!==DEF.phone)?'none':'';}
