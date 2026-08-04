@@ -69,6 +69,7 @@
   .gal-note{margin-top:22px;font-size:.85rem;color:var(--muted)}
   /* ===== Avis clients ===== */
   .reviews{background:linear-gradient(180deg,var(--bg),var(--white))}
+  .leave-review{background:linear-gradient(180deg,var(--white),var(--bg))}
   .rev-carousel{position:relative;margin-top:44px}
   .rev-grid{display:flex;gap:22px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;padding:6px 2px 14px;text-align:left;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .rev-grid::-webkit-scrollbar{display:none}
@@ -564,9 +565,9 @@
       <a href="#offres">Nos Offres</a>
       <a href="#photos">Photos</a>
       <a href="#avis">Avis des clients</a>
-      <a href="#revForm">Laisser un avis</a>
       <a href="#horaires">Horaires</a>
       <a href="#reserver">Réserver</a>
+      <a href="#revForm">Laisser un avis</a>
     </nav>
     <div class="nav-right">
       <button class="lang-btn" id="langBtn" aria-label="Changer de langue / Change language" title="Français / English">EN</button>
@@ -795,32 +796,6 @@
       <button class="rev-arrow next" id="revNext" type="button" aria-label="Avis suivants">›</button>
     </div>
     <p class="rev-empty" id="revEmpty">Soyez le premier à laisser un avis !</p>
-
-    <form class="rev-form" id="revForm" novalidate>
-      <h3>Laisser un avis</h3>
-      <div class="rev-form-grid">
-        <div class="rev-field">
-          <label for="rvName">Votre nom</label>
-          <input type="text" id="rvName" maxlength="40" autocomplete="name" placeholder="Ex : Sophie M.">
-        </div>
-        <div class="rev-field">
-          <label>Votre note</label>
-          <div class="star-input" id="rvStars" role="radiogroup" aria-label="Note">
-            <button type="button" data-v="1" aria-label="1 étoile">★</button>
-            <button type="button" data-v="2" aria-label="2 étoiles">★</button>
-            <button type="button" data-v="3" aria-label="3 étoiles">★</button>
-            <button type="button" data-v="4" aria-label="4 étoiles">★</button>
-            <button type="button" data-v="5" aria-label="5 étoiles">★</button>
-          </div>
-        </div>
-      </div>
-      <div class="rev-field">
-        <label for="rvText">Votre commentaire</label>
-        <textarea id="rvText" rows="3" maxlength="500" placeholder="Partagez votre expérience…"></textarea>
-      </div>
-      <div class="rev-msg" id="rvMsg" hidden></div>
-      <button type="submit" class="btn btn-primary" id="rvSubmit">Publier mon avis</button>
-    </form>
   </div>
 </section>
 
@@ -947,6 +922,39 @@
         </div>
         <p class="form-msg" id="formMsg"></p>
       </div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= LAISSER UN AVIS (bas de page) ================= -->
+<section class="leave-review" id="leaveReview">
+  <div class="wrap center">
+    <span class="eyebrow">Votre avis compte</span>
+    <h2>Laisser un avis</h2>
+    <p class="lead">Notez votre expérience et aidez les futurs clients.</p>
+    <form class="rev-form" id="revForm" novalidate>
+      <div class="rev-form-grid">
+        <div class="rev-field">
+          <label for="rvName">Votre nom</label>
+          <input type="text" id="rvName" maxlength="40" autocomplete="name" placeholder="Ex : Sophie M.">
+        </div>
+        <div class="rev-field">
+          <label>Votre note</label>
+          <div class="star-input" id="rvStars" role="radiogroup" aria-label="Note">
+            <button type="button" data-v="1" aria-label="1 étoile">★</button>
+            <button type="button" data-v="2" aria-label="2 étoiles">★</button>
+            <button type="button" data-v="3" aria-label="3 étoiles">★</button>
+            <button type="button" data-v="4" aria-label="4 étoiles">★</button>
+            <button type="button" data-v="5" aria-label="5 étoiles">★</button>
+          </div>
+        </div>
+      </div>
+      <div class="rev-field">
+        <label for="rvText">Votre commentaire</label>
+        <textarea id="rvText" rows="3" maxlength="500" placeholder="Partagez votre expérience…"></textarea>
+      </div>
+      <div class="rev-msg" id="rvMsg" hidden></div>
+      <button type="submit" class="btn btn-primary" id="rvSubmit">Publier mon avis</button>
     </form>
   </div>
 </section>
