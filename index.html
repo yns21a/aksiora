@@ -69,8 +69,16 @@
   .gal-note{margin-top:22px;font-size:.85rem;color:var(--muted)}
   /* ===== Avis clients ===== */
   .reviews{background:linear-gradient(180deg,var(--bg),var(--white))}
-  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;text-align:left}
-  .rev-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .2s,box-shadow .2s}
+  .rev-carousel{position:relative;margin-top:44px}
+  .rev-grid{display:flex;gap:22px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;padding:6px 2px 14px;text-align:left;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .rev-grid::-webkit-scrollbar{display:none}
+  .rev-arrow{position:absolute;top:44%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1.6px solid var(--line);background:var(--white);color:var(--green-800);font-size:1.6rem;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);z-index:4;transition:transform .15s,border-color .15s,opacity .2s}
+  .rev-arrow:hover{border-color:var(--green-500);transform:translateY(-50%) scale(1.08);color:var(--green-600)}
+  .rev-arrow.prev{left:-12px}
+  .rev-arrow.next{right:-12px}
+  .rev-arrow[disabled]{opacity:0;pointer-events:none}
+  @media(max-width:640px){.rev-arrow{display:none}}
+  .rev-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .2s,box-shadow .2s;flex:0 0 300px;max-width:82vw;scroll-snap-align:start}
   .rev-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
   .rev-card .stars{color:#f5b301;font-size:1.05rem;letter-spacing:3px;margin-bottom:12px}
   .rev-text{color:var(--ink);font-size:.98rem;line-height:1.6;margin-bottom:20px}
@@ -556,6 +564,7 @@
       <a href="#offres">Nos Offres</a>
       <a href="#photos">Photos</a>
       <a href="#avis">Avis des clients</a>
+      <a href="#revForm">Laisser un avis</a>
       <a href="#horaires">Horaires</a>
       <a href="#reserver">Réserver</a>
     </nav>
@@ -780,7 +789,11 @@
       <span class="rev-avg-stars" id="revAvgStars"></span>
       <span class="rev-count" id="revCount"></span>
     </div>
-    <div class="rev-grid" id="revGrid"></div>
+    <div class="rev-carousel">
+      <button class="rev-arrow prev" id="revPrev" type="button" aria-label="Avis précédents">‹</button>
+      <div class="rev-grid" id="revGrid"></div>
+      <button class="rev-arrow next" id="revNext" type="button" aria-label="Avis suivants">›</button>
+    </div>
     <p class="rev-empty" id="revEmpty">Soyez le premier à laisser un avis !</p>
 
     <form class="rev-form" id="revForm" novalidate>
@@ -1466,7 +1479,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     /* Galerie */
     "Galerie":"Gallery","Nos interventions en images":"Our work in pictures","Avant / après : vos bacs retrouvent une seconde jeunesse.":"Before / after: your bins look brand new.","Avant":"Before","Après":"After","Haute pression":"High pressure","Désinfection":"Disinfection","Notre équipe":"Our team","Résultat écologique":"Eco-friendly result","📷 Images d'illustration — remplacez-les par vos vraies photos quand vous voulez.":"📷 Placeholder images — replace them with your own photos anytime.",
     /* Avis */
-    "Avis clients":"Customer reviews","Ce que disent nos clients":"What our clients say","Partagez votre expérience — vos avis aident les autres clients.":"Share your experience — your reviews help other customers.","Laisser un avis":"Leave a review","Votre nom":"Your name","Votre note":"Your rating","Votre commentaire":"Your comment","Publier mon avis":"Post my review","Ils nous ont fait confiance pour des bacs propres et sains.":"They trusted us for clean, sanitary bins.","« Service impeccable, mes bacs n'ont jamais été aussi propres. Plus aucune odeur ! »":"“Flawless service, my bins have never been so clean. No more smell!”","« Ponctuels et professionnels. Je recommande pour tout immeuble. »":"“Punctual and professional. I recommend them for any building.”","« Rapide, écologique et sans effort de ma part. Un vrai plus ! »":"“Fast, eco-friendly and effortless for me. A real plus!”","Longueuil":"Longueuil","Montréal":"Montréal","Châteauguay":"Châteauguay","💬 Avis d'exemple — donne-moi tes vrais avis et je les mets.":"💬 Sample reviews — send me your real ones and I'll add them.",
+    "Avis clients":"Customer reviews","Ce que disent nos clients":"What our clients say","Partagez votre expérience — vos avis aident les autres clients.":"Share your experience — your reviews help other customers.","Laisser un avis":"Leave a review","Avis des clients":"Customer reviews","Votre nom":"Your name","Votre note":"Your rating","Votre commentaire":"Your comment","Publier mon avis":"Post my review","Ils nous ont fait confiance pour des bacs propres et sains.":"They trusted us for clean, sanitary bins.","« Service impeccable, mes bacs n'ont jamais été aussi propres. Plus aucune odeur ! »":"“Flawless service, my bins have never been so clean. No more smell!”","« Ponctuels et professionnels. Je recommande pour tout immeuble. »":"“Punctual and professional. I recommend them for any building.”","« Rapide, écologique et sans effort de ma part. Un vrai plus ! »":"“Fast, eco-friendly and effortless for me. A real plus!”","Longueuil":"Longueuil","Montréal":"Montréal","Châteauguay":"Châteauguay","💬 Avis d'exemple — donne-moi tes vrais avis et je les mets.":"💬 Sample reviews — send me your real ones and I'll add them.",
     /* Horaires + contact */
     "Disponibilité & contact":"Availability & contact","Quand et comment nous joindre":"When and how to reach us","Horaires de disponibilité":"Availability hours","Nos équipes interviennent sur rendez-vous, aux horaires ci-dessous.":"Our teams work by appointment, during the hours below.","Lundi":"Monday","Mardi":"Tuesday","Mercredi":"Wednesday","Jeudi":"Thursday","Vendredi":"Friday","Samedi":"Saturday","Dimanche":"Sunday","Indisponible":"Closed","Coordonnées":"Contact details","Appel & WhatsApp":"Call & WhatsApp","Réponse sous 24h":"Reply within 24h","Et communes alentour":"And surrounding areas","Prendre rendez-vous":"Book an appointment",
     /* Réservation */
@@ -1518,6 +1531,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   var admBox=document.getElementById('admReviews'), form=document.getElementById('revForm');
   var nameEl=document.getElementById('rvName'), textEl=document.getElementById('rvText');
   var starsBox=document.getElementById('rvStars'), msgEl=document.getElementById('rvMsg');
+  var prevBtn=document.getElementById('revPrev'), nextBtn=document.getElementById('revNext');
   if(!grid||!form) return;
 
   var MF={fr:['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'],
@@ -1564,7 +1578,17 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       admBox.appendChild(d);
     });
   }
-  function render(){ renderPublic(); renderAdmin(); }
+  function render(){ renderPublic(); renderAdmin(); updateArrows(); }
+  function scrollCard(dir){ var c=grid.querySelector('.rev-card'); var amt=c?(c.offsetWidth+22):320; grid.scrollBy({left:dir*amt, behavior:'smooth'}); }
+  function updateArrows(){
+    if(!prevBtn||!nextBtn) return;
+    var can=grid.scrollWidth>grid.clientWidth+4;
+    prevBtn.style.display=nextBtn.style.display=can?'grid':'none';
+    if(!can) return;
+    var max=grid.scrollWidth-grid.clientWidth-2;
+    prevBtn.disabled=grid.scrollLeft<=2;
+    nextBtn.disabled=grid.scrollLeft>=max;
+  }
 
   function bind(){
     FS=window.AKSIORA_FS;
@@ -1621,6 +1645,12 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       }
     });
   }
+
+  if(prevBtn) prevBtn.addEventListener('click', function(){ scrollCard(-1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ scrollCard(1); });
+  grid.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', updateArrows);
+  setTimeout(updateArrows, 250);
 
   var lb=document.getElementById('langBtn');
   if(lb) lb.addEventListener('click', function(){ setTimeout(render, 60); });
