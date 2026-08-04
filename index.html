@@ -78,6 +78,50 @@
   .rev-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green-600),var(--green-700));color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem;flex:0 0 auto}
   .rev-who b{color:var(--green-900);display:block;font-size:.95rem;line-height:1.2}
   .rev-who small{color:var(--muted);font-size:.82rem}
+  .rev-card .stars .s-off{color:var(--line)}
+  .rev-date{color:var(--muted);font-size:.8rem}
+  /* Résumé (moyenne) */
+  .rev-summary{display:inline-flex;align-items:center;gap:12px;margin-top:26px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:10px 22px;box-shadow:var(--shadow)}
+  .rev-avg{font-size:1.7rem;font-weight:800;color:var(--green-900);line-height:1}
+  .rev-avg-stars{color:#f5b301;letter-spacing:2px;font-size:1rem}
+  .rev-avg-stars .s-off{color:var(--line)}
+  .rev-count{color:var(--muted);font-size:.86rem}
+  .rev-empty{margin-top:30px;color:var(--muted);font-size:.95rem}
+  /* Formulaire d'avis */
+  .rev-form{max-width:640px;margin:40px auto 0;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px 26px;box-shadow:var(--shadow)}
+  .rev-form h3{color:var(--green-900);font-size:1.2rem;margin-bottom:18px;text-align:center}
+  .rev-form-grid{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start}
+  .rev-field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+  .rev-field label{font-weight:600;font-size:.9rem;color:var(--green-800)}
+  .rev-field input,.rev-field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:.98rem;color:var(--ink);background:var(--white);outline:none;transition:border-color .18s}
+  .rev-field input:focus,.rev-field textarea:focus{border-color:var(--green-500)}
+  .rev-field textarea{resize:vertical;min-height:84px}
+  .star-input{display:flex;gap:4px}
+  .star-input button{background:none;border:0;padding:0 2px;font-size:1.9rem;line-height:1;cursor:pointer;color:var(--line);transition:transform .12s,color .12s}
+  .star-input button:hover{transform:scale(1.15)}
+  .star-input button.on{color:#f5b301}
+  .rev-msg{margin:0 0 14px;font-size:.9rem;font-weight:600;padding:10px 14px;border-radius:10px}
+  .rev-msg.ok{background:var(--lime-soft);color:var(--green-700)}
+  .rev-msg.err{background:#fdecec;color:#c0392b}
+  html[data-theme="dark"] .rev-msg.err{background:#3a1f1f;color:#f3b4b4}
+  .rev-form .btn{width:100%;justify-content:center}
+  /* Modération (admin) */
+  .adm-rev-list{display:flex;flex-direction:column;gap:10px;margin-top:6px;max-height:340px;overflow:auto}
+  .adm-rev-empty{color:var(--muted);font-size:.85rem}
+  .adm-rev{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--white)}
+  .adm-rev.hid{opacity:.55}
+  .adm-rev-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.9rem}
+  .adm-rev-top b{color:var(--green-900)}
+  .adm-rev-top .st{color:#f5b301;letter-spacing:1px}
+  .adm-rev-top .st .s-off{color:var(--line)}
+  .adm-rev-top .dt{color:var(--muted);font-size:.78rem;margin-left:auto}
+  .adm-rev-badge{background:var(--line);color:var(--muted);font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px}
+  .adm-rev-text{color:var(--ink);font-size:.88rem;margin:8px 0 10px;line-height:1.5}
+  .adm-rev-actions{display:flex;gap:8px}
+  .adm-rev-actions button{flex:1;border:1.4px solid var(--line);background:var(--white);color:var(--green-800);border-radius:9px;padding:7px 10px;font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;transition:border-color .15s,color .15s}
+  .adm-rev-actions button:hover{border-color:var(--green-500)}
+  .adm-rev-actions button.del:hover{border-color:#e24b4a;color:#e24b4a}
+  @media(max-width:560px){.rev-form-grid{grid-template-columns:1fr}}
   @media(max-width:960px){.gal-grid,.rev-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:640px){.gal-grid,.rev-grid{grid-template-columns:1fr}}
   .theme-btn{width:42px;height:42px;border-radius:12px;border:1.6px solid var(--line);background:var(--white);display:grid;place-items:center;cursor:pointer;color:var(--green-800);transition:transform .18s ease,border-color .18s ease}
@@ -730,25 +774,40 @@
   <div class="wrap center">
     <span class="eyebrow">Avis clients</span>
     <h2>Ce que disent nos clients</h2>
-    <p class="lead">Ils nous ont fait confiance pour des bacs propres et sains.</p>
-    <div class="rev-grid">
-      <div class="rev-card reveal">
-        <div class="stars">★★★★★</div>
-        <p class="rev-text">« Service impeccable, mes bacs n'ont jamais été aussi propres. Plus aucune odeur ! »</p>
-        <div class="rev-who"><span class="rev-av">SM</span><div><b>Sophie M.</b><small>Longueuil</small></div></div>
-      </div>
-      <div class="rev-card reveal">
-        <div class="stars">★★★★★</div>
-        <p class="rev-text">« Ponctuels et professionnels. Je recommande pour tout immeuble. »</p>
-        <div class="rev-who"><span class="rev-av">MT</span><div><b>Marc T.</b><small>Montréal</small></div></div>
-      </div>
-      <div class="rev-card reveal">
-        <div class="stars">★★★★★</div>
-        <p class="rev-text">« Rapide, écologique et sans effort de ma part. Un vrai plus ! »</p>
-        <div class="rev-who"><span class="rev-av">JR</span><div><b>Julie R.</b><small>Châteauguay</small></div></div>
-      </div>
+    <p class="lead">Partagez votre expérience — vos avis aident les autres clients.</p>
+    <div class="rev-summary" id="revSummary" hidden>
+      <span class="rev-avg" id="revAvg">0.0</span>
+      <span class="rev-avg-stars" id="revAvgStars"></span>
+      <span class="rev-count" id="revCount"></span>
     </div>
-    <p class="gal-note">💬 Avis d'exemple — donne-moi tes vrais avis et je les mets.</p>
+    <div class="rev-grid" id="revGrid"></div>
+    <p class="rev-empty" id="revEmpty">Soyez le premier à laisser un avis !</p>
+
+    <form class="rev-form" id="revForm" novalidate>
+      <h3>Laisser un avis</h3>
+      <div class="rev-form-grid">
+        <div class="rev-field">
+          <label for="rvName">Votre nom</label>
+          <input type="text" id="rvName" maxlength="40" autocomplete="name" placeholder="Ex : Sophie M.">
+        </div>
+        <div class="rev-field">
+          <label>Votre note</label>
+          <div class="star-input" id="rvStars" role="radiogroup" aria-label="Note">
+            <button type="button" data-v="1" aria-label="1 étoile">★</button>
+            <button type="button" data-v="2" aria-label="2 étoiles">★</button>
+            <button type="button" data-v="3" aria-label="3 étoiles">★</button>
+            <button type="button" data-v="4" aria-label="4 étoiles">★</button>
+            <button type="button" data-v="5" aria-label="5 étoiles">★</button>
+          </div>
+        </div>
+      </div>
+      <div class="rev-field">
+        <label for="rvText">Votre commentaire</label>
+        <textarea id="rvText" rows="3" maxlength="500" placeholder="Partagez votre expérience…"></textarea>
+      </div>
+      <div class="rev-msg" id="rvMsg" hidden></div>
+      <button type="submit" class="btn btn-primary" id="rvSubmit">Publier mon avis</button>
+    </form>
   </div>
 </section>
 
@@ -1112,6 +1171,11 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       <div class="admin-f"><label>Mot de passe administrateur</label><input type="text" data-k="password"></div>
       <div class="admin-note">🔒 Protection basique côté navigateur. Pour une vraie sécurité (comptes, données protégées), un serveur est nécessaire.</div>
     </div>
+    <div class="admin-group">
+      <h4>Avis clients — modération</h4>
+      <div class="admin-note">Masquez un avis (invisible sur le site) ou supprimez-le définitivement.</div>
+      <div id="admReviews" class="adm-rev-list"><p class="adm-rev-empty">Aucun avis pour le moment.</p></div>
+    </div>
   </div>
   <div class="admin-df">
     <button class="btn btn-ghost" id="adminReset">Réinitialiser</button>
@@ -1150,7 +1214,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
 </script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
   try {
     var cfg = window.AKSIORA_FIREBASE || {};
     if (cfg.apiKey && cfg.apiKey.indexOf('TA_') !== 0) {
@@ -1160,7 +1224,11 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       window.AKSIORA_FS = {
         save: function(data){ return setDoc(ref, data); },
         watch: function(cb, err){ return onSnapshot(ref, cb, err); },
-        addBooking: function(data){ return addDoc(collection(db, 'aksiora_bookings'), data); }
+        addBooking: function(data){ return addDoc(collection(db, 'aksiora_bookings'), data); },
+        addReview: function(data){ return addDoc(collection(db, 'aksiora_reviews'), data); },
+        watchReviews: function(cb, err){ return onSnapshot(collection(db, 'aksiora_reviews'), cb, err); },
+        delReview: function(id){ return deleteDoc(doc(db, 'aksiora_reviews', id)); },
+        setReviewHidden: function(id, hidden){ return updateDoc(doc(db, 'aksiora_reviews', id), { hidden: hidden }); }
       };
       window.dispatchEvent(new Event('aksiora-fs-ready'));
     }
@@ -1398,7 +1466,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     /* Galerie */
     "Galerie":"Gallery","Nos interventions en images":"Our work in pictures","Avant / après : vos bacs retrouvent une seconde jeunesse.":"Before / after: your bins look brand new.","Avant":"Before","Après":"After","Haute pression":"High pressure","Désinfection":"Disinfection","Notre équipe":"Our team","Résultat écologique":"Eco-friendly result","📷 Images d'illustration — remplacez-les par vos vraies photos quand vous voulez.":"📷 Placeholder images — replace them with your own photos anytime.",
     /* Avis */
-    "Avis clients":"Customer reviews","Ce que disent nos clients":"What our clients say","Ils nous ont fait confiance pour des bacs propres et sains.":"They trusted us for clean, sanitary bins.","« Service impeccable, mes bacs n'ont jamais été aussi propres. Plus aucune odeur ! »":"“Flawless service, my bins have never been so clean. No more smell!”","« Ponctuels et professionnels. Je recommande pour tout immeuble. »":"“Punctual and professional. I recommend them for any building.”","« Rapide, écologique et sans effort de ma part. Un vrai plus ! »":"“Fast, eco-friendly and effortless for me. A real plus!”","Longueuil":"Longueuil","Montréal":"Montréal","Châteauguay":"Châteauguay","💬 Avis d'exemple — donne-moi tes vrais avis et je les mets.":"💬 Sample reviews — send me your real ones and I'll add them.",
+    "Avis clients":"Customer reviews","Ce que disent nos clients":"What our clients say","Partagez votre expérience — vos avis aident les autres clients.":"Share your experience — your reviews help other customers.","Laisser un avis":"Leave a review","Votre nom":"Your name","Votre note":"Your rating","Votre commentaire":"Your comment","Publier mon avis":"Post my review","Ils nous ont fait confiance pour des bacs propres et sains.":"They trusted us for clean, sanitary bins.","« Service impeccable, mes bacs n'ont jamais été aussi propres. Plus aucune odeur ! »":"“Flawless service, my bins have never been so clean. No more smell!”","« Ponctuels et professionnels. Je recommande pour tout immeuble. »":"“Punctual and professional. I recommend them for any building.”","« Rapide, écologique et sans effort de ma part. Un vrai plus ! »":"“Fast, eco-friendly and effortless for me. A real plus!”","Longueuil":"Longueuil","Montréal":"Montréal","Châteauguay":"Châteauguay","💬 Avis d'exemple — donne-moi tes vrais avis et je les mets.":"💬 Sample reviews — send me your real ones and I'll add them.",
     /* Horaires + contact */
     "Disponibilité & contact":"Availability & contact","Quand et comment nous joindre":"When and how to reach us","Horaires de disponibilité":"Availability hours","Nos équipes interviennent sur rendez-vous, aux horaires ci-dessous.":"Our teams work by appointment, during the hours below.","Lundi":"Monday","Mardi":"Tuesday","Mercredi":"Wednesday","Jeudi":"Thursday","Vendredi":"Friday","Samedi":"Saturday","Dimanche":"Sunday","Indisponible":"Closed","Coordonnées":"Contact details","Appel & WhatsApp":"Call & WhatsApp","Réponse sous 24h":"Reply within 24h","Et communes alentour":"And surrounding areas","Prendre rendez-vous":"Book an appointment",
     /* Réservation */
@@ -1407,7 +1475,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     "Le lavage écologique de poubelles à domicile. Des bacs propres, sains et sans odeurs, en toute simplicité.":"Eco-friendly bin washing at home. Clean, sanitary, odor-free bins, effortlessly.","Navigation":"Navigation","Offres & tarifs":"Offers & prices","Contact":"Contact"
   };
   var FR={}; for(var k in EN){ if(EN[k]!==k) FR[EN[k]]=k; }
-  var SKIP={CHATPANEL:1,CHATFAB:1,CHATBODY:1,CHATLOG:1,ADMINPANEL:1,ADMINGATE:1,ADMINMODAL:1,CALDAYS:1,SLOTSLIST:1,RECAP:1,CALMONTH:1,SLOTSHEAD:1,OPENTEXT:1,SYNCSTATUS:1,FORMMSG:1,CALTZ:1,LANGBTN:1,THEMEBTN:1};
+  var SKIP={CHATPANEL:1,CHATFAB:1,CHATBODY:1,CHATLOG:1,ADMINPANEL:1,ADMINGATE:1,ADMINMODAL:1,CALDAYS:1,SLOTSLIST:1,RECAP:1,CALMONTH:1,SLOTSHEAD:1,OPENTEXT:1,SYNCSTATUS:1,FORMMSG:1,CALTZ:1,LANGBTN:1,THEMEBTN:1,REVGRID:1,REVSUMMARY:1,REVEMPTY:1,RVMSG:1};
   function walk(node,map){
     if(node.nodeType===3){
       var raw=node.nodeValue, t=raw.trim();
@@ -1437,6 +1505,125 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   if(saved==='en') setLang('en');
   /* ré-applique après le chargement async de la config (Firebase) qui réécrit certains textes */
   [400,1200,2500].forEach(function(ms){ setTimeout(function(){ if(window.__lang==='en') walk(document.body,EN); },ms); });
+})();
+</script>
+
+<!-- ================= AVIS CLIENTS (dynamique + persistant) ================= -->
+<script>
+(function(){
+  var LKEY='aksiora_reviews';
+  var grid=document.getElementById('revGrid'), empty=document.getElementById('revEmpty');
+  var sumBox=document.getElementById('revSummary'), avgEl=document.getElementById('revAvg');
+  var avgStars=document.getElementById('revAvgStars'), countEl=document.getElementById('revCount');
+  var admBox=document.getElementById('admReviews'), form=document.getElementById('revForm');
+  var nameEl=document.getElementById('rvName'), textEl=document.getElementById('rvText');
+  var starsBox=document.getElementById('rvStars'), msgEl=document.getElementById('rvMsg');
+  if(!grid||!form) return;
+
+  var MF={fr:['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'],
+          en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']};
+  var TXT={fr:{name:'Veuillez indiquer votre nom.',rate:'Veuillez choisir une note.',text:'Veuillez écrire un commentaire.',thanks:'Merci pour votre avis ! Il est publié.',avis:'avis',first:'Soyez le premier à laisser un avis !'},
+           en:{name:'Please enter your name.',rate:'Please choose a rating.',text:'Please write a comment.',thanks:'Thank you for your review! It is now published.',avis:'reviews',first:'Be the first to leave a review!'}};
+  function L(){return (window.__lang==='en')?'en':'fr';}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function stars(r){r=Math.max(0,Math.min(5,Math.round(r)||0));return '<span class="s-on">'+Array(r+1).join('★')+'</span><span class="s-off">'+Array(6-r).join('★')+'</span>';}
+  function initials(n){var p=String(n||'').trim().split(/\s+/);return (((p[0]||'')[0]||'')+((p[1]||'')[0]||'')).toUpperCase()||'?';}
+  function fmt(ts){var d=new Date(ts||Date.now());return d.getDate()+' '+MF[L()][d.getMonth()]+' '+d.getFullYear();}
+
+  var FS=window.AKSIORA_FS||null, useLocal=false, data=[];
+  function loadLocal(){try{return JSON.parse(localStorage.getItem(LKEY))||[];}catch(e){return[];}}
+  function saveLocal(){try{localStorage.setItem(LKEY,JSON.stringify(data));}catch(e){}}
+
+  function renderPublic(){
+    var pub=data.filter(function(r){return !r.hidden;}).sort(function(a,b){return (b.ts||0)-(a.ts||0);});
+    grid.innerHTML='';
+    if(!pub.length){ empty.hidden=false; empty.textContent=TXT[L()].first; sumBox.hidden=true; return; }
+    empty.hidden=true; var sum=0;
+    pub.forEach(function(r){ sum+=(+r.rating||0);
+      var c=document.createElement('div'); c.className='rev-card';
+      c.innerHTML='<div class="stars">'+stars(r.rating)+'</div><p class="rev-text">'+esc(r.text)+
+        '</p><div class="rev-who"><span class="rev-av">'+esc(initials(r.name))+'</span><div><b>'+
+        esc(r.name)+'</b><small class="rev-date">'+fmt(r.ts)+'</small></div></div>';
+      grid.appendChild(c);
+    });
+    var avg=sum/pub.length;
+    avgEl.textContent=avg.toFixed(1); avgStars.innerHTML=stars(avg);
+    countEl.textContent=pub.length+' '+TXT[L()].avis; sumBox.hidden=false;
+  }
+  function renderAdmin(){
+    if(!admBox) return;
+    var all=data.slice().sort(function(a,b){return (b.ts||0)-(a.ts||0);});
+    if(!all.length){ admBox.innerHTML='<p class="adm-rev-empty">Aucun avis pour le moment.</p>'; return; }
+    admBox.innerHTML='';
+    all.forEach(function(r){
+      var d=document.createElement('div'); d.className='adm-rev'+(r.hidden?' hid':''); d.setAttribute('data-id', r.id);
+      d.innerHTML='<div class="adm-rev-top"><b>'+esc(r.name)+'</b><span class="st">'+stars(r.rating)+'</span>'+
+        (r.hidden?'<span class="adm-rev-badge">masqué</span>':'')+'<span class="dt">'+fmt(r.ts)+'</span></div>'+
+        '<p class="adm-rev-text">'+esc(r.text)+'</p><div class="adm-rev-actions"><button data-act="hide">'+
+        (r.hidden?'Afficher':'Masquer')+'</button><button class="del" data-act="del">Supprimer</button></div>';
+      admBox.appendChild(d);
+    });
+  }
+  function render(){ renderPublic(); renderAdmin(); }
+
+  function bind(){
+    FS=window.AKSIORA_FS;
+    if(FS && FS.watchReviews){
+      try{
+        FS.watchReviews(function(snap){
+          useLocal=false; data=[];
+          snap.forEach(function(doc){ var o=doc.data()||{}; o.id=doc.id; data.push(o); });
+          render();
+        }, function(){ useLocal=true; data=loadLocal(); render(); });
+      }catch(e){ useLocal=true; data=loadLocal(); render(); }
+    } else { useLocal=true; data=loadLocal(); render(); }
+  }
+  data=loadLocal(); render();
+  if(window.AKSIORA_FS) bind(); else window.addEventListener('aksiora-fs-ready', bind);
+
+  var rating=0;
+  function paint(n){ Array.prototype.forEach.call(starsBox.children,function(b,i){ b.classList.toggle('on', i<n); }); }
+  Array.prototype.forEach.call(starsBox.children,function(b){
+    b.addEventListener('click',function(){ rating=+b.getAttribute('data-v'); paint(rating); });
+    b.addEventListener('mouseover',function(){ paint(+b.getAttribute('data-v')); });
+  });
+  starsBox.addEventListener('mouseleave',function(){ paint(rating); });
+  function msg(t,ok){ msgEl.hidden=false; msgEl.textContent=t; msgEl.className='rev-msg '+(ok?'ok':'err'); }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=nameEl.value.trim(), text=textEl.value.trim(), t=TXT[L()];
+    if(!name){ return msg(t.name,false); }
+    if(!rating){ return msg(t.rate,false); }
+    if(!text){ return msg(t.text,false); }
+    var obj={name:name, rating:rating, text:text, ts:Date.now(), hidden:false};
+    if(!useLocal && FS && FS.addReview){
+      FS.addReview(obj).catch(function(){ useLocal=true; obj.id='l'+Date.now(); data.unshift(obj); saveLocal(); render(); });
+    } else { obj.id='l'+Date.now(); data.unshift(obj); saveLocal(); render(); }
+    form.reset(); rating=0; paint(0); msg(t.thanks,true);
+  });
+
+  if(admBox){
+    admBox.addEventListener('click',function(e){
+      var btn=e.target.closest('button[data-act]'); if(!btn) return;
+      var row=btn.closest('.adm-rev'); if(!row) return;
+      var id=row.getAttribute('data-id'), r=null, i;
+      for(i=0;i<data.length;i++){ if(String(data[i].id)===String(id)){ r=data[i]; break; } }
+      if(!r) return;
+      if(btn.getAttribute('data-act')==='hide'){
+        var nv=!r.hidden;
+        if(!useLocal && FS && FS.setReviewHidden){ FS.setReviewHidden(id,nv).catch(function(){ r.hidden=nv; saveLocal(); render(); }); }
+        else { r.hidden=nv; saveLocal(); render(); }
+      } else {
+        if(!confirm('Supprimer définitivement cet avis ?')) return;
+        if(!useLocal && FS && FS.delReview){ FS.delReview(id).catch(function(){ data=data.filter(function(x){return x!==r;}); saveLocal(); render(); }); }
+        else { data=data.filter(function(x){return x!==r;}); saveLocal(); render(); }
+      }
+    });
+  }
+
+  var lb=document.getElementById('langBtn');
+  if(lb) lb.addEventListener('click', function(){ setTimeout(render, 60); });
 })();
 </script>
 
