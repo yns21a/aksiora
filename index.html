@@ -672,14 +672,14 @@
             <div class="eye-pop-img">
               <span class="eye-pop-badge">Industriel</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
-              <span class="eye-pop-price">150$</span>
+              <span class="eye-pop-price">250$</span>
 
             </div>
           </div>
         </div>
         <div class="pname">Industriel</div>
         <div class="pdesc">Immeubles, entreprises, restaurants, syndics.</div>
-        <div class="price">150$</div>
+        <div class="price">250$</div>
         <div class="price-tag">.........</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Lavage haute pression</li>
@@ -1158,12 +1158,13 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   <div class="admin-card" id="adminCard">
     <div class="admin-lock">🔒</div>
     <h3>Espace administrateur</h3>
-    <p>Entrez le mot de passe pour modifier le site.</p>
-    <input type="password" id="adminPass" placeholder="Mot de passe" autocomplete="off">
-    <div class="admin-err" id="adminErr">Mot de passe incorrect.</div>
+    <p>Connectez-vous pour modifier le site.</p>
+    <input type="email" id="adminEmail" placeholder="Adresse e-mail" autocomplete="username" style="margin-bottom:10px">
+    <input type="password" id="adminPass" placeholder="Mot de passe" autocomplete="current-password">
+    <div class="admin-err" id="adminErr">Identifiants incorrects.</div>
     <div class="admin-actions">
       <button class="btn btn-ghost" id="gateCancel">Annuler</button>
-      <button class="btn btn-primary" id="gateEnter">Entrer</button>
+      <button class="btn btn-primary" id="gateEnter">Se connecter</button>
     </div>
     <small>Raccourci : Ctrl / Cmd + Shift + A</small>
   </div>
@@ -1190,8 +1191,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     </div>
     <div class="admin-group">
       <h4>Sécurité</h4>
-      <div class="admin-f"><label>Mot de passe administrateur</label><input type="text" data-k="password"></div>
-      <div class="admin-note">🔒 Protection basique côté navigateur. Pour une vraie sécurité (comptes, données protégées), un serveur est nécessaire.</div>
+      <div class="admin-note">🔒 Connexion sécurisée par compte Firebase (email + mot de passe). Pour changer ton mot de passe admin : Console Firebase → Authentication → Utilisateurs. Le bouton « Déconnexion » ferme ta session.</div>
     </div>
     <div class="admin-group">
       <h4>Avis clients — modération</h4>
@@ -1200,6 +1200,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     </div>
   </div>
   <div class="admin-df">
+    <button class="btn btn-ghost" id="adminLogout">Déconnexion</button>
     <button class="btn btn-ghost" id="adminReset">Réinitialiser</button>
     <button class="btn btn-primary" id="adminDone">Terminé</button>
   </div>
@@ -1237,6 +1238,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   try {
     var cfg = window.AKSIORA_FIREBASE || {};
     if (cfg.apiKey && cfg.apiKey.indexOf('TA_') !== 0) {
@@ -1253,6 +1255,14 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
         setReviewHidden: function(id, hidden){ return updateDoc(doc(db, 'aksiora_reviews', id), { hidden: hidden }); }
       };
       window.dispatchEvent(new Event('aksiora-fs-ready'));
+      var auth = getAuth(app);
+      window.AKSIORA_AUTH = {
+        login: function(email, pass){ return signInWithEmailAndPassword(auth, email, pass); },
+        logout: function(){ return signOut(auth); },
+        watch: function(cb){ return onAuthStateChanged(auth, cb); },
+        user: function(){ return auth.currentUser; }
+      };
+      window.dispatchEvent(new Event('aksiora-auth-ready'));
     }
   } catch (e) { console.warn('Firebase init:', e); }
 </script>
@@ -1366,10 +1376,11 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
     refreshBooker();
     window.AKSIORA_CFG=CFG;
   }
-  var gate=q('#adminGate'),card=q('#adminCard'),pass=q('#adminPass'),err=q('#adminErr'),panel=q('#adminPanel'),saved=q('#adminSaved');
-  function openGate(){if(panel.classList.contains('show'))return;gate.classList.add('show');pass.value='';err.style.display='none';setTimeout(function(){pass.focus();},60);}
+  var gate=q('#adminGate'),card=q('#adminCard'),pass=q('#adminPass'),email=q('#adminEmail'),err=q('#adminErr'),panel=q('#adminPanel'),saved=q('#adminSaved');
+  function openGate(){if(panel.classList.contains('show'))return;if(window.AKSIORA_AUTH&&window.AKSIORA_AUTH.user()){openPanel();return;}gate.classList.add('show');pass.value='';if(email)email.value='';err.style.display='none';setTimeout(function(){(email||pass).focus();},60);}
   function closeGate(){gate.classList.remove('show');}
-  function tryEnter(){if(pass.value===CFG.password){closeGate();openPanel();}else{err.style.display='block';card.classList.add('shake');setTimeout(function(){card.classList.remove('shake');},430);}}
+  function gateFail(){err.style.display='block';card.classList.add('shake');setTimeout(function(){card.classList.remove('shake');},430);}
+  function tryEnter(){var A=window.AKSIORA_AUTH,btn=q('#gateEnter');if(!A){gateFail();return;}btn.disabled=true;A.login((email?email.value:'').trim(),pass.value).then(function(){btn.disabled=false;closeGate();openPanel();}).catch(function(){btn.disabled=false;gateFail();});}
   function populate(){qa('#adminPanel [data-k]').forEach(function(inp){var v=getPath(inp.dataset.k);if(inp.type==='checkbox'){inp.checked=!!v;}else{inp.value=(v==null?'':v);}});}
   function openPanel(){populate();panel.classList.add('show');}
   function closePanel(){panel.classList.remove('show');}
@@ -1377,9 +1388,11 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
   q('#gateEnter').addEventListener('click',tryEnter);
   q('#gateCancel').addEventListener('click',closeGate);
   pass.addEventListener('keydown',function(e){if(e.key==='Enter')tryEnter();});
+  if(email)email.addEventListener('keydown',function(e){if(e.key==='Enter')tryEnter();});
   gate.addEventListener('click',function(e){if(e.target===gate)closeGate();});
   q('#adminClose2').addEventListener('click',closePanel);
   q('#adminDone').addEventListener('click',closePanel);
+  var _lo=q('#adminLogout');if(_lo)_lo.addEventListener('click',function(){if(window.AKSIORA_AUTH)window.AKSIORA_AUTH.logout();closePanel();flashSaved('Déconnectée');});
   q('#adminReset').addEventListener('click',function(){if(confirm('Réinitialiser tout le contenu aux valeurs par défaut ?')){CFG=clone(DEF);window.AKSIORA_CFG=CFG;persist();applyCfg();populate();flashSaved('Réinitialisé');}});
   qa('#adminPanel [data-k]').forEach(function(inp){function hnd(){var v=inp.type==='checkbox'?inp.checked:inp.value;setPath(inp.dataset.k,v);applyCfg();persist();flashSaved();}inp.addEventListener('input',hnd);inp.addEventListener('change',hnd);});
   document.addEventListener('keydown',function(e){
