@@ -673,6 +673,7 @@
               <span class="eye-pop-badge">Industriel</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
               <span class="eye-pop-price">250$</span>
+
             </div>
           </div>
         </div>
@@ -980,7 +981,7 @@
       <h4>Contact</h4>
       <p>📞 (438) 367-4305</p>
       <p>✉️ aaksiora@gmail.com</p>
-      <p>📍 Votre ville & alentours</p>
+      <p>📍 Châteauguay, Mercier, Montréal, Longueuil</p>
     </div>
   </div>
   <div class="foot-bottom" id="footSecret">© 2026 <span class="js-brand">AKSIORA</span> — website developed by : yns21a</div>
@@ -1086,7 +1087,7 @@ function getReply(msg){
   if(has('zone','ville','secteur','deplace','adresse','ou ','region','commune','livraison')) return "Nous intervenons dans votre ville et les communes alentour 📍. Donnez-moi votre adresse dans le formulaire de réservation et nous confirmerons la couverture.";
   if(has('comment','marche','fonctionne','etape','process','deroul')) return "En 4 étapes ⚙️ : 1) vous réservez, 2) on se déplace le jour de collecte, 3) on lave & désinfecte, 4) vous retrouvez une poubelle impeccable. Aucun effort de votre part !";
   if(has('desinfect','bacteri','microbe','odeur','sale','propre','hygiene','sain')) return "Notre traitement élimine <b>99% des bactéries</b> 🫧 et neutralise les mauvaises odeurs grâce à un lavage haute pression + désinfectant + désodorisant.";
-  if(has('contact','telephone','numero','appeler','mail','email','joindre','whatsapp')){var c=window.AKSIORA_CFG,tel=(c&&c.phone)?c.phone:'06 00 00 00 00',em=(c&&c.email)?c.email:'aaksiora@gmail.com';return "Vous pouvez nous joindre au <b>"+tel+"</b> 📞 (appel & WhatsApp) ou par email à <b>"+em+"</b> ✉️. Réponse sous 24h !";}
+  if(has('contact','telephone','numero','appeler','mail','email','joindre','whatsapp')){var c=window.AKSIORA_CFG,tel=(c&&c.phone)?c.phone:'+1 (438) 367-4305',em=(c&&c.email)?c.email:'aaksiora@gmail.com';return "Vous pouvez nous joindre au <b>"+tel+"</b> 📞 (appel & WhatsApp) ou par email à <b>"+em+"</b> ✉️. Réponse sous 24h !";}
   if(has('paiement','payer','carte','especes','facture')) return "Le paiement se fait à la prestation. Pour les abonnements, un prélèvement mensuel est possible, et les pros reçoivent une facturation dédiée. 💳";
   if(has('annul','resili','engagement','stop')) return "Nos formules sont <b>sans engagement</b> ✅ : vous pouvez suspendre ou résilier votre abonnement à tout moment, sans frais.";
   if(has('merci','super','parfait','genial','cool','ok','d accord','daccord')) return "Avec plaisir 😊 N'hésitez pas si vous avez d'autres questions. À très vite chez AKSIORA !";
@@ -1280,7 +1281,7 @@ quick.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!
       {key:"Samedi",on:true,h:"08h00 – 20h00"},
       {key:"Dimanche",on:true,h:"08h00 – 20h00"}
     ],
-    phone:"06 00 00 00 00",
+    phone:"+1 (438) 367-4305",
     email:"aaksiora@gmail.com",
     zone:"Châteauguay, Mercier, Montréal, Longueuil"
   };
