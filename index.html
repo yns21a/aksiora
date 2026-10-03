@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AKSIORA — Nettoyage professionnel de baignoires à domicile</title>
-<meta name="description" content="Nettoyage en profondeur de votre baignoire, à domicile : résidus de savon, traces, dépôts, robinets, contours et joints accessibles. Réservation en ligne en quelques minutes.">
+<title>AKSIORA — Resurfaçage de baignoire à domicile (peinture, réémaillage)</title>
+<meta name="description" content="Resurfaçage de baignoire à domicile (peinture, réémaillage) : réparation des éclats, de la rouille et des fissures, puis nouveau revêtement lisse et brillant. Aussi lavabos, carrelage et douches. Demande de soumission en ligne.">
 <meta name="theme-color" content="#1aa7c7">
 <link rel="canonical" href="https://aksiora.ca/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CA">
 <meta property="og:site_name" content="AKSIORA">
-<meta property="og:title" content="AKSIORA — Une baignoire propre. Sans effort.">
-<meta property="og:description" content="Nettoyage professionnel de baignoires à domicile. Réservez en ligne en quelques minutes.">
+<meta property="og:title" content="AKSIORA — Une baignoire comme neuve. Sans la remplacer.">
+<meta property="og:description" content="Resurfaçage de baignoire à domicile, sans démolition. Demandez votre soumission en ligne.">
 <meta property="og:url" content="https://aksiora.ca/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AKSIORA — Une baignoire propre. Sans effort.">
-<meta name="twitter:description" content="Nettoyage professionnel de baignoires à domicile. Réservez en ligne en quelques minutes.">
+<meta name="twitter:title" content="AKSIORA — Une baignoire comme neuve. Sans la remplacer.">
+<meta name="twitter:description" content="Resurfaçage de baignoire à domicile, sans démolition. Demandez votre soumission en ligne.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231aa7c7'/%3E%3Cpath d='M32 12c-6 9-13 16-13 25a13 13 0 0 0 26 0c0-9-7-16-13-25z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* =====================================================================
-   AKSIORA — Nettoyage professionnel de baignoires
+   AKSIORA — Resurfaçage de baignoire à domicile
    Interface éditoriale : colonnes asymétriques, grands titres, bandes.
    Fichier unique (HTML + CSS + JS). Les informations métier sont
    centralisées dans le bloc « CONFIGURATION MÉTIER » en bas de page.
@@ -322,6 +322,8 @@ html[data-theme="dark"] .type .ic{color:#7fd3e6}
 .step-panel .hint{color:var(--muted);font-size:.93rem;margin-bottom:22px}
 .fieldset{border:0;margin-bottom:26px}
 .fieldset>legend{font-weight:700;font-size:.95rem;margin-bottom:12px;color:var(--ink)}
+.fs-hint{margin:-6px 0 12px;font-size:.86rem;color:var(--muted)}
+.choice-grid-compact .choice label{padding:12px 14px}
 .choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .choice{position:relative}
 .choice input{position:absolute;opacity:0;inset:0;cursor:pointer}
@@ -587,7 +589,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
       <a href="#fonctionnement">Comment ça marche</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#faq">FAQ</a>
-      <a href="#reserver" class="btn btn-primary nav-cta-mobile">Réserver</a>
+      <a href="#reserver" class="btn btn-primary nav-cta-mobile">Demander une soumission</a>
     </nav>
     <div class="nav-right">
       <button class="icon-btn" id="langBtn" type="button" aria-label="Switch to English">EN</button>
@@ -595,7 +597,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
         <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <a href="#reserver" class="btn btn-primary nav-cta">Réserver</a>
+      <a href="#reserver" class="btn btn-primary nav-cta">Soumission</a>
       <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -606,23 +608,23 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
 <section class="hero" id="accueil" style="padding:0">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">Nettoyage professionnel de baignoires à domicile</span>
-      <h1 id="heroTitle">Une baignoire propre. <span class="hl">Sans effort.</span></h1>
-      <p class="lead" id="heroLead">Nous nettoyons votre baignoire en profondeur pour éliminer les résidus de savon, les traces, les dépôts et la saleté accumulée.</p>
+      <span class="eyebrow">Resurfaçage de baignoire à domicile</span>
+      <h1 id="heroTitle">Une baignoire comme neuve. <span class="hl">Sans la remplacer.</span></h1>
+      <p class="lead" id="heroLead">Nous resurfaçons votre baignoire sur place : la surface usée, tachée ou abîmée est préparée, réparée puis recouverte d'un nouveau revêtement lisse et brillant. Sans démolition, sans plomberie.</p>
       <div class="hero-cta">
-        <a href="#reserver" class="btn btn-primary btn-lg">Réserver un nettoyage</a>
+        <a href="#reserver" class="btn btn-primary btn-lg">Demander une soumission</a>
         <a href="#fonctionnement" class="btn btn-ghost btn-lg">Voir comment ça fonctionne</a>
       </div>
       <div class="hero-reassure" aria-label="Points clés">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v16H3z"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Réservation en ligne</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v16H3z"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Soumission en ligne</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/></svg>Intervention à domicile</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>Chaque surface traitée avec soin</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>Sans démolition ni plomberie</span>
       </div>
     </div>
     <div class="hero-visual">
       <div class="tub-card">
         <svg viewBox="0 0 420 300" role="img" aria-labelledby="heroIllTitle">
-          <title id="heroIllTitle">Illustration d'une baignoire propre et brillante</title>
+          <title id="heroIllTitle">Illustration d'une baignoire resurfacée, lisse et brillante</title>
           <defs>
             <linearGradient id="gTub" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9f3f8"/></linearGradient>
             <linearGradient id="gWater" x1="0" x2="1"><stop offset="0" stop-color="#8fdcee"/><stop offset="1" stop-color="#1aa7c7"/></linearGradient>
@@ -645,9 +647,9 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
           <path d="M70 62l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#5ccbe0"/>
           <path d="M232 58l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z" fill="#8fdcee"/>
         </svg>
-        <span class="chip chip-1"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Résidus de savon</span>
-        <span class="chip chip-2"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Robinets &amp; contours</span>
-        <span class="chip chip-3"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Joints accessibles</span>
+        <span class="chip chip-1"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Éclats réparés</span>
+        <span class="chip chip-2"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Rouille traitée</span>
+        <span class="chip chip-3"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Fini lisse &amp; brillant</span>
       </div>
     </div>
   </div>
@@ -656,8 +658,8 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
 <!-- Bandeau défilant (décoratif : reprend la liste des prestations) -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Nettoyage complet de la baignoire</span><span>Élimination des résidus de savon</span><span>Nettoyage des contours</span><span>Nettoyage des robinets</span><span>Traitement des dépôts</span><span>Désinfection des surfaces</span><span>Nettoyage des joints accessibles</span><span>Finition et rinçage</span>
-    <span>Nettoyage complet de la baignoire</span><span>Élimination des résidus de savon</span><span>Nettoyage des contours</span><span>Nettoyage des robinets</span><span>Traitement des dépôts</span><span>Désinfection des surfaces</span><span>Nettoyage des joints accessibles</span><span>Finition et rinçage</span>
+    <span>Resurfaçage de baignoire</span><span>Réparation des éclats et fissures</span><span>Traitement de la rouille</span><span>Apprêt et revêtement de finition</span><span>Lavabos</span><span>Carrelage et céramique</span><span>Douches</span><span>Sans démolition</span>
+    <span>Resurfaçage de baignoire</span><span>Réparation des éclats et fissures</span><span>Traitement de la rouille</span><span>Apprêt et revêtement de finition</span><span>Lavabos</span><span>Carrelage et céramique</span><span>Douches</span><span>Sans démolition</span>
   </div>
 </div>
 
@@ -665,15 +667,15 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
 <section class="band-deep" id="pourquoi">
   <div class="wrap trust-grid">
     <div>
-      <span class="eyebrow">Pourquoi nous confier votre baignoire</span>
-      <h2>Votre salle de bain mérite mieux qu'un nettoyage rapide.</h2>
-      <p class="lead">Un nettoyage de baignoire bien fait demande du temps, de la méthode et de l'attention. C'est exactement ce que nous apportons.</p>
+      <span class="eyebrow">Pourquoi resurfacer plutôt que remplacer</span>
+      <h2>Remplacer une baignoire, c'est un chantier. Resurfacer, non.</h2>
+      <p class="lead">Démolition, plomberie, carrelage à refaire : remplacer une baignoire est long et coûteux. Le resurfaçage redonne une surface neuve à la baignoire que vous avez déjà.</p>
     </div>
     <ul class="trust-list">
-      <li class="reveal"><i>01</i><div><h3>Simple</h3><p>Vous réservez en ligne en quelques minutes. Nous nous occupons du reste.</p></div></li>
-      <li class="reveal"><i>02</i><div><h3>Un nettoyage soigné</h3><p>Contours, robinets, parois, joints accessibles : chaque zone est traitée méthodiquement, sans précipitation.</p></div></li>
-      <li class="reveal"><i>03</i><div><h3>Du temps gagné</h3><p>Plus besoin de frotter. Vous retrouvez une baignoire propre sans y passer votre soirée.</p></div></li>
-      <li class="reveal"><i>04</i><div><h3>Des surfaces respectées</h3><p>Nous adaptons notre façon de faire au type de baignoire. Si une surface demande une attention particulière, nous vous en parlons avant d'intervenir.</p></div></li>
+      <li class="reveal"><i>01</i><div><h3>Sans démolition</h3><p>La baignoire reste en place : pas de carrelage à casser, pas de plomberie à refaire, pas de débris.</p></div></li>
+      <li class="reveal"><i>02</i><div><h3>Une surface neuve</h3><p>Éclats, fissures, rouille, taches et usure disparaissent sous un nouveau revêtement lisse et brillant.</p></div></li>
+      <li class="reveal"><i>03</i><div><h3>Chez vous, sans chantier</h3><p>Tout se fait sur place, salle de bain protégée. Vous n'avez rien à démonter ni à transporter.</p></div></li>
+      <li class="reveal"><i>04</i><div><h3>Un travail préparé</h3><p>Nettoyage, réparations, ponçage, apprêt : la préparation fait la qualité du résultat. Nous ne sautons aucune étape.</p></div></li>
     </ul>
   </div>
 </section>
@@ -683,24 +685,24 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   <div class="wrap ed">
     <div class="ed-side">
       <span class="num">01</span>
-      <h2>Ce que comprend le nettoyage</h2>
-      <p class="lead">Un nettoyage complet, de l'intérieur de la baignoire jusqu'aux finitions.</p>
+      <h2>Ce que comprend le resurfaçage</h2>
+      <p class="lead">De la protection de la pièce aux conseils d'entretien, nous prenons en charge chaque étape.</p>
       <a href="#tarifs" class="btn btn-ghost">Voir les tarifs</a>
     </div>
     <div>
       <div class="svc-list">
-        <div class="svc-row reveal"><i>01</i><div><h3>Nettoyage complet de la baignoire</h3><p>L'intérieur, le fond et les rebords sont nettoyés en entier.</p></div></div>
-        <div class="svc-row reveal"><i>02</i><div><h3>Élimination des résidus de savon</h3><p>Le film de savon et les traces grasses sont retirés des surfaces.</p></div></div>
-        <div class="svc-row reveal"><i>03</i><div><h3>Nettoyage des contours</h3><p>Les rebords et le pourtour de la baignoire sont nettoyés avec soin.</p></div></div>
-        <div class="svc-row reveal"><i>04</i><div><h3>Nettoyage des robinets</h3><p>Robinets, poignées et bec sont nettoyés et essuyés.</p></div></div>
-        <div class="svc-row reveal"><i>05</i><div><h3>Traitement des dépôts</h3><p>Les dépôts accumulés (calcaire, savon, traces) sont traités sur les surfaces.</p></div></div>
-        <div class="svc-row reveal"><i>06</i><div><h3>Désinfection des surfaces</h3><p>Une fois nettoyées, les surfaces de la baignoire sont désinfectées.</p></div></div>
-        <div class="svc-row reveal"><i>07</i><div><h3>Nettoyage des joints accessibles</h3><p>Les joints visibles et accessibles autour de la baignoire sont nettoyés.</p></div></div>
-        <div class="svc-row reveal"><i>08</i><div><h3>Finition et rinçage</h3><p>Rinçage complet, puis essuyage pour une finition nette.</p></div></div>
+        <div class="svc-row reveal"><i>01</i><div><h3>Protection de la salle de bain</h3><p>Murs, sol et robinetterie sont masqués et protégés avant toute intervention.</p></div></div>
+        <div class="svc-row reveal"><i>02</i><div><h3>Nettoyage et dégraissage</h3><p>La surface est nettoyée en profondeur pour que le nouveau revêtement adhère correctement.</p></div></div>
+        <div class="svc-row reveal"><i>03</i><div><h3>Réparation des éclats et fissures</h3><p>Les éclats, les fissures superficielles et les zones rouillées sont réparés et rebouchés.</p></div></div>
+        <div class="svc-row reveal"><i>04</i><div><h3>Préparation de la surface</h3><p>Ponçage et traitement d'adhérence pour obtenir une base uniforme et parfaitement lisse.</p></div></div>
+        <div class="svc-row reveal"><i>05</i><div><h3>Application de l'apprêt</h3><p>Une couche d'accroche assure la tenue du revêtement sur la surface préparée.</p></div></div>
+        <div class="svc-row reveal"><i>06</i><div><h3>Application du revêtement</h3><p>Le revêtement de finition est appliqué en plusieurs couches pour un fini uniforme et brillant.</p></div></div>
+        <div class="svc-row reveal"><i>07</i><div><h3>Finition et contrôle</h3><p>Vérification de la surface, retrait des protections et consignes de séchage avant la première utilisation.</p></div></div>
+        <div class="svc-row reveal"><i>08</i><div><h3>Conseils d'entretien</h3><p>Nous vous expliquons comment entretenir votre nouvelle surface au quotidien.</p></div></div>
       </div>
       <div class="svc-note">
-        <p><b>Besoin de plus ?</b> Des options s'ajoutent à la réservation : parois de douche attenantes, lavabo, carrelage mural autour de la baignoire.</p>
-        <a href="#reserver" class="btn btn-primary">Réserver un nettoyage</a>
+        <p><b>Pas seulement la baignoire.</b> Le resurfaçage s'applique aussi au lavabo, au carrelage ou à la céramique murale et à la douche. Ajoutez-les à votre demande.</p>
+        <a href="#reserver" class="btn btn-primary">Demander une soumission</a>
       </div>
     </div>
   </div>
@@ -712,7 +714,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
     <div class="ba-head">
       <span class="eyebrow">Avant / après</span>
       <h2>Le résultat parle de lui-même.</h2>
-      <p class="lead">Faites glisser le curseur pour comparer l'état de la baignoire avant et après notre passage.</p>
+      <p class="lead">Faites glisser le curseur pour comparer la même baignoire avant et après son resurfaçage.</p>
     </div>
     <!-- Composant avant/après : photos réelles intégrées (window.AKSIORA_PHOTOS), remplaçables par des URL
          depuis l'admin → « Avant / après ». Sans aucune photo, des zones de remplacement explicites s'affichent. -->
@@ -726,9 +728,9 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
     </div>
     <div class="ba-foot"><span id="baCaption"></span><span class="ba-todo" id="baTodo" hidden>Photos à ajouter</span></div>
     <ul class="ba-points">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Résidus de savon et traces retirés des surfaces.</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Robinets et contours nettoyés et essuyés.</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Finition propre, prête à être utilisée.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Éclats, rouille et taches disparaissent sous le nouveau revêtement.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Une surface lisse, blanche et brillante.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Votre baignoire d'origine, sans remplacement.</li>
     </ul>
   </div>
 </section>
@@ -738,15 +740,15 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   <div class="wrap ed">
     <div class="ed-side">
       <span class="num">02</span>
-      <h2>Quatre étapes, rien de plus.</h2>
-      <p class="lead">Pas de devis compliqué, pas d'allers-retours. Vous réservez, nous venons.</p>
-      <a href="#reserver" class="btn btn-primary">Réserver mon nettoyage</a>
+      <h2>Quatre étapes, de la demande au résultat.</h2>
+      <p class="lead">Une demande en ligne, une soumission claire, une intervention chez vous.</p>
+      <a href="#reserver" class="btn btn-primary">Demander une soumission</a>
     </div>
     <ol class="timeline">
-      <li class="reveal"><h3>Réservez en ligne</h3><p>Choisissez une date et une plage horaire qui vous conviennent.</p></li>
-      <li class="reveal"><h3>Choisissez votre service</h3><p>Nettoyage standard ou en profondeur, avec les options dont vous avez besoin.</p></li>
-      <li class="reveal"><h3>Nous venons nettoyer la baignoire</h3><p>Notre équipe se déplace chez vous avec le matériel nécessaire.</p></li>
-      <li class="reveal"><h3>Profitez d'une baignoire propre</h3><p>Il ne vous reste plus qu'à en profiter.</p></li>
+      <li class="reveal"><h3>Décrivez votre projet</h3><p>Type de baignoire, état de la surface, couleur souhaitée, disponibilités : quelques minutes suffisent.</p></li>
+      <li class="reveal"><h3>Recevez votre soumission</h3><p>Nous vous recontactons par téléphone ou par email avec un prix et une proposition de date.</p></li>
+      <li class="reveal"><h3>Nous resurfaçons chez vous</h3><p>Protection, préparation, réparations, apprêt et revêtement : tout se fait sur place.</p></li>
+      <li class="reveal"><h3>Laissez sécher, puis profitez</h3><p>Après le temps de séchage que nous vous indiquons, votre baignoire est prête.</p></li>
     </ol>
   </div>
 </section>
@@ -756,12 +758,12 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   <div class="wrap ed">
     <div class="ed-side">
       <span class="num">03</span>
-      <h2>Des tarifs simples, selon le niveau de nettoyage.</h2>
-      <p class="lead">Choisissez le niveau adapté à l'état de votre baignoire. Les options s'ajoutent au moment de la réservation.</p>
+      <h2>Des tarifs clairs, selon l'état de votre baignoire.</h2>
+      <p class="lead">Le prix dépend surtout de l'état de la surface et des réparations nécessaires. Les surfaces additionnelles s'ajoutent à la demande.</p>
     </div>
     <div>
       <div id="plansGrid"><!-- tableau comparatif rendu depuis la configuration --></div>
-      <p class="pricing-note">Les tarifs s'entendent par baignoire. Pour une configuration particulière, indiquez-le dans vos notes de réservation.</p>
+      <p class="pricing-note">Les tarifs s'entendent par baignoire. Le prix définitif est confirmé dans votre soumission, après évaluation de l'état de la surface.</p>
     </div>
   </div>
 </section>
@@ -771,14 +773,14 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   <div class="wrap ed">
     <div class="ed-side">
       <span class="num">04</span>
-      <h2>Nous nettoyons la plupart des baignoires.</h2>
-      <p class="lead">Le type de baignoire et son matériau influencent notre façon de travailler. Indiquez-le à la réservation : nous adaptons l'intervention.</p>
+      <h2>Nous resurfaçons la plupart des baignoires.</h2>
+      <p class="lead">Fonte émaillée, acier, acrylique, fibre de verre : le matériau et la configuration influencent la préparation. Indiquez-les dans votre demande.</p>
     </div>
     <div>
       <div class="strip" id="typesGrid"><!-- rendu depuis la configuration --></div>
       <div class="types-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-        <p>Acrylique, émail, fonte, pierre… Si votre baignoire est faite d'un matériau particulier ou présente des dommages, précisez-le dans vos notes de réservation. Nous vous dirons si un traitement particulier est nécessaire avant de commencer.</p>
+        <p>Si vous connaissez le matériau de votre baignoire, indiquez-le : la préparation diffère d'un matériau à l'autre. Une baignoire déjà resurfacée peut nécessiter le retrait de l'ancien revêtement : nous l'évaluons avec vous avant d'intervenir.</p>
       </div>
     </div>
   </div>
@@ -792,7 +794,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
       <div>
         <span class="eyebrow">Avis</span>
         <h2>Ce que disent nos clients</h2>
-        <p class="lead">Les avis publiés ici sont laissés par des clients après leur nettoyage.</p>
+        <p class="lead">Les avis publiés ici sont laissés par des clients après leur resurfaçage.</p>
       </div>
       <div class="rev-summary" id="revSummary" hidden>
         <span class="rev-avg" id="revAvg">0.0</span>
@@ -827,7 +829,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
         </div>
         <div class="field" style="margin-top:14px">
           <label for="rvText">Votre commentaire</label>
-          <textarea id="rvText" rows="3" maxlength="500" placeholder="Comment s'est passé le nettoyage ?"></textarea>
+          <textarea id="rvText" rows="3" maxlength="500" placeholder="Comment s'est passé le resurfaçage ?"></textarea>
         </div>
         <div class="rev-msg" id="rvMsg" hidden role="status"></div>
         <button type="submit" class="btn btn-primary" id="rvSubmit">Publier mon avis</button>
@@ -842,33 +844,33 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
     <div class="ed-side">
       <span class="num">05</span>
       <h2>Questions fréquentes</h2>
-      <p class="lead">Tout ce qu'il faut savoir avant de réserver.</p>
+      <p class="lead">Tout ce qu'il faut savoir avant de demander une soumission.</p>
     </div>
     <div class="faq-list" id="faqList"><!-- rendu depuis la configuration --></div>
   </div>
 </section>
 
-<!-- ================= RÉSERVATION : assistant + récapitulatif en direct ================= -->
+<!-- ================= DEMANDE DE SOUMISSION : assistant + récapitulatif en direct ================= -->
 <section class="booking" id="reserver">
   <div class="wrap">
     <div class="book-head">
-      <span class="eyebrow">Réservation</span>
-      <h2>Réservez votre nettoyage</h2>
-      <p class="lead">Quelques minutes suffisent. Nous confirmons ensuite votre rendez-vous.</p>
+      <span class="eyebrow">Soumission</span>
+      <h2>Demandez votre soumission</h2>
+      <p class="lead">Quelques minutes suffisent. Nous vous recontactons avec un prix et une proposition de date.</p>
     </div>
     <div class="book-grid">
     <form class="booking-card" id="bookingForm" novalidate onsubmit="return false">
-      <ol class="steps-bar" aria-label="Étapes de la réservation">
-        <li class="stp on" data-s="1"><i aria-hidden="true">1</i><span>Baignoire</span></li>
-        <li class="stp" data-s="2"><i aria-hidden="true">2</i><span>Date</span></li>
+      <ol class="steps-bar" aria-label="Étapes de la demande">
+        <li class="stp on" data-s="1"><i aria-hidden="true">1</i><span>Projet</span></li>
+        <li class="stp" data-s="2"><i aria-hidden="true">2</i><span>Disponibilités</span></li>
         <li class="stp" data-s="3"><i aria-hidden="true">3</i><span>Coordonnées</span></li>
-        <li class="stp" data-s="4"><i aria-hidden="true">4</i><span>Confirmation</span></li>
+        <li class="stp" data-s="4"><i aria-hidden="true">4</i><span>Envoi</span></li>
       </ol>
 
-      <!-- Étape 1 : la baignoire -->
+      <!-- Étape 1 : le projet -->
       <div class="step-panel" data-step="1">
-        <h3>Votre baignoire</h3>
-        <p class="hint">Dites-nous ce que nous allons nettoyer.</p>
+        <h3>Votre projet</h3>
+        <p class="hint">Décrivez la surface à resurfacer. Pas besoin d'être précis : nous validons tout avec vous.</p>
         <fieldset class="fieldset">
           <legend>Type de baignoire</legend>
           <div class="choice-grid" id="tubTypeChoices"></div>
@@ -882,24 +884,33 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
           </div>
         </fieldset>
         <fieldset class="fieldset">
-          <legend>Niveau de nettoyage</legend>
-          <div class="choice-grid" id="levelChoices"></div>
+          <legend>État de la baignoire</legend>
+          <p class="fs-hint">Cochez tout ce qui s'applique.</p>
+          <div class="choice-grid" id="condChoices"></div>
         </fieldset>
         <fieldset class="fieldset">
-          <legend>Options supplémentaires</legend>
+          <legend>Matériau, si vous le connaissez</legend>
+          <div class="choice-grid choice-grid-compact" id="materialChoices"></div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend>Couleur souhaitée</legend>
+          <div class="choice-grid" id="colorChoices"></div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend>Surfaces additionnelles</legend>
           <div class="choice-grid" id="optionChoices"></div>
         </fieldset>
         <div class="step-actions">
           <span></span>
-          <button type="button" class="btn btn-primary" id="toStep2">Choisir la date →</button>
+          <button type="button" class="btn btn-primary" id="toStep2">Mes disponibilités →</button>
         </div>
         <p class="step-err" id="err1" role="alert"></p>
       </div>
 
-      <!-- Étape 2 : date et plage horaire -->
+      <!-- Étape 2 : disponibilités (indicatives) -->
       <div class="step-panel" data-step="2" hidden>
-        <h3>Date et plage horaire</h3>
-        <p class="hint">Choisissez un jour disponible, puis l'heure d'arrivée souhaitée.</p>
+        <h3>Vos disponibilités</h3>
+        <p class="hint">Indiquez la date qui vous conviendrait. Elle est indicative : nous confirmons la date définitive avec votre soumission.</p>
         <div class="booker">
           <div class="cal">
             <div class="cal-head">
@@ -914,12 +925,12 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
           </div>
           <div class="slots">
             <div class="slots-head" id="slotsHead">Sélectionnez une date</div>
-            <div class="slots-list" id="slotsList" role="group" aria-label="Choisir une heure"></div>
-            <p class="tz-note">Heures affichées en heure de l'Est (Montréal).</p>
+            <div class="slots-list" id="slotsList" role="group" aria-label="Moment de la journée"></div>
+            <p class="tz-note">Facultatif : sans date en tête, vous pouvez passer cette étape.</p>
           </div>
         </div>
         <input type="hidden" id="bookDate" name="date">
-        <input type="hidden" id="bookTime" name="heure">
+        <input type="hidden" id="bookTime" name="moment">
         <div class="step-actions">
           <button type="button" class="btn btn-ghost" id="back1">← Retour</button>
           <button type="button" class="btn btn-primary" id="toStep3">Mes coordonnées →</button>
@@ -930,20 +941,20 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
       <!-- Étape 3 : coordonnées -->
       <div class="step-panel" data-step="3" hidden>
         <h3>Vos coordonnées</h3>
-        <p class="hint">Pour confirmer le rendez-vous et savoir où nous rendre.</p>
+        <p class="hint">Pour vous envoyer la soumission et savoir où se trouve la baignoire.</p>
         <div class="grid-2">
           <div class="field"><label for="fNom">Nom complet</label><input id="fNom" name="nom" type="text" autocomplete="name" required></div>
           <div class="field"><label for="fTel">Téléphone</label><input id="fTel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></div>
         </div>
-        <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required><span class="fh">Pour recevoir la confirmation de votre rendez-vous.</span></div>
+        <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required><span class="fh">Pour recevoir votre soumission.</span></div>
         <div class="grid-2">
           <div class="field"><label for="fAdresse">Adresse</label><input id="fAdresse" name="adresse" type="text" autocomplete="street-address" required></div>
           <div class="field"><label for="fVille">Ville</label><input id="fVille" name="ville" type="text" autocomplete="address-level2" required></div>
         </div>
         <div class="field">
-          <label for="fNotes">Notes ou instructions particulières</label>
+          <label for="fNotes">Notes ou précisions</label>
           <textarea id="fNotes" name="message" rows="3" maxlength="600"></textarea>
-          <span class="fh">Facultatif : matériau de la baignoire, accès au logement, stationnement, animaux…</span>
+          <span class="fh">Facultatif : couleur souhaitée, âge de la baignoire, accès au logement, stationnement…</span>
         </div>
         <div class="step-actions">
           <button type="button" class="btn btn-ghost" id="back2">← Retour</button>
@@ -952,32 +963,34 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
         <p class="step-err" id="err3" role="alert"></p>
       </div>
 
-      <!-- Étape 4 : récapitulatif -->
+      <!-- Étape 4 : récapitulatif et envoi -->
       <div class="step-panel" data-step="4" hidden>
         <h3>Récapitulatif</h3>
-        <p class="hint">Vérifiez les informations avant de confirmer.</p>
+        <p class="hint">Vérifiez les informations avant d'envoyer votre demande.</p>
         <div class="recap" id="recap"></div>
         <div class="step-actions">
           <button type="button" class="btn btn-ghost" id="back3">← Retour</button>
-          <button type="button" class="btn btn-primary btn-lg" id="confirmBtn">Confirmer la réservation</button>
+          <button type="button" class="btn btn-primary btn-lg" id="confirmBtn">Envoyer ma demande</button>
         </div>
-        <p class="consent">En confirmant, vous acceptez d'être contacté par téléphone ou par email pour organiser le rendez-vous.</p>
+        <p class="consent">En envoyant votre demande, vous acceptez d'être contacté par téléphone ou par email pour recevoir votre soumission.</p>
         <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
       </div>
     </form>
 
     <!-- Récapitulatif en direct (mis à jour à chaque choix) -->
     <aside class="book-summary" id="bookSummary" aria-live="polite">
-      <h3>Votre sélection</h3>
+      <h3>Votre demande</h3>
       <ul class="sum-list">
         <li><span>Baignoire</span><b id="sumType" class="todo">—</b></li>
         <li><span>Nombre</span><b id="sumQty">1</b></li>
-        <li><span>Niveau</span><b id="sumLevel" class="todo">—</b></li>
-        <li><span>Options</span><b id="sumOpts" class="todo">—</b></li>
-        <li><span>Date</span><b id="sumDate" class="todo">—</b></li>
-        <li><span>Heure d'arrivée</span><b id="sumTime" class="todo">—</b></li>
+        <li><span>État</span><b id="sumCond" class="todo">—</b></li>
+        <li><span>Matériau</span><b id="sumMat" class="todo">—</b></li>
+        <li><span>Couleur</span><b id="sumColor" class="todo">—</b></li>
+        <li><span>Surfaces additionnelles</span><b id="sumOpts" class="todo">—</b></li>
+        <li><span>Date souhaitée</span><b id="sumDate" class="todo">—</b></li>
+        <li><span>Moment</span><b id="sumTime" class="todo">—</b></li>
       </ul>
-      <p class="sum-note"><b>Sans paiement en ligne.</b> Nous confirmons chaque demande par téléphone ou par email.</p>
+      <p class="sum-note"><b>Sans paiement en ligne.</b> Nous vous recontactons avec une soumission par téléphone ou par email.</p>
     </aside>
     </div>
   </div>
@@ -989,7 +1002,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-word js-brand">AKSIORA</div>
-      <p>Nettoyage professionnel de baignoires à domicile. Vous réservez en ligne, nous venons nettoyer.</p>
+      <p>Resurfaçage de baignoire à domicile. Vous décrivez votre projet en ligne, nous vous envoyons une soumission.</p>
     </div>
     <div class="foot-grid">
       <div>
@@ -998,7 +1011,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
         <a href="#fonctionnement">Comment ça marche</a>
         <a href="#tarifs">Tarifs</a>
         <a href="#faq">FAQ</a>
-        <a href="#reserver">Réserver</a>
+        <a href="#reserver">Demander une soumission</a>
       </div>
       <div>
         <h4>Contact</h4>
@@ -1035,7 +1048,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
 </div>
 
 <!-- ================= CTA MOBILE ================= -->
-<div class="mobile-cta" id="mobileCta"><a href="#reserver" class="btn btn-primary btn-block">Réserver un nettoyage</a></div>
+<div class="mobile-cta" id="mobileCta"><a href="#reserver" class="btn btn-primary btn-block">Demander une soumission</a></div>
 
 <!-- ================= ASSISTANT ================= -->
 <button class="chat-fab" id="chatFab" type="button" aria-label="Ouvrir l'assistant">
@@ -1052,7 +1065,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   <div class="quick" id="quickReplies">
     <button type="button" data-q="Quels sont vos tarifs ?">💶 Tarifs</button>
     <button type="button" data-q="Qu'est-ce qui est inclus ?">🛁 Ce qui est inclus</button>
-    <button type="button" data-q="Comment réserver ?">📅 Réserver</button>
+    <button type="button" data-q="Comment demander une soumission ?">📝 Soumission</button>
     <button type="button" data-q="Quelles sont vos disponibilités ?">🕘 Disponibilités</button>
   </div>
   <div class="chat-input">
@@ -1097,22 +1110,22 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
     <div class="admin-group">
       <h4>Accueil</h4>
       <div class="admin-f"><label>Titre principal</label><input type="text" data-k="heroTitle"></div>
-      <div class="admin-note">Astuce : placez un mot entre *astérisques* pour le mettre en couleur. Ex. : Une baignoire propre. *Sans effort.*</div>
+      <div class="admin-note">Astuce : placez un mot entre *astérisques* pour le mettre en couleur. Ex. : Une baignoire comme neuve. *Sans la remplacer.*</div>
       <div class="admin-f" style="margin-top:12px"><label>Sous-titre</label><textarea rows="3" data-k="heroLead"></textarea></div>
     </div>
     <div class="admin-group">
       <h4>Tarifs</h4>
       <div class="admin-note">Entrez un montant (ex. : 89 $). Tant qu'un champ contient « TODO_… », la mention « Tarif à venir » est affichée sur le site.</div>
       <div class="admin-2" style="margin-top:10px">
-        <div class="admin-f"><label>Nettoyage standard</label><input type="text" data-k="plans.0.price"></div>
-        <div class="admin-f"><label>Nettoyage en profondeur</label><input type="text" data-k="plans.1.price"></div>
+        <div class="admin-f"><label>Resurfaçage standard</label><input type="text" data-k="plans.0.price"></div>
+        <div class="admin-f"><label>Resurfaçage avec réparations</label><input type="text" data-k="plans.1.price"></div>
       </div>
       <div class="admin-f"><label>Baignoire supplémentaire</label><input type="text" data-k="extraTub.price"></div>
       <div class="admin-2">
-        <div class="admin-f"><label>Option : parois de douche</label><input type="text" data-k="options.0.price"></div>
-        <div class="admin-f"><label>Option : lavabo</label><input type="text" data-k="options.1.price"></div>
+        <div class="admin-f"><label>Surface : lavabo</label><input type="text" data-k="options.0.price"></div>
+        <div class="admin-f"><label>Surface : carrelage / céramique</label><input type="text" data-k="options.1.price"></div>
       </div>
-      <div class="admin-f"><label>Option : carrelage mural</label><input type="text" data-k="options.2.price"></div>
+      <div class="admin-f"><label>Surface : douche / bac de douche</label><input type="text" data-k="options.2.price"></div>
     </div>
     <div class="admin-group">
       <h4>Avant / après</h4>
@@ -1123,7 +1136,7 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
     </div>
     <div class="admin-group">
       <h4>Disponibilités</h4>
-      <div class="admin-note">Cochez les jours où vous intervenez et indiquez la plage horaire (ex. : 09h00 – 17h00). Le calendrier de réservation s'adapte automatiquement.</div>
+      <div class="admin-note">Cochez les jours où vous intervenez et indiquez la plage horaire (ex. : 09h00 – 17h00). Le calendrier de la demande de soumission s'adapte automatiquement.</div>
       <div id="admDays" style="margin-top:10px"></div>
     </div>
     <div class="admin-group">
@@ -1160,39 +1173,63 @@ window.AKSIORA_PHOTOS = {
 </script>
 <script>
 window.AKSIORA_DEF = {
-  schema: 2,                                   /* version de la config : toute config distante d'une autre version est ignorée */
+  schema: 3,                                   /* version de la config : toute config distante d'une autre version est ignorée */
   brand: "AKSIORA",
   color: "#1aa7c7",
   phone: "+1 (438) 367-4305",                  /* TODO_BUSINESS_PHONE : à confirmer */
   email: "aaksiora@gmail.com",                 /* TODO_BUSINESS_EMAIL : à confirmer */
   zone: "Châteauguay, Mercier, Montréal, Longueuil", /* TODO_SERVICE_AREA : à confirmer */
-  heroTitle: "Une baignoire propre. *Sans effort.*",
-  heroLead: "Nous nettoyons votre baignoire en profondeur pour éliminer les résidus de savon, les traces, les dépôts et la saleté accumulée.",
+  heroTitle: "Une baignoire comme neuve. *Sans la remplacer.*",
+  heroLead: "Nous resurfaçons votre baignoire sur place : la surface usée, tachée ou abîmée est préparée, réparée puis recouverte d'un nouveau revêtement lisse et brillant. Sans démolition, sans plomberie.",
   plans: [
-    { id:"standard", name:"Nettoyage standard", pop:false, tag:"",
-      desc:"L'entretien complet d'une baignoire en bon état.",
+    { id:"standard", name:"Resurfaçage standard", pop:false, tag:"",
+      desc:"Pour une baignoire usée, ternie ou tachée, sans dommage important.",
       price:"TODO_PRICE_STANDARD", unit:"/ baignoire",
-      includes:["Nettoyage complet de la baignoire","Résidus de savon, traces et dépôts","Contours, robinets et joints accessibles","Désinfection des surfaces","Finition et rinçage"] },
-    { id:"deep", name:"Nettoyage en profondeur", pop:true, tag:"Dépôts marqués",
-      desc:"Pour une baignoire encrassée ou qui n'a pas été entretenue depuis longtemps.",
-      price:"TODO_PRICE_DEEP", unit:"/ baignoire",
-      includes:["Tout le nettoyage standard","Traitement renforcé des dépôts incrustés","Temps consacré aux joints et aux contours","Temps d'intervention plus long"] }
+      includes:["Protection de la salle de bain","Nettoyage et dégraissage de la surface","Préparation et ponçage","Apprêt d'adhérence","Revêtement de finition en plusieurs couches","Consignes de séchage et d'entretien"] },
+    { id:"repair", name:"Resurfaçage avec réparations", pop:true, tag:"Baignoire abîmée",
+      desc:"Pour une baignoire avec éclats, fissures, rouille ou un ancien revêtement qui s'écaille.",
+      price:"TODO_PRICE_REPAIR", unit:"/ baignoire",
+      includes:["Tout le resurfaçage standard","Réparation des éclats et fissures","Traitement des zones rouillées","Retrait de l'ancien revêtement si nécessaire"] }
   ],
   extraTub: { label:"Baignoire supplémentaire (même adresse)", price:"TODO_PRICE_EXTRA_TUB" },
   options: [
-    { id:"parois",    label:"Parois de douche attenantes",            price:"TODO_PRICE_OPTION_SHOWER_WALLS" },
-    { id:"lavabo",    label:"Lavabo et sa robinetterie",              price:"TODO_PRICE_OPTION_SINK" },
-    { id:"carrelage", label:"Carrelage mural autour de la baignoire", price:"TODO_PRICE_OPTION_WALL_TILES" }
+    { id:"lavabo",    label:"Lavabo",                       price:"TODO_PRICE_OPTION_SINK" },
+    { id:"carrelage", label:"Carrelage / céramique murale", price:"TODO_PRICE_OPTION_WALL_TILES" },
+    { id:"douche",    label:"Douche / bac de douche",       price:"TODO_PRICE_OPTION_SHOWER" }
   ],
   tubTypes: [
-    { id:"standard",     label:"Baignoire standard",          desc:"Baignoire encastrée classique." },
-    { id:"combo",        label:"Baignoire / douche combinée", desc:"Avec pommeau ou colonne de douche." },
+    { id:"standard",     label:"Baignoire standard",          desc:"Baignoire encastrée classique, le cas le plus courant." },
+    { id:"combo",        label:"Baignoire / douche combinée", desc:"Avec pommeau ou colonne de douche au-dessus." },
     { id:"autoportante", label:"Baignoire autoportante",      desc:"Sur pieds ou posée au sol, accessible de plusieurs côtés." },
     { id:"profonde",     label:"Baignoire profonde",          desc:"Grande profondeur ou grand volume." },
     { id:"autre",        label:"Autre configuration",         desc:"Baignoire d'angle, balnéo ou cas particulier : précisez-le dans vos notes." }
   ],
+  /* Listes du formulaire de soumission (non modifiables depuis l'admin) */
+  conditions: [
+    { id:"usee",    label:"Usée ou ternie",      desc:"Surface mate, jaunie ou difficile à nettoyer." },
+    { id:"taches",  label:"Taches tenaces",      desc:"Taches qui ne partent plus au nettoyage." },
+    { id:"eclats",  label:"Éclats ou fissures",  desc:"Petits éclats ou fissures superficielles." },
+    { id:"rouille", label:"Rouille",             desc:"Zones rouillées, souvent près du drain." },
+    { id:"ancien",  label:"Déjà resurfacée",     desc:"Ancien revêtement qui s'écaille ou se décolle." }
+  ],
+  materials: [
+    { id:"inconnu",   label:"Je ne sais pas" },
+    { id:"fonte",     label:"Fonte ou acier émaillé" },
+    { id:"acrylique", label:"Acrylique" },
+    { id:"fibre",     label:"Fibre de verre" },
+    { id:"autre",     label:"Autre" }
+  ],
+  colors: [
+    { id:"blanc", label:"Blanc",         desc:"La finition standard." },
+    { id:"autre", label:"Autre couleur", desc:"Précisez-la dans vos notes : nous confirmons les possibilités." }
+  ],
+  moments: [
+    { id:"matin",     label:"Matin" },
+    { id:"apresmidi", label:"Après-midi" },
+    { id:"soir",      label:"Soir" },
+    { id:"flexible",  label:"Flexible" }
+  ],
   closedLabel: "Indisponible",
-  slotStepMinutes: 60,                         /* TODO_SLOT_STEP : intervalle entre deux heures d'arrivée proposées */
   days: [
     { key:"Lundi",    on:false, h:"17h00 – 21h00" },
     { key:"Mardi",    on:true,  h:"17h00 – 21h00" },
@@ -1209,42 +1246,42 @@ window.AKSIORA_DEF = {
 
 /* FAQ (bilingue). Les réponses restent prudentes tant que les règles exactes de l'entreprise ne sont pas définies. */
 window.AKSIORA_FAQ = [
-  { q:{fr:"Combien de temps prend le nettoyage ?", en:"How long does the cleaning take?"},
-    a:{fr:"Cela dépend du type de baignoire, de son état et du niveau choisi. Un nettoyage en profondeur prend plus de temps qu'un nettoyage standard. Nous vous donnons une estimation lors de la confirmation de votre rendez-vous.",
-       en:"It depends on the type of bathtub, its condition and the level you choose. A deep cleaning takes longer than a standard one. We give you an estimate when we confirm your appointment."} },
-  { q:{fr:"Dois-je être présent ?", en:"Do I need to be home?"},
-    a:{fr:"Une personne doit pouvoir nous ouvrir et nous indiquer la salle de bain. Ensuite, vous êtes libre de rester ou non. Si vous avez des consignes particulières, indiquez-les dans vos notes de réservation.",
-       en:"Someone needs to let us in and show us the bathroom. After that, you are free to stay or not. If you have specific instructions, add them to your booking notes."} },
-  { q:{fr:"Quels types de baignoires nettoyez-vous ?", en:"Which types of bathtubs do you clean?"},
-    a:{fr:"Les baignoires standard, les baignoires-douches combinées, les baignoires autoportantes, les baignoires profondes et la plupart des autres configurations. Pour un matériau particulier ou une baignoire abîmée, indiquez-le à la réservation : nous vérifions avant d'intervenir.",
-       en:"Standard bathtubs, tub-shower combos, freestanding tubs, deep tubs and most other configurations. For a special material or a damaged tub, mention it when booking: we check before we start."} },
-  { q:{fr:"Dois-je préparer la salle de bain ?", en:"Do I need to prepare the bathroom?"},
-    a:{fr:"Retirez simplement vos produits et objets personnels de la baignoire et de ses contours. Nous nous occupons du reste.",
-       en:"Simply remove your products and personal items from the tub and its edges. We take care of the rest."} },
-  { q:{fr:"Qu'est-ce qui est inclus ?", en:"What is included?"},
-    a:{fr:"Le nettoyage complet de la baignoire, l'élimination des résidus de savon, le nettoyage des contours et des robinets, le traitement des dépôts, la désinfection des surfaces, le nettoyage des joints accessibles, puis la finition et le rinçage. Les options (parois de douche, lavabo, carrelage mural) s'ajoutent à la réservation.",
-       en:"A complete cleaning of the bathtub, removal of soap residue, cleaning of the edges and faucets, treatment of deposits, disinfection of surfaces, cleaning of accessible joints, then finishing and rinsing. Options (shower walls, sink, wall tiles) can be added when booking."} },
-  { q:{fr:"Puis-je faire nettoyer plusieurs baignoires ?", en:"Can I have several bathtubs cleaned?"},
-    a:{fr:"Oui. Indiquez le nombre de baignoires à la réservation. Chaque baignoire supplémentaire à la même adresse est facturée au tarif indiqué dans la section Tarifs.",
-       en:"Yes. Enter the number of bathtubs when booking. Each additional tub at the same address is charged at the rate shown in the Pricing section."} },
-  { q:{fr:"Comment fonctionne la réservation ?", en:"How does booking work?"},
-    a:{fr:"Vous choisissez votre type de baignoire, le niveau de nettoyage et vos options, puis une date et une plage horaire, et enfin vous laissez vos coordonnées. Nous confirmons ensuite votre rendez-vous par téléphone ou par email.",
-       en:"You choose your bathtub type, cleaning level and options, then a date and time slot, and finally leave your contact details. We then confirm your appointment by phone or email."} },
-  { q:{fr:"Que se passe-t-il si ma baignoire nécessite un traitement particulier ?", en:"What if my bathtub needs special treatment?"},
-    a:{fr:"Si nous constatons sur place qu'un traitement particulier est nécessaire (surface fragile, dépôts très incrustés, dommages), nous vous en informons avant de commencer et nous convenons ensemble de la suite.",
-       en:"If we find on site that special treatment is needed (fragile surface, heavily ingrained deposits, damage), we let you know before starting and agree together on the next steps."} }
+  { q:{fr:"Qu'est-ce que le resurfaçage de baignoire ?", en:"What is bathtub resurfacing?"},
+    a:{fr:"Le resurfaçage (aussi appelé peinture ou réémaillage de baignoire) consiste à préparer la surface existante, à réparer les dommages, puis à appliquer un apprêt et un nouveau revêtement de finition. La baignoire retrouve une surface lisse et brillante, sans être remplacée.",
+       en:"Resurfacing (also called bathtub painting or reglazing) means preparing the existing surface, repairing damage, then applying a primer and a new finishing coat. The tub gets a smooth, glossy surface again without being replaced."} },
+  { q:{fr:"Combien de temps dure l'intervention ?", en:"How long does the work take?"},
+    a:{fr:"Cela dépend du type de baignoire, de son état et des réparations nécessaires. Nous vous donnons une estimation dans votre soumission.",
+       en:"It depends on the type of bathtub, its condition and the repairs needed. We give you an estimate in your quote."} },
+  { q:{fr:"Quand pourrai-je utiliser ma baignoire ?", en:"When can I use my bathtub again?"},
+    a:{fr:"Un temps de séchage est nécessaire après l'application avant la première utilisation. Nous vous indiquons le délai exact et les précautions à prendre à la fin de l'intervention.",
+       en:"The coating needs time to cure before the first use. We tell you the exact waiting time and the precautions to take at the end of the visit."} },
+  { q:{fr:"Les éclats, les fissures et la rouille peuvent-ils être réparés ?", en:"Can chips, cracks and rust be repaired?"},
+    a:{fr:"Dans la plupart des cas, oui : les éclats, les fissures superficielles et les zones rouillées sont réparés avant l'application du revêtement. Pour des dommages importants, nous évaluons la situation avec vous lors de la soumission.",
+       en:"In most cases, yes: chips, surface cracks and rusted areas are repaired before the coating is applied. For major damage, we assess the situation with you when preparing the quote."} },
+  { q:{fr:"Quels types de baignoires resurfacez-vous ?", en:"Which types of bathtubs do you resurface?"},
+    a:{fr:"Les baignoires en fonte émaillée, en acier, en acrylique et en fibre de verre, dans la plupart des configurations : standard, baignoire-douche, autoportante, profonde. Une baignoire déjà resurfacée peut nécessiter le retrait de l'ancien revêtement : indiquez-le dans votre demande.",
+       en:"Enamelled cast iron, steel, acrylic and fibreglass bathtubs, in most configurations: standard, tub-shower, freestanding, deep. A tub that was already resurfaced may require removing the old coating: mention it in your request."} },
+  { q:{fr:"Resurfacez-vous d'autres surfaces que la baignoire ?", en:"Do you resurface other surfaces than the bathtub?"},
+    a:{fr:"Oui : le lavabo, le carrelage ou la céramique murale et la douche ou le bac de douche. Ajoutez-les simplement comme surfaces additionnelles dans votre demande de soumission.",
+       en:"Yes: the sink, wall tiles or ceramic, and the shower or shower base. Simply add them as additional surfaces in your quote request."} },
+  { q:{fr:"Quelle couleur puis-je choisir ?", en:"Which colour can I choose?"},
+    a:{fr:"Le blanc est la finition standard. Si vous souhaitez une autre couleur, indiquez-le dans votre demande : nous vous confirmons les possibilités avec la soumission.",
+       en:"White is the standard finish. If you would like another colour, mention it in your request: we confirm what is possible with the quote."} },
+  { q:{fr:"Comment se passe la demande de soumission ?", en:"How does the quote request work?"},
+    a:{fr:"Vous décrivez votre projet en ligne (type et état de la baignoire, couleur, surfaces additionnelles, disponibilités), puis vous laissez vos coordonnées. Nous vous recontactons par téléphone ou par email avec un prix et une proposition de date. Aucun paiement en ligne. Avant l'intervention, retirez simplement vos objets personnels de la salle de bain : nous protégeons la pièce.",
+       en:"You describe your project online (type and condition of the bathtub, colour, additional surfaces, availability), then leave your contact details. We get back to you by phone or email with a price and a proposed date. No online payment. Before the visit, simply remove your personal items from the bathroom: we protect the room."} }
 ];
 
 /* Textes légaux : à fournir par l'entreprise (affichés comme « à compléter » tant qu'ils sont vides). */
 window.AKSIORA_LEGAL = {
   privacy: { title:{fr:"Politique de confidentialité", en:"Privacy policy"},
              text:"TODO_PRIVACY_POLICY",
-             hint:{fr:"Ce texte doit être fourni par l'entreprise. Il décrira notamment les données collectées lors de la réservation (nom, téléphone, email, adresse), leur utilisation (organisation du rendez-vous), leur durée de conservation et les droits d'accès ou de suppression.",
-                   en:"This text must be provided by the business. It should describe the data collected when booking (name, phone, email, address), how it is used (organizing the appointment), how long it is kept, and access or deletion rights."} },
+             hint:{fr:"Ce texte doit être fourni par l'entreprise. Il décrira notamment les données collectées lors de la demande de soumission (nom, téléphone, email, adresse), leur utilisation (préparation de la soumission et organisation de l'intervention), leur durée de conservation et les droits d'accès ou de suppression.",
+                   en:"This text must be provided by the business. It should describe the data collected with a quote request (name, phone, email, address), how it is used (preparing the quote and organizing the visit), how long it is kept, and access or deletion rights."} },
   terms:   { title:{fr:"Conditions de service", en:"Terms of service"},
              text:"TODO_TERMS_OF_SERVICE",
-             hint:{fr:"Ce texte doit être fourni par l'entreprise : conditions de réservation, de modification et d'annulation, modalités de paiement, responsabilités.",
-                   en:"This text must be provided by the business: booking, change and cancellation conditions, payment terms, responsibilities."} }
+             hint:{fr:"Ce texte doit être fourni par l'entreprise : validité de la soumission, conditions de modification et d'annulation, modalités de paiement, garantie éventuelle, responsabilités.",
+                   en:"This text must be provided by the business: quote validity, change and cancellation conditions, payment terms, any warranty, responsibilities."} }
 };
 window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v || /^TODO_/i.test(v); };
 </script>
@@ -1255,7 +1292,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "AKSIORA",
-  "description": "Nettoyage professionnel de baignoires à domicile. Réservation en ligne.",
+  "description": "Resurfaçage de baignoire à domicile (peinture, réémaillage) : baignoires, lavabos, carrelage et douches. Demande de soumission en ligne.",
   "url": "https://aksiora.ca/",
   "telephone": "+1-438-367-4305",
   "email": "aaksiora@gmail.com",
@@ -1383,21 +1420,21 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
 <!-- ===== Configuration, rendu des contenus, calendrier, panneau admin ===== -->
 <script>
 (function(){
-  var KEY='aksiora_bath_cfg';
+  var KEY='aksiora_resurf_cfg';
   var DEF=window.AKSIORA_DEF, isTodo=window.AKSIORA_isTodo;
   function q(s,r){return (r||document).querySelector(s);}
   function qa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function clone(o){return JSON.parse(JSON.stringify(o));}
   function L(){return window.__lang==='en'?'en':'fr';}
-  var T={fr:{todo:'Tarif à venir',closed:'Indisponible',pickDate:'Sélectionnez une date',pickDay:'Choisissez un jour disponible dans le calendrier.',noSlot:'Aucune heure disponible ce jour.',phBefore:'Photo « avant » à ajouter',phAfter:'Photo « après » à ajouter',phCap:'Vos vraies photos avant / après apparaîtront ici.',baCap:'Photo réelle : la même baignoire, avant et après notre nettoyage.',choose:'Choisir ce niveau',book:'Réserver',extras:'Plusieurs baignoires ou options ?',extrasDesc:'Ajoutez-les simplement lors de la réservation.',extraTub:'Baignoire supplémentaire',incl:'Ce qui est inclus',opts:'Options et suppléments'},
-         en:{todo:'Price coming soon',closed:'Unavailable',pickDate:'Select a date',pickDay:'Choose an available day in the calendar.',noSlot:'No time available on this day.',phBefore:'“Before” photo to be added',phAfter:'“After” photo to be added',phCap:'Your real before / after photos will appear here.',baCap:'Real photo: the same bathtub, before and after our cleaning.',choose:'Choose this level',book:'Book',extras:'Several bathtubs or options?',extrasDesc:'Simply add them when booking.',extraTub:'Additional bathtub',incl:'What is included',opts:'Options and extras'}};
+  var T={fr:{todo:'Tarif à venir',closed:'Indisponible',pickDate:'Sélectionnez une date',pickDay:'Choisissez un jour disponible dans le calendrier, ou passez cette étape.',noSlot:'Aucune disponibilité ce jour.',phBefore:'Photo « avant » à ajouter',phAfter:'Photo « après » à ajouter',phCap:'Vos vraies photos avant / après apparaîtront ici.',choose:'Demander une soumission',book:'Soumission',extras:'Plusieurs baignoires ou surfaces ?',extrasDesc:'Ajoutez-les simplement à votre demande.',extraTub:'Baignoire supplémentaire',incl:'Ce qui est inclus',opts:'Surfaces additionnelles et suppléments',pickMoment:'Moment de la journée',baCap:'Photo réelle : la même baignoire, avant et après son resurfaçage.'},
+         en:{todo:'Price coming soon',closed:'Unavailable',pickDate:'Select a date',pickDay:'Choose an available day in the calendar, or skip this step.',noSlot:'No availability on this day.',phBefore:'“Before” photo to be added',phAfter:'“After” photo to be added',phCap:'Your real before / after photos will appear here.',choose:'Request a quote',book:'Quote',extras:'Several bathtubs or surfaces?',extrasDesc:'Simply add them to your request.',extraTub:'Additional bathtub',incl:'What is included',opts:'Additional surfaces and extras',pickMoment:'Time of day',baCap:'Real photo: the same bathtub, before and after resurfacing.'}};
   function t(k){return T[L()][k];}
 
   /* --- Fusion sûre avec une config distante (même schéma uniquement) --- */
   function mergeCfg(r){
     var d=clone(DEF); if(!r||r.schema!==DEF.schema) return d;
-    for(var k in r){ if(k==='schema'||k==='plans'||k==='options'||k==='days'||k==='tubTypes') continue; d[k]=r[k]; }
+    for(var k in r){ if(k==='schema'||k==='plans'||k==='options'||k==='days'||k==='tubTypes'||k==='conditions'||k==='materials'||k==='colors'||k==='moments') continue; d[k]=r[k]; }
     ['plans','options','days'].forEach(function(key){ d[key]=DEF[key].map(function(item,i){ return Object.assign({},item,(r[key]||[])[i]||{}); }); });
     return d;
   }
@@ -1437,9 +1474,9 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
     h+='</tr></thead><tbody>';
     rows.forEach(function(r){h+='<tr><td>'+esc(r.label)+'</td>';r.has.forEach(function(v,i){h+='<td class="c'+(plans[i].pop?' pop':'')+'">'+(v?CHECK:'<span class="no">—</span>')+'</td>';});h+='</tr>';});
     h+='<tr class="cta"><td></td>';
-    plans.forEach(function(p){h+='<td class="c"><a href="#reserver" class="btn '+(p.pop?'btn-primary':'btn-ghost')+'" data-level="'+esc(p.id)+'">'+esc(t('choose'))+'</a></td>';});
+    plans.forEach(function(p){h+='<td class="c"><a href="#reserver" class="btn '+(p.pop?'btn-primary':'btn-ghost')+'">'+esc(t('choose'))+'</a></td>';});
     h+='</tr></tbody></table></div>';
-    h+='<div class="price-cards">'+plans.map(function(p){return '<article class="price-card'+(p.pop?' pop':'')+'">'+(p.tag?'<span class="ptag">'+esc(p.tag)+'</span>':'')+'<h3>'+esc(p.name)+'</h3><p class="pdesc">'+esc(p.desc)+'</p><div class="pprice">'+priceBlock(p.price,p.unit)+'</div><ul>'+(p.includes||[]).map(function(x){return '<li>'+CHECK+'<span>'+esc(x)+'</span></li>';}).join('')+'</ul><a href="#reserver" class="btn '+(p.pop?'btn-primary':'btn-ghost')+'" data-level="'+esc(p.id)+'">'+esc(t('choose'))+'</a></article>';}).join('')+'</div>';
+    h+='<div class="price-cards">'+plans.map(function(p){return '<article class="price-card'+(p.pop?' pop':'')+'">'+(p.tag?'<span class="ptag">'+esc(p.tag)+'</span>':'')+'<h3>'+esc(p.name)+'</h3><p class="pdesc">'+esc(p.desc)+'</p><div class="pprice">'+priceBlock(p.price,p.unit)+'</div><ul>'+(p.includes||[]).map(function(x){return '<li>'+CHECK+'<span>'+esc(x)+'</span></li>';}).join('')+'</ul><a href="#reserver" class="btn '+(p.pop?'btn-primary':'btn-ghost')+'">'+esc(t('choose'))+'</a></article>';}).join('')+'</div>';
     h+='<div class="extras"><h3>'+esc(t('opts'))+'</h3><ul class="extras-list"><li><b>'+esc(t('extraTub'))+'</b>'+optPrice(CFG.extraTub.price)+'</li>'+CFG.options.map(function(o){return '<li><b>'+esc(o.label)+'</b>'+optPrice(o.price)+'</li>';}).join('')+'</ul></div>';
     host.innerHTML=h;
   }
@@ -1448,11 +1485,15 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
     host.innerHTML=CFG.tubTypes.map(function(x){return '<div class="type"><div class="ic">'+icon(x.id)+'</div><h3>'+esc(x.label)+'</h3><p>'+esc(x.desc)+'</p></div>';}).join('');
   }
   function renderChoices(){
-    var tt=q('#tubTypeChoices'),lv=q('#levelChoices'),op=q('#optionChoices'); if(!tt) return;
+    var tt=q('#tubTypeChoices'),cd=q('#condChoices'),mt=q('#materialChoices'),co=q('#colorChoices'),op=q('#optionChoices'); if(!tt) return;
     var keep=function(sel){var el=q(sel+':checked');return el?el.value:null;};
-    var kt=keep('input[name="typeBaignoire"]'),kl=keep('input[name="niveau"]'),ko=qa('input[name="options"]:checked').map(function(x){return x.value;});
-    tt.innerHTML=CFG.tubTypes.map(function(x,i){return '<div class="choice"><input type="radio" name="typeBaignoire" id="tt_'+esc(x.id)+'" value="'+esc(x.id)+'"'+((kt?kt===x.id:false)?' checked':'')+'><label for="tt_'+esc(x.id)+'"><b>'+esc(x.label)+'</b><small>'+esc(x.desc)+'</small></label></div>';}).join('');
-    lv.innerHTML=CFG.plans.map(function(p){return '<div class="choice"><input type="radio" name="niveau" id="lv_'+esc(p.id)+'" value="'+esc(p.id)+'"'+((kl?kl===p.id:false)?' checked':'')+'><label for="lv_'+esc(p.id)+'"><b>'+esc(p.name)+'</b><small>'+esc(p.desc)+'</small>'+cp(p.price)+'</label></div>';}).join('');
+    var keepAll=function(sel){return qa(sel+':checked').map(function(x){return x.value;});};
+    var kt=keep('input[name="typeBaignoire"]'),kc=keepAll('input[name="etat"]'),km=keep('input[name="materiau"]')||'inconnu',kco=keep('input[name="couleur"]')||'blanc',ko=keepAll('input[name="options"]');
+    var radio=function(name,pre,x,checked,small){return '<div class="choice"><input type="radio" name="'+name+'" id="'+pre+esc(x.id)+'" value="'+esc(x.id)+'"'+(checked?' checked':'')+'><label for="'+pre+esc(x.id)+'"><b>'+esc(x.label)+'</b>'+(small?'<small>'+esc(small)+'</small>':'')+'</label></div>';};
+    tt.innerHTML=CFG.tubTypes.map(function(x){return radio('typeBaignoire','tt_',x,kt===x.id,x.desc);}).join('');
+    cd.innerHTML=CFG.conditions.map(function(x){return '<div class="choice"><input type="checkbox" name="etat" id="cd_'+esc(x.id)+'" value="'+esc(x.id)+'"'+(kc.indexOf(x.id)>=0?' checked':'')+'><label for="cd_'+esc(x.id)+'"><b>'+esc(x.label)+'</b><small>'+esc(x.desc)+'</small></label></div>';}).join('');
+    mt.innerHTML=CFG.materials.map(function(x){return radio('materiau','mt_',x,km===x.id,'');}).join('');
+    co.innerHTML=CFG.colors.map(function(x){return radio('couleur','co_',x,kco===x.id,x.desc);}).join('');
     op.innerHTML=CFG.options.map(function(o){return '<div class="choice"><input type="checkbox" name="options" id="op_'+esc(o.id)+'" value="'+esc(o.id)+'"'+(ko.indexOf(o.id)>=0?' checked':'')+'><label for="op_'+esc(o.id)+'"><b>'+esc(o.label)+'</b>'+cp(o.price)+'</label></div>';}).join('');
   }
   function renderFooter(){
@@ -1494,8 +1535,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function isAvail(d){if(d.getTime()<startToday().getTime())return false;var dy=(CFG.days||[])[dayIdx(d)];return !!(dy&&dy.on);}
   function range(str){var re=/(\d{1,2})\s*[h:.]\s*(\d{2})?/g,m,a=[];while((m=re.exec(str||''))){a.push(parseInt(m[1],10)*60+(m[2]?parseInt(m[2],10):0));}if(a.length>=2)return{s:a[0],e:a[1]};if(a.length===1)return{s:a[0],e:a[0]+480};return{s:540,e:1020};}
   function fmt(m){return pad(Math.floor(m/60))+'h'+pad(m%60);}
-  function slotsFor(d){var dy=(CFG.days||[])[dayIdx(d)];if(!dy||!dy.on)return[];var r=range(dy.h),step=Math.max(15,parseInt(CFG.slotStepMinutes,10)||60),a=[],x;for(x=r.s;x+step<=r.e;x+=step)a.push(x);return a;}
-  function pickDate(d){selDate=d;q('#bookDate').value=ymd(d);q('#bookTime').value='';renderCal();renderSlots();}
+  function pickDate(d){selDate=d;q('#bookDate').value=ymd(d);if(!q('#bookTime').value)q('#bookTime').value='flexible';renderCal();renderSlots();}
   function renderCal(){
     var host=q('#calDays'),mlab=q('#calMonth');if(!host)return;
     var today=startToday();if(viewY==null){viewY=today.getFullYear();viewM=today.getMonth();}
@@ -1519,19 +1559,20 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function renderSlots(){
     var head=q('#slotsHead'),list=q('#slotsList');if(!list)return;list.innerHTML='';
     if(!selDate){head.textContent=t('pickDate');list.innerHTML='<div class="slots-empty">'+esc(t('pickDay'))+'</div>';return;}
-    head.textContent=FRD[L()][selDate.getDay()]+' '+selDate.getDate()+' '+FRM[L()][selDate.getMonth()];
-    var s=slotsFor(selDate),cur=q('#bookTime').value;
-    if(!s.length){list.innerHTML='<div class="slots-empty">'+esc(t('noSlot'))+'</div>';return;}
-    s.forEach(function(m){var b=document.createElement('button');b.type='button';b.className='slot'+(cur===fmt(m)?' sel':'');b.textContent=fmt(m);b.addEventListener('click',function(){q('#bookTime').value=fmt(m);qa('.slot',list).forEach(function(x){x.classList.remove('sel');x.removeAttribute('aria-pressed');});b.className='slot sel';b.setAttribute('aria-pressed','true');});list.appendChild(b);});
+    head.textContent=FRD[L()][selDate.getDay()]+' '+selDate.getDate()+' '+FRM[L()][selDate.getMonth()]+' · '+t('pickMoment');
+    var cur=q('#bookTime').value;
+    (CFG.moments||[]).forEach(function(m){var b=document.createElement('button');b.type='button';b.className='slot'+(cur===m.id?' sel':'');b.textContent=m.label;b.setAttribute('data-id',m.id);if(cur===m.id)b.setAttribute('aria-pressed','true');b.addEventListener('click',function(){q('#bookTime').value=m.id;qa('.slot',list).forEach(function(x){x.classList.remove('sel');x.removeAttribute('aria-pressed');});b.className='slot sel';b.setAttribute('aria-pressed','true');});list.appendChild(b);});
+    if(window.AKSIORA_I18N) window.AKSIORA_I18N.refresh(list);
   }
   function refreshBooker(){if(selDate&&!isAvail(selDate)){selDate=null;q('#bookDate').value='';q('#bookTime').value='';}renderCal();renderSlots();}
+  window.AKSIORA_momentLabel=function(id){var m=(CFG.moments||[]).filter(function(x){return x.id===id;})[0];return m?m.label:'';};
   q('#calPrev').addEventListener('click',function(){viewM--;if(viewM<0){viewM=11;viewY--;}renderCal();});
   q('#calNext').addEventListener('click',function(){viewM++;if(viewM>11){viewM=0;viewY++;}renderCal();});
 
   /* --- Application globale --- */
   function applyCfg(){
     qa('.js-brand').forEach(function(e){e.textContent=CFG.brand;});
-    document.title=CFG.brand+(L()==='en'?' — Professional bathtub cleaning at home':' — Nettoyage professionnel de baignoires à domicile');
+    document.title=CFG.brand+(L()==='en'?' — Bathtub resurfacing at home (refinishing, reglazing)':' — Resurfaçage de baignoire à domicile (peinture, réémaillage)');
     renderHero(); applyColor(); renderPlans(); renderTypes(); renderChoices(); renderFooter(); renderBA(); refreshBooker();
     window.AKSIORA_CFG=CFG;
     if(window.AKSIORA_I18N) window.AKSIORA_I18N.refresh();
@@ -1592,14 +1633,14 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function L(){return window.__lang==='en'?'en':'fr';}
   var T={
-    fr:{needType:"Choisissez un type de baignoire.",needLevel:"Choisissez un niveau de nettoyage.",needQty:"Indiquez un nombre de baignoires entre 1 et 10.",needDate:"Choisissez une date, puis une heure d'arrivée.",missing:"Merci de compléter : ",badEmail:"L'adresse email semble invalide.",badTel:"Le numéro de téléphone semble invalide.",
+    fr:{needType:"Choisissez un type de baignoire.",needCond:"Cochez au moins un état de la baignoire (ou « Usée ou ternie » si vous hésitez).",needQty:"Indiquez un nombre de baignoires entre 1 et 10.",missing:"Merci de compléter : ",badEmail:"L'adresse email semble invalide.",badTel:"Le numéro de téléphone semble invalide.",
         nom:"nom",tel:"téléphone",email:"email",adresse:"adresse",ville:"ville",
-        rType:"Baignoire",rQty:"Nombre",rLevel:"Niveau",rOpts:"Options",rDate:"Date",rTime:"Heure d'arrivée",rName:"Nom",rTel:"Téléphone",rEmail:"Email",rAddr:"Adresse",rNotes:"Notes",none:"Aucune",
-        sending:"Envoi en cours…",sent:"Demande envoyée ✓",ok:"<b>Votre demande de réservation est envoyée.</b> Nous vous recontactons par téléphone ou par email pour confirmer le rendez-vous.",okMail:" Un récapitulatif vient de vous être envoyé par email."},
-    en:{needType:"Choose a bathtub type.",needLevel:"Choose a cleaning level.",needQty:"Enter a number of bathtubs between 1 and 10.",needDate:"Choose a date, then an arrival time.",missing:"Please complete: ",badEmail:"The email address looks invalid.",badTel:"The phone number looks invalid.",
+        rType:"Baignoire",rQty:"Nombre",rCond:"État",rMat:"Matériau",rColor:"Couleur",rOpts:"Surfaces additionnelles",rDate:"Date souhaitée",rTime:"Moment",rName:"Nom",rTel:"Téléphone",rEmail:"Email",rAddr:"Adresse",rNotes:"Notes",none:"Aucune",noDate:"À convenir",
+        sending:"Envoi en cours…",sent:"Demande envoyée ✓",ok:"<b>Votre demande de soumission est envoyée.</b> Nous vous recontactons par téléphone ou par email avec un prix et une proposition de date.",okMail:" Un récapitulatif vient de vous être envoyé par email.",okPhotos:" Pour une soumission plus précise, vous pouvez nous envoyer des photos de la baignoire à <b>{email}</b>."},
+    en:{needType:"Choose a bathtub type.",needCond:"Tick at least one condition (or “Worn or dull” if unsure).",needQty:"Enter a number of bathtubs between 1 and 10.",missing:"Please complete: ",badEmail:"The email address looks invalid.",badTel:"The phone number looks invalid.",
         nom:"name",tel:"phone",email:"email",adresse:"address",ville:"city",
-        rType:"Bathtub",rQty:"Quantity",rLevel:"Level",rOpts:"Options",rDate:"Date",rTime:"Arrival time",rName:"Name",rTel:"Phone",rEmail:"Email",rAddr:"Address",rNotes:"Notes",none:"None",
-        sending:"Sending…",sent:"Request sent ✓",ok:"<b>Your booking request has been sent.</b> We will contact you by phone or email to confirm the appointment.",okMail:" A summary has just been emailed to you."}
+        rType:"Bathtub",rQty:"Quantity",rCond:"Condition",rMat:"Material",rColor:"Colour",rOpts:"Additional surfaces",rDate:"Preferred date",rTime:"Time of day",rName:"Name",rTel:"Phone",rEmail:"Email",rAddr:"Address",rNotes:"Notes",none:"None",noDate:"To be arranged",
+        sending:"Sending…",sent:"Request sent ✓",ok:"<b>Your quote request has been sent.</b> We will contact you by phone or email with a price and a proposed date.",okMail:" A summary has just been emailed to you.",okPhotos:" For a more accurate quote, you can send us photos of the bathtub at <b>{email}</b>."}
   };
   function t(k){return T[L()][k];}
   var panels=qa('.step-panel'),stps=qa('.steps-bar .stp');
@@ -1613,14 +1654,19 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function val(name){var el=q('[name="'+name+'"]');return el?String(el.value||'').trim():'';}
   function labelOf(list,id,key){var it=(list||[]).filter(function(x){return x.id===id;})[0];return it?it[key]:'';}
   function gather(){
-    var C=window.AKSIORA_CFG||{},typeId=(q('input[name="typeBaignoire"]:checked')||{}).value||'',levelId=(q('input[name="niveau"]:checked')||{}).value||'';
+    var C=window.AKSIORA_CFG||{},typeId=(q('input[name="typeBaignoire"]:checked')||{}).value||'';
+    var conds=qa('input[name="etat"]:checked').map(function(x){return x.value;});
+    var matId=(q('input[name="materiau"]:checked')||{}).value||'',colorId=(q('input[name="couleur"]:checked')||{}).value||'';
     var opts=qa('input[name="options"]:checked').map(function(x){return x.value;});
+    var momentId=q('#bookTime').value||'';
     return {
       typeId:typeId,typeLabel:labelOf(C.tubTypes,typeId,'label'),
-      levelId:levelId,levelLabel:labelOf(C.plans,levelId,'name'),
+      condIds:conds,condLabels:conds.map(function(id){return labelOf(C.conditions,id,'label');}),
+      matId:matId,matLabel:labelOf(C.materials,matId,'label'),
+      colorId:colorId,colorLabel:labelOf(C.colors,colorId,'label'),
       optIds:opts,optLabels:opts.map(function(id){return labelOf(C.options,id,'label');}),
       nombre:parseInt(val('nombre'),10)||0,
-      date:q('#bookDate').value||'',heure:q('#bookTime').value||'',
+      date:q('#bookDate').value||'',momentId:momentId,momentLabel:momentId?(window.AKSIORA_momentLabel?window.AKSIORA_momentLabel(momentId):momentId):'',
       nom:val('nom'),tel:val('tel'),email:val('email'),adresse:val('adresse'),ville:val('ville'),message:val('message')
     };
   }
@@ -1631,21 +1677,17 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   q('#qtyPlus').addEventListener('click',function(){setQty(parseInt(qty.value,10)+1);});
   qty.addEventListener('change',function(){setQty(qty.value);});
 
-  /* Pré-sélection d'un niveau depuis la section Tarifs */
-  document.addEventListener('click',function(e){var a=e.target.closest('[data-level]');if(!a)return;var r=q('input[name="niveau"][value="'+a.getAttribute('data-level')+'"]');if(r)r.checked=true;show(1,false);});
 
   var e1=q('#err1'),e2=q('#err2'),e3=q('#err3');
   q('#toStep2').addEventListener('click',function(){
     var d=gather();
     if(!d.typeId){e1.textContent=t('needType');return;}
     if(d.nombre<1||d.nombre>10){e1.textContent=t('needQty');return;}
-    if(!d.levelId){e1.textContent=t('needLevel');return;}
+    if(!d.condIds.length){e1.textContent=t('needCond');return;}
     e1.textContent='';show(2,true);
   });
   q('#back1').addEventListener('click',function(){show(1,true);});
   q('#toStep3').addEventListener('click',function(){
-    var d=gather();
-    if(!d.date||!d.heure){e2.textContent=t('needDate');return;}
     e2.textContent='';show(3,true);
   });
   q('#back2').addEventListener('click',function(){show(2,true);});
@@ -1661,24 +1703,28 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   });
   q('#back3').addEventListener('click',function(){show(3,true);});
   function row(l,v){return '<div class="r"><span>'+esc(l)+'</span><b>'+esc(v||'—')+'</b></div>';}
+  function tr(x){return (window.AKSIORA_I18N&&window.AKSIORA_I18N.tr)?window.AKSIORA_I18N.tr(x):x;}
+  function trj(a){return a.map(tr).join(', ');}
   function buildRecap(d){
-    q('#recap').innerHTML=row(t('rType'),d.typeLabel)+row(t('rQty'),d.nombre)+row(t('rLevel'),d.levelLabel)+row(t('rOpts'),d.optLabels.length?d.optLabels.join(', '):t('none'))+row(t('rDate'),d.date)+row(t('rTime'),d.heure)+row(t('rName'),d.nom)+row(t('rTel'),d.tel)+row(t('rEmail'),d.email)+row(t('rAddr'),d.adresse+', '+d.ville)+(d.message?row(t('rNotes'),d.message):'');
+    q('#recap').innerHTML=row(t('rType'),tr(d.typeLabel))+row(t('rQty'),d.nombre)+row(t('rCond'),trj(d.condLabels))+row(t('rMat'),tr(d.matLabel))+row(t('rColor'),tr(d.colorLabel))+row(t('rOpts'),d.optLabels.length?trj(d.optLabels):t('none'))+row(t('rDate'),d.date||t('noDate'))+(d.date?row(t('rTime'),tr(d.momentLabel)):'')+row(t('rName'),d.nom)+row(t('rTel'),d.tel)+row(t('rEmail'),d.email)+row(t('rAddr'),d.adresse+', '+d.ville)+(d.message?row(t('rNotes'),d.message):'');
   }
   var msg=q('#formMsg'),btn=q('#confirmBtn');
   btn.addEventListener('click',function(){
     var d=gather();btn.disabled=true;btn.textContent=t('sending');
-    var b={service:'nettoyage-baignoire',typeBaignoire:d.typeLabel,typeId:d.typeId,nombre:d.nombre,niveau:d.levelLabel,niveauId:d.levelId,options:d.optLabels.join(', '),
-           date:d.date,heure:d.heure,nom:d.nom,tel:d.tel,email:d.email,adresse:d.adresse+', '+d.ville,ville:d.ville,message:d.message,
+    var b={service:'resurfacage-baignoire',typeBaignoire:d.typeLabel,typeId:d.typeId,nombre:d.nombre,etat:d.condLabels.join(', '),etatIds:d.condIds.join(','),materiau:d.matLabel,couleur:d.colorLabel,options:d.optLabels.join(', '),
+           date:d.date||'',heure:d.date?d.momentLabel:'',moment:d.momentId,nom:d.nom,tel:d.tel,email:d.email,adresse:d.adresse+', '+d.ville,ville:d.ville,message:d.message,
            createdAt:new Date().toISOString(),status:'nouveau',lang:L()};
     /* compatibilité avec les colonnes / variables existantes (feuille Google, modèle EmailJS) */
-    b.formule=d.levelLabel+' · '+d.typeLabel+(d.optLabels.length?' + '+d.optLabels.join(', '):'');
+    b.niveau=b.etat;
+    b.formule='Resurfaçage · '+d.typeLabel+' · '+(b.etat||'—')+(d.optLabels.length?' + '+d.optLabels.join(', '):'');
     b.paiement='—';
     Promise.resolve()
       .then(function(){var u=window.AKSIORA_SHEET_URL;if(u&&u.indexOf('TON_')!==0){return fetch(u,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(b)}).catch(function(){});}})
       .then(function(){var FS=window.AKSIORA_FS;if(FS&&FS.addBooking){return FS.addBooking(b).catch(function(){});}})
       .then(function(){return sendEmails(b).catch(function(){return false;});})
       .then(function(sent){
-        msg.style.display='block';msg.innerHTML=t('ok')+(sent?t('okMail'):'');
+        var bizMail=(window.AKSIORA_CFG||{}).email||'';
+        msg.style.display='block';msg.innerHTML=t('ok')+(sent?t('okMail'):'')+(bizMail?t('okPhotos').replace('{email}',esc(bizMail)):'');
         btn.textContent=t('sent');stps.forEach(function(s){s.classList.add('done');s.classList.remove('on');});
         msg.focus&&msg.setAttribute('tabindex','-1');msg.focus();
       });
@@ -1686,20 +1732,20 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function sendEmails(b){
     var C=window.AKSIORA_EMAILJS,biz=(window.AKSIORA_CFG||{}).email||'';
     if(!(C&&C.publicKey&&C.publicKey.indexOf('TA_')!==0&&window.emailjs))return Promise.resolve(false);
-    var base={nom:b.nom,tel:b.tel,email:b.email,adresse:b.adresse,ville:b.ville,formule:b.formule,type_baignoire:b.typeBaignoire,niveau:b.niveau,options:b.options||'—',date:b.date,heure:b.heure,nombre:b.nombre,paiement:b.paiement,message:b.message||'—'};
-    var p=biz?emailjs.send(C.serviceId,C.templateId,Object.assign({to_email:biz,heading:'Nouvelle demande de nettoyage de baignoire'},base)):Promise.resolve();
-    if(b.email)p=p.then(function(){return emailjs.send(C.serviceId,C.templateId,Object.assign({to_email:b.email,heading:'Votre demande de réservation — '+((window.AKSIORA_CFG||{}).brand||'AKSIORA')},base));});
+    var base={nom:b.nom,tel:b.tel,email:b.email,adresse:b.adresse,ville:b.ville,formule:b.formule,type_baignoire:b.typeBaignoire,niveau:b.niveau,etat:b.etat,materiau:b.materiau||'—',couleur:b.couleur||'—',options:b.options||'—',date:b.date||'À convenir',heure:b.heure||'—',nombre:b.nombre,paiement:b.paiement,message:b.message||'—'};
+    var p=biz?emailjs.send(C.serviceId,C.templateId,Object.assign({to_email:biz,heading:'Nouvelle demande de soumission — resurfaçage de baignoire'},base)):Promise.resolve();
+    if(b.email)p=p.then(function(){return emailjs.send(C.serviceId,C.templateId,Object.assign({to_email:b.email,heading:'Votre demande de soumission — '+((window.AKSIORA_CFG||{}).brand||'AKSIORA')},base));});
     return p.then(function(){return true;});
   }
   /* Récapitulatif en direct (colonne de droite) */
   function updSummary(){
     var d=gather();
     function setv(id,v){var el=document.getElementById(id);if(!el)return;if(v){el.textContent=v;el.classList.remove('todo');}else{el.textContent='—';el.classList.add('todo');}}
-    setv('sumType',d.typeLabel);setv('sumQty',String(d.nombre||1));setv('sumLevel',d.levelLabel);setv('sumDate',d.date);setv('sumTime',d.heure);
-    var o=document.getElementById('sumOpts');if(o){if(d.optLabels.length){o.textContent=d.optLabels.join(', ');o.classList.remove('todo');}else{o.textContent=t('none');o.classList.add('todo');}}
+    setv('sumType',tr(d.typeLabel));setv('sumQty',String(d.nombre||1));setv('sumCond',trj(d.condLabels));setv('sumMat',tr(d.matLabel));setv('sumColor',tr(d.colorLabel));setv('sumDate',d.date);setv('sumTime',d.date?tr(d.momentLabel):'');
+    var o=document.getElementById('sumOpts');if(o){if(d.optLabels.length){o.textContent=trj(d.optLabels);o.classList.remove('todo');}else{o.textContent=t('none');o.classList.add('todo');}}
   }
   ['input','change','click'].forEach(function(ev){form.addEventListener(ev,function(){setTimeout(updSummary,0);});});
-  document.addEventListener('aksiora-lang',function(){setTimeout(updSummary,60);});
+  document.addEventListener('aksiora-lang',function(){setTimeout(function(){updSummary();var p4=q('.step-panel[data-step="4"]');if(p4&&!p4.hidden)buildRecap(gather());},60);});
   updSummary();
   show(1,false);
 })();
@@ -1711,71 +1757,77 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   var LANG_KEY='aksiora_lang';
   var EN={
     /* Navigation */
-    "Aller au contenu":"Skip to content","Accueil":"Home","Services":"Services","Comment ça marche":"How it works","Tarifs":"Pricing","FAQ":"FAQ","Réserver":"Book",
+    "Aller au contenu":"Skip to content","Accueil":"Home","Services":"Services","Comment ça marche":"How it works","Tarifs":"Pricing","FAQ":"FAQ","Soumission":"Quote","Demander une soumission":"Request a quote",
     /* Hero */
-    "Nettoyage professionnel de baignoires à domicile":"Professional bathtub cleaning at home","Une baignoire propre.":"A clean bathtub.","Sans effort.":"Without the effort.",
-    "Nous nettoyons votre baignoire en profondeur pour éliminer les résidus de savon, les traces, les dépôts et la saleté accumulée.":"We deep-clean your bathtub to remove soap residue, marks, deposits and built-up grime.",
-    "Réserver un nettoyage":"Book a cleaning","Voir comment ça fonctionne":"See how it works","Réservation en ligne":"Online booking","Intervention à domicile":"We come to you","Chaque surface traitée avec soin":"Every surface treated with care",
-    "Résidus de savon":"Soap residue","Robinets & contours":"Faucets & edges","Joints accessibles":"Accessible joints",
+    "Resurfaçage de baignoire à domicile":"Bathtub resurfacing at home","Une baignoire comme neuve.":"A bathtub like new.","Sans la remplacer.":"Without replacing it.",
+    "Nous resurfaçons votre baignoire sur place : la surface usée, tachée ou abîmée est préparée, réparée puis recouverte d'un nouveau revêtement lisse et brillant. Sans démolition, sans plomberie.":"We resurface your bathtub on site: the worn, stained or damaged surface is prepared, repaired and then covered with a new smooth, glossy coating. No demolition, no plumbing.",
+    "Voir comment ça fonctionne":"See how it works","Soumission en ligne":"Online quote","Intervention à domicile":"We come to you","Sans démolition ni plomberie":"No demolition or plumbing",
+    "Éclats réparés":"Chips repaired","Rouille traitée":"Rust treated","Fini lisse & brillant":"Smooth & glossy finish",
     /* Pourquoi */
-    "Pourquoi nous confier votre baignoire":"Why trust us with your bathtub","Votre salle de bain mérite mieux qu'un nettoyage rapide.":"Your bathroom deserves better than a quick wipe.",
-    "Un nettoyage de baignoire bien fait demande du temps, de la méthode et de l'attention. C'est exactement ce que nous apportons.":"A proper bathtub cleaning takes time, method and attention. That is exactly what we bring.",
-    "Simple":"Simple","Vous réservez en ligne en quelques minutes. Nous nous occupons du reste.":"You book online in a few minutes. We handle the rest.",
-    "Un nettoyage soigné":"A careful cleaning","Contours, robinets, parois, joints accessibles : chaque zone est traitée méthodiquement, sans précipitation.":"Edges, faucets, walls, accessible joints: every area is treated methodically, without rushing.",
-    "Du temps gagné":"Time saved","Plus besoin de frotter. Vous retrouvez une baignoire propre sans y passer votre soirée.":"No more scrubbing. You get a clean bathtub without spending your evening on it.",
-    "Des surfaces respectées":"Surfaces treated with respect","Nous adaptons notre façon de faire au type de baignoire. Si une surface demande une attention particulière, nous vous en parlons avant d'intervenir.":"We adapt our approach to the type of bathtub. If a surface needs special attention, we tell you before we start.",
+    "Pourquoi resurfacer plutôt que remplacer":"Why resurface rather than replace","Remplacer une baignoire, c'est un chantier. Resurfacer, non.":"Replacing a bathtub is a construction job. Resurfacing is not.",
+    "Démolition, plomberie, carrelage à refaire : remplacer une baignoire est long et coûteux. Le resurfaçage redonne une surface neuve à la baignoire que vous avez déjà.":"Demolition, plumbing, tiles to redo: replacing a bathtub is long and expensive. Resurfacing gives the bathtub you already have a brand-new surface.",
+    "Sans démolition":"No demolition","La baignoire reste en place : pas de carrelage à casser, pas de plomberie à refaire, pas de débris.":"The bathtub stays in place: no tiles to break, no plumbing to redo, no debris.",
+    "Une surface neuve":"A new surface","Éclats, fissures, rouille, taches et usure disparaissent sous un nouveau revêtement lisse et brillant.":"Chips, cracks, rust, stains and wear disappear under a new smooth, glossy coating.",
+    "Chez vous, sans chantier":"At your home, without a construction site","Tout se fait sur place, salle de bain protégée. Vous n'avez rien à démonter ni à transporter.":"Everything is done on site, with the bathroom protected. Nothing to dismantle or carry.",
+    "Un travail préparé":"Careful preparation","Nettoyage, réparations, ponçage, apprêt : la préparation fait la qualité du résultat. Nous ne sautons aucune étape.":"Cleaning, repairs, sanding, primer: preparation makes the quality of the result. We skip no step.",
     /* Services */
-    "Ce que comprend le nettoyage":"What the cleaning includes","Un nettoyage complet, de l'intérieur de la baignoire jusqu'aux finitions.":"A complete cleaning, from the inside of the tub to the finishing touches.",
-    "Nettoyage complet de la baignoire":"Complete bathtub cleaning","L'intérieur, le fond et les rebords sont nettoyés en entier.":"The inside, the bottom and the edges are fully cleaned.",
-    "Élimination des résidus de savon":"Soap residue removal","Le film de savon et les traces grasses sont retirés des surfaces.":"Soap film and greasy marks are removed from the surfaces.",
-    "Nettoyage des contours":"Edge cleaning","Les rebords et le pourtour de la baignoire sont nettoyés avec soin.":"The rims and surround of the tub are carefully cleaned.",
-    "Nettoyage des robinets":"Faucet cleaning","Robinets, poignées et bec sont nettoyés et essuyés.":"Faucets, handles and spout are cleaned and wiped.",
-    "Traitement des dépôts":"Deposit treatment","Les dépôts accumulés (calcaire, savon, traces) sont traités sur les surfaces.":"Built-up deposits (limescale, soap, marks) are treated on the surfaces.",
-    "Désinfection des surfaces":"Surface disinfection","Une fois nettoyées, les surfaces de la baignoire sont désinfectées.":"Once cleaned, the bathtub surfaces are disinfected.",
-    "Nettoyage des joints accessibles":"Accessible joint cleaning","Les joints visibles et accessibles autour de la baignoire sont nettoyés.":"Visible, accessible joints around the tub are cleaned.",
-    "Finition et rinçage":"Finishing and rinsing","Rinçage complet, puis essuyage pour une finition nette.":"Full rinse, then wiping for a neat finish.",
-    "Besoin de plus ?":"Need more?","Des options s'ajoutent à la réservation : parois de douche attenantes, lavabo, carrelage mural autour de la baignoire.":"Options can be added when booking: adjoining shower walls, sink, wall tiles around the tub.","Voir les tarifs":"See pricing",
+    "Ce que comprend le resurfaçage":"What resurfacing includes","De la protection de la pièce aux conseils d'entretien, nous prenons en charge chaque étape.":"From protecting the room to care advice, we handle every step.",
+    "Protection de la salle de bain":"Bathroom protection","Murs, sol et robinetterie sont masqués et protégés avant toute intervention.":"Walls, floor and fixtures are masked and protected before any work.",
+    "Nettoyage et dégraissage":"Cleaning and degreasing","La surface est nettoyée en profondeur pour que le nouveau revêtement adhère correctement.":"The surface is thoroughly cleaned so the new coating bonds properly.",
+    "Réparation des éclats et fissures":"Chip and crack repair","Les éclats, les fissures superficielles et les zones rouillées sont réparés et rebouchés.":"Chips, surface cracks and rusted areas are repaired and filled.",
+    "Préparation de la surface":"Surface preparation","Ponçage et traitement d'adhérence pour obtenir une base uniforme et parfaitement lisse.":"Sanding and bonding treatment for an even, perfectly smooth base.",
+    "Application de l'apprêt":"Primer application","Une couche d'accroche assure la tenue du revêtement sur la surface préparée.":"A bonding coat ensures the coating holds on the prepared surface.",
+    "Application du revêtement":"Coating application","Le revêtement de finition est appliqué en plusieurs couches pour un fini uniforme et brillant.":"The finishing coat is applied in several layers for an even, glossy finish.",
+    "Finition et contrôle":"Finishing and inspection","Vérification de la surface, retrait des protections et consignes de séchage avant la première utilisation.":"Surface check, removal of protections and curing instructions before first use.",
+    "Conseils d'entretien":"Care advice","Nous vous expliquons comment entretenir votre nouvelle surface au quotidien.":"We explain how to care for your new surface day to day.",
+    "Pas seulement la baignoire.":"Not just the bathtub.","Le resurfaçage s'applique aussi au lavabo, au carrelage ou à la céramique murale et à la douche. Ajoutez-les à votre demande.":"Resurfacing also applies to the sink, wall tiles or ceramic, and the shower. Add them to your request.","Voir les tarifs":"See pricing",
     /* Avant / après */
-    "Avant / après":"Before / after","Le résultat parle de lui-même.":"The result speaks for itself.","Faites glisser le curseur pour comparer l'état de la baignoire avant et après notre passage.":"Drag the slider to compare the bathtub before and after our visit.",
-    "Résidus de savon et traces retirés des surfaces.":"Soap residue and marks removed from the surfaces.","Robinets et contours nettoyés et essuyés.":"Faucets and edges cleaned and wiped.","Finition propre, prête à être utilisée.":"Clean finish, ready to use.",
+    "Avant / après":"Before / after","Le résultat parle de lui-même.":"The result speaks for itself.","Faites glisser le curseur pour comparer la même baignoire avant et après son resurfaçage.":"Drag the slider to compare the same bathtub before and after resurfacing.",
+    "Éclats, rouille et taches disparaissent sous le nouveau revêtement.":"Chips, rust and stains disappear under the new coating.","Une surface lisse, blanche et brillante.":"A smooth, white, glossy surface.","Votre baignoire d'origine, sans remplacement.":"Your original bathtub, without replacement.",
     "Avant":"Before","Après":"After","Photos à ajouter":"Photos to be added",
+    "Resurfaçage de baignoire":"Bathtub resurfacing","Apprêt et revêtement de finition":"Primer and finishing coat","Traitement de la rouille":"Rust treatment","Lavabos":"Sinks","Carrelage et céramique":"Tiles and ceramic","Douches":"Showers",
     /* Comment ça fonctionne */
-    "Quatre étapes, rien de plus.":"Four steps, nothing more.","Pas de devis compliqué, pas d'allers-retours. Vous réservez, nous venons.":"No complicated quote, no back-and-forth. You book, we come.",
-    "Réservez en ligne":"Book online","Choisissez une date et une plage horaire qui vous conviennent.":"Choose a date and a time slot that suit you.",
-    "Choisissez votre service":"Choose your service","Nettoyage standard ou en profondeur, avec les options dont vous avez besoin.":"Standard or deep cleaning, with the options you need.",
-    "Nous venons nettoyer la baignoire":"We come and clean the bathtub","Notre équipe se déplace chez vous avec le matériel nécessaire.":"Our team comes to your home with the necessary equipment.",
-    "Profitez d'une baignoire propre":"Enjoy a clean bathtub","Il ne vous reste plus qu'à en profiter.":"All that's left is to enjoy it.","Réserver mon nettoyage":"Book my cleaning",
+    "Quatre étapes, de la demande au résultat.":"Four steps, from request to result.","Une demande en ligne, une soumission claire, une intervention chez vous.":"An online request, a clear quote, a visit to your home.",
+    "Décrivez votre projet":"Describe your project","Type de baignoire, état de la surface, couleur souhaitée, disponibilités : quelques minutes suffisent.":"Bathtub type, surface condition, desired colour, availability: it only takes a few minutes.",
+    "Recevez votre soumission":"Receive your quote","Nous vous recontactons par téléphone ou par email avec un prix et une proposition de date.":"We get back to you by phone or email with a price and a proposed date.",
+    "Nous resurfaçons chez vous":"We resurface at your home","Protection, préparation, réparations, apprêt et revêtement : tout se fait sur place.":"Protection, preparation, repairs, primer and coating: everything is done on site.",
+    "Laissez sécher, puis profitez":"Let it cure, then enjoy","Après le temps de séchage que nous vous indiquons, votre baignoire est prête.":"After the curing time we give you, your bathtub is ready.",
     /* Tarifs */
-    "Des tarifs simples, selon le niveau de nettoyage.":"Simple pricing, based on the cleaning level.","Choisissez le niveau adapté à l'état de votre baignoire. Les options s'ajoutent au moment de la réservation.":"Choose the level that matches the condition of your bathtub. Options are added when you book.",
-    "Les tarifs s'entendent par baignoire. Pour une configuration particulière, indiquez-le dans vos notes de réservation.":"Prices are per bathtub. For a special configuration, mention it in your booking notes.",
-    "Nettoyage standard":"Standard cleaning","L'entretien complet d'une baignoire en bon état.":"Complete upkeep of a bathtub in good condition.","/ baignoire":"/ bathtub",
-    "Résidus de savon, traces et dépôts":"Soap residue, marks and deposits","Contours, robinets et joints accessibles":"Edges, faucets and accessible joints",
-    "Nettoyage en profondeur":"Deep cleaning","Dépôts marqués":"Heavy deposits","Pour une baignoire encrassée ou qui n'a pas été entretenue depuis longtemps.":"For a grimy bathtub or one that hasn't been maintained in a long time.",
-    "Tout le nettoyage standard":"Everything in the standard cleaning","Traitement renforcé des dépôts incrustés":"Reinforced treatment of ingrained deposits","Temps consacré aux joints et aux contours":"Extra time on joints and edges","Temps d'intervention plus long":"Longer visit",
-    "Baignoire supplémentaire (même adresse)":"Additional bathtub (same address)","Parois de douche attenantes":"Adjoining shower walls","Lavabo et sa robinetterie":"Sink and its faucet","Carrelage mural autour de la baignoire":"Wall tiles around the bathtub",
+    "Des tarifs clairs, selon l'état de votre baignoire.":"Clear pricing, based on the condition of your bathtub.","Le prix dépend surtout de l'état de la surface et des réparations nécessaires. Les surfaces additionnelles s'ajoutent à la demande.":"The price mainly depends on the condition of the surface and the repairs needed. Additional surfaces are added to the request.",
+    "Les tarifs s'entendent par baignoire. Le prix définitif est confirmé dans votre soumission, après évaluation de l'état de la surface.":"Prices are per bathtub. The final price is confirmed in your quote, after assessing the condition of the surface.",
+    "Resurfaçage standard":"Standard resurfacing","Pour une baignoire usée, ternie ou tachée, sans dommage important.":"For a worn, dull or stained bathtub without major damage.","/ baignoire":"/ bathtub",
+    "Nettoyage et dégraissage de la surface":"Surface cleaning and degreasing","Préparation et ponçage":"Preparation and sanding","Apprêt d'adhérence":"Bonding primer","Revêtement de finition en plusieurs couches":"Finishing coat in several layers","Consignes de séchage et d'entretien":"Curing and care instructions",
+    "Resurfaçage avec réparations":"Resurfacing with repairs","Baignoire abîmée":"Damaged bathtub","Pour une baignoire avec éclats, fissures, rouille ou un ancien revêtement qui s'écaille.":"For a bathtub with chips, cracks, rust or an old coating that is peeling.",
+    "Tout le resurfaçage standard":"Everything in the standard resurfacing","Traitement des zones rouillées":"Treatment of rusted areas","Retrait de l'ancien revêtement si nécessaire":"Removal of the old coating if needed",
+    "Baignoire supplémentaire (même adresse)":"Additional bathtub (same address)","Lavabo":"Sink","Carrelage / céramique murale":"Wall tiles / ceramic","Douche / bac de douche":"Shower / shower base",
     /* Types */
-    "Types de baignoires":"Bathtub types","Nous nettoyons la plupart des baignoires.":"We clean most bathtubs.","Le type de baignoire et son matériau influencent notre façon de travailler. Indiquez-le à la réservation : nous adaptons l'intervention.":"The type of bathtub and its material affect how we work. Tell us when booking: we adapt the visit.",
-    "Baignoire standard":"Standard bathtub","Baignoire encastrée classique.":"Classic built-in bathtub.","Baignoire / douche combinée":"Tub / shower combo","Avec pommeau ou colonne de douche.":"With a shower head or shower column.",
+    "Nous resurfaçons la plupart des baignoires.":"We resurface most bathtubs.","Fonte émaillée, acier, acrylique, fibre de verre : le matériau et la configuration influencent la préparation. Indiquez-les dans votre demande.":"Enamelled cast iron, steel, acrylic, fibreglass: the material and configuration affect the preparation. Mention them in your request.",
+    "Baignoire standard":"Standard bathtub","Baignoire encastrée classique, le cas le plus courant.":"Classic built-in bathtub, the most common case.","Baignoire / douche combinée":"Tub / shower combo","Avec pommeau ou colonne de douche au-dessus.":"With a shower head or shower column above.",
     "Baignoire autoportante":"Freestanding bathtub","Sur pieds ou posée au sol, accessible de plusieurs côtés.":"On feet or on the floor, accessible from several sides.","Baignoire profonde":"Deep bathtub","Grande profondeur ou grand volume.":"Extra depth or large volume.",
     "Autre configuration":"Other configuration","Baignoire d'angle, balnéo ou cas particulier : précisez-le dans vos notes.":"Corner tub, whirlpool or special case: specify it in your notes.",
-    "Acrylique, émail, fonte, pierre… Si votre baignoire est faite d'un matériau particulier ou présente des dommages, précisez-le dans vos notes de réservation. Nous vous dirons si un traitement particulier est nécessaire avant de commencer.":"Acrylic, enamel, cast iron, stone… If your bathtub is made of a particular material or is damaged, mention it in your booking notes. We will tell you if special treatment is needed before we start.",
+    "Si vous connaissez le matériau de votre baignoire, indiquez-le : la préparation diffère d'un matériau à l'autre. Une baignoire déjà resurfacée peut nécessiter le retrait de l'ancien revêtement : nous l'évaluons avec vous avant d'intervenir.":"If you know your bathtub's material, tell us: preparation differs from one material to another. A tub that was already resurfaced may require removing the old coating: we assess it with you before the visit.",
     /* Avis */
-    "Avis":"Reviews","Ce que disent nos clients":"What our clients say","Les avis publiés ici sont laissés par des clients après leur nettoyage.":"Reviews published here are left by clients after their cleaning.",
+    "Avis":"Reviews","Ce que disent nos clients":"What our clients say","Les avis publiés ici sont laissés par des clients après leur resurfaçage.":"Reviews published here are left by clients after their resurfacing.",
     "Laisser un avis":"Leave a review","Vous avez fait appel à nous ? Partagez votre expérience en quelques mots.":"Used our service? Share your experience in a few words.","Votre nom":"Your name","Votre note":"Your rating","Votre commentaire":"Your comment","Publier mon avis":"Post my review",
     /* FAQ */
-    "Questions fréquentes":"Frequently asked questions","Tout ce qu'il faut savoir avant de réserver.":"Everything you need to know before booking.",
-    /* Réservation */
-    "Réservation":"Booking","Réservez votre nettoyage":"Book your cleaning","Quelques minutes suffisent. Nous confirmons ensuite votre rendez-vous.":"It only takes a few minutes. We then confirm your appointment.",
-    "Baignoire":"Bathtub","Date":"Date","Coordonnées":"Contact details","Confirmation":"Confirmation",
-    "Votre baignoire":"Your bathtub","Dites-nous ce que nous allons nettoyer.":"Tell us what we will be cleaning.","Type de baignoire":"Bathtub type","Nombre de baignoires":"Number of bathtubs","Niveau de nettoyage":"Cleaning level","Options supplémentaires":"Additional options","Choisir la date →":"Choose the date →",
-    "Date et plage horaire":"Date and time slot","Choisissez un jour disponible, puis l'heure d'arrivée souhaitée.":"Choose an available day, then your preferred arrival time.","Heures affichées en heure de l'Est (Montréal).":"Times shown in Eastern Time (Montréal).","← Retour":"← Back","Mes coordonnées →":"My contact details →",
-    "Vos coordonnées":"Your contact details","Pour confirmer le rendez-vous et savoir où nous rendre.":"To confirm the appointment and know where to go.","Nom complet":"Full name","Téléphone":"Phone","Email":"Email","Pour recevoir la confirmation de votre rendez-vous.":"To receive your appointment confirmation.",
-    "Adresse":"Address","Ville":"City","Notes ou instructions particulières":"Notes or special instructions","Facultatif : matériau de la baignoire, accès au logement, stationnement, animaux…":"Optional: bathtub material, access to the home, parking, pets…","Voir le récapitulatif →":"See summary →",
-    "Récapitulatif":"Summary","Vérifiez les informations avant de confirmer.":"Check the information before confirming.","Confirmer la réservation":"Confirm booking","En confirmant, vous acceptez d'être contacté par téléphone ou par email pour organiser le rendez-vous.":"By confirming, you agree to be contacted by phone or email to arrange the appointment.",
+    "Questions fréquentes":"Frequently asked questions","Tout ce qu'il faut savoir avant de demander une soumission.":"Everything you need to know before requesting a quote.",
+    /* Soumission */
+    "Demandez votre soumission":"Request your quote","Quelques minutes suffisent. Nous vous recontactons avec un prix et une proposition de date.":"It only takes a few minutes. We get back to you with a price and a proposed date.",
+    "Projet":"Project","Disponibilités":"Availability","Coordonnées":"Contact details","Envoi":"Send",
+    "Votre projet":"Your project","Décrivez la surface à resurfacer. Pas besoin d'être précis : nous validons tout avec vous.":"Describe the surface to resurface. No need to be precise: we confirm everything with you.",
+    "Type de baignoire":"Bathtub type","Nombre de baignoires":"Number of bathtubs","État de la baignoire":"Condition of the bathtub","Cochez tout ce qui s'applique.":"Tick all that apply.","Matériau, si vous le connaissez":"Material, if you know it","Couleur souhaitée":"Desired colour","Surfaces additionnelles":"Additional surfaces","Mes disponibilités →":"My availability →",
+    "Usée ou ternie":"Worn or dull","Surface mate, jaunie ou difficile à nettoyer.":"Matte, yellowed or hard-to-clean surface.","Taches tenaces":"Stubborn stains","Taches qui ne partent plus au nettoyage.":"Stains that no longer come off with cleaning.","Éclats ou fissures":"Chips or cracks","Petits éclats ou fissures superficielles.":"Small chips or surface cracks.","Rouille":"Rust","Zones rouillées, souvent près du drain.":"Rusted areas, often near the drain.","Déjà resurfacée":"Already resurfaced","Ancien revêtement qui s'écaille ou se décolle.":"Old coating that is peeling or lifting.",
+    "Je ne sais pas":"I don't know","Fonte ou acier émaillé":"Enamelled cast iron or steel","Acrylique":"Acrylic","Fibre de verre":"Fibreglass","Autre":"Other",
+    "Blanc":"White","La finition standard.":"The standard finish.","Autre couleur":"Another colour","Précisez-la dans vos notes : nous confirmons les possibilités.":"Specify it in your notes: we confirm what is possible.",
+    "Vos disponibilités":"Your availability","Indiquez la date qui vous conviendrait. Elle est indicative : nous confirmons la date définitive avec votre soumission.":"Tell us the date that would suit you. It is indicative: we confirm the final date with your quote.","Facultatif : sans date en tête, vous pouvez passer cette étape.":"Optional: with no date in mind, you can skip this step.","← Retour":"← Back","Mes coordonnées →":"My contact details →",
+    "Matin":"Morning","Après-midi":"Afternoon","Soir":"Evening","Flexible":"Flexible",
+    "Vos coordonnées":"Your contact details","Pour vous envoyer la soumission et savoir où se trouve la baignoire.":"To send you the quote and know where the bathtub is.","Nom complet":"Full name","Téléphone":"Phone","Email":"Email","Pour recevoir votre soumission.":"To receive your quote.",
+    "Adresse":"Address","Ville":"City","Notes ou précisions":"Notes or details","Facultatif : couleur souhaitée, âge de la baignoire, accès au logement, stationnement…":"Optional: desired colour, age of the bathtub, access to the home, parking…","Voir le récapitulatif →":"See summary →",
+    "Récapitulatif":"Summary","Vérifiez les informations avant d'envoyer votre demande.":"Check the information before sending your request.","Envoyer ma demande":"Send my request","En envoyant votre demande, vous acceptez d'être contacté par téléphone ou par email pour recevoir votre soumission.":"By sending your request, you agree to be contacted by phone or email to receive your quote.",
     /* Pied de page */
-    "Nettoyage professionnel de baignoires à domicile. Vous réservez en ligne, nous venons nettoyer.":"Professional bathtub cleaning at home. You book online, we come and clean.","Navigation":"Navigation","Contact":"Contact","Zones desservies":"Service areas","Disponibilités":"Availability","Informations":"Information",
+    "Resurfaçage de baignoire à domicile. Vous décrivez votre projet en ligne, nous vous envoyons une soumission.":"Bathtub resurfacing at home. You describe your project online, we send you a quote.","Navigation":"Navigation","Contact":"Contact","Zones desservies":"Service areas","Informations":"Information",
     "Politique de confidentialité":"Privacy policy","Conditions de service":"Terms of service","— Tous droits réservés.":"— All rights reserved.",
-    "Votre sélection":"Your selection","Nombre":"Quantity","Niveau":"Level","Heure d'arrivée":"Arrival time","Sans paiement en ligne.":"No online payment.","Nous confirmons chaque demande par téléphone ou par email.":"We confirm every request by phone or email.",
+    "Votre demande":"Your request","Baignoire":"Bathtub","Nombre":"Quantity","État":"Condition","Matériau":"Material","Couleur":"Colour","Date souhaitée":"Preferred date","Moment":"Time of day","Sans paiement en ligne.":"No online payment.","Nous vous recontactons avec une soumission par téléphone ou par email.":"We get back to you with a quote by phone or email.",
     "Lundi":"Monday","Mardi":"Tuesday","Mercredi":"Wednesday","Jeudi":"Thursday","Vendredi":"Friday","Samedi":"Saturday","Dimanche":"Sunday","Indisponible":"Unavailable"
   };
   var FR={}; for(var k in EN){ if(EN[k]!==k) FR[EN[k]]=k; }
@@ -1795,7 +1847,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
     if(!silent)document.dispatchEvent(new CustomEvent('aksiora-lang'));   /* re-rend les contenus dynamiques */
     walk(document.body,lang==='en'?EN:FR);
   }
-  window.AKSIORA_I18N={refresh:function(root){if(window.__lang==='en')walk(root||document.body,EN);},lang:function(){return window.__lang==='en'?'en':'fr';}};
+  window.AKSIORA_I18N={refresh:function(root){if(window.__lang==='en')walk(root||document.body,EN);},lang:function(){return window.__lang==='en'?'en':'fr';},tr:function(x){x=String(x==null?'':x);return (window.__lang==='en'&&Object.prototype.hasOwnProperty.call(EN,x))?EN[x]:x;}};
   var saved='fr';try{saved=localStorage.getItem(LANG_KEY)||'fr';}catch(e){}
   window.__lang=saved;paintBtn(saved);
   btn.addEventListener('click',function(){setLang(window.__lang==='en'?'fr':'en');});
@@ -1807,7 +1859,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
 <!-- ===== Avis clients (réels, persistants, modérés) ===== -->
 <script>
 (function(){
-  var LKEY='aksiora_bath_reviews';
+  var LKEY='aksiora_resurf_reviews';
   var grid=document.getElementById('revGrid'),empty=document.getElementById('revEmpty');
   var sumBox=document.getElementById('revSummary'),avgEl=document.getElementById('revAvg');
   var avgStars=document.getElementById('revAvgStars'),countEl=document.getElementById('revCount');
@@ -1880,7 +1932,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
 })();
 </script>
 
-<!-- ===== Assistant (réponses par mots-clés, sans promesse non vérifiée) ===== -->
+<!-- ===== Assistant (réponses par mots-clés sur le resurfaçage, sans promesse non vérifiée) ===== -->
 <script>
 (function(){
   var chatFab=document.getElementById('chatFab'),chatPanel=document.getElementById('chatPanel'),chatClose=document.getElementById('chatClose'),chatBody=document.getElementById('chatBody'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend'),quick=document.getElementById('quickReplies'),ping=chatFab.querySelector('.ping');
@@ -1888,7 +1940,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function brand(){return (window.AKSIORA_CFG||{}).brand||'AKSIORA';}
   function openChat(){chatPanel.classList.add('open');chatFab.style.display='none';ping.style.display='none';
-    if(!greeted){greeted=true;setTimeout(function(){botSay("Bonjour 👋 Je suis l'assistant "+esc(brand())+". Je peux vous renseigner sur nos <b>tarifs</b>, <b>ce qui est inclus</b>, nos <b>disponibilités</b> ou la <b>réservation</b>. Que souhaitez-vous savoir ?");},350);}
+    if(!greeted){greeted=true;setTimeout(function(){botSay("Bonjour 👋 Je suis l'assistant "+esc(brand())+". Je peux vous renseigner sur le <b>resurfaçage</b>, nos <b>tarifs</b>, <b>ce qui est inclus</b>, nos <b>disponibilités</b> ou la <b>demande de soumission</b>. Que souhaitez-vous savoir ?");},350);}
     setTimeout(function(){chatInput.focus();},300);}
   function closeChat(){chatPanel.classList.remove('open');chatFab.style.display='grid';chatFab.focus();}
   chatFab.addEventListener('click',openChat);chatClose.addEventListener('click',closeChat);
@@ -1900,31 +1952,36 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
   function getReply(msg){
     var m=norm(msg),C=window.AKSIORA_CFG||{},isTodo=window.AKSIORA_isTodo;
     var has=function(){for(var i=0;i<arguments.length;i++){if(m.indexOf(arguments[i])>=0)return true;}return false;};
-    if(has('bonjour','salut','coucou','bonsoir','hello','hey'))return "Bonjour et bienvenue chez "+esc(brand())+" 😊 Souhaitez-vous connaître nos <b>tarifs</b>, <b>ce qui est inclus</b>, ou <b>réserver</b> un nettoyage ?";
-    if(has('tarif','prix','cout','coute','combien ca','forfait','niveau')){
+    if(has('bonjour','salut','coucou','bonsoir','hello','hey'))return "Bonjour et bienvenue chez "+esc(brand())+" 😊 Souhaitez-vous connaître nos <b>tarifs</b>, <b>ce qui est inclus</b>, ou <b>demander une soumission</b> ?";
+    if(has('tarif','prix','cout','coute','combien ca','forfait')){
       var plans=(C.plans||[]),known=plans.filter(function(p){return !isTodo(p.price);});
-      if(!known.length)return "Nos tarifs seront affichés très prochainement 💶. En attendant, vous pouvez <b>réserver</b> : nous vous confirmons le prix avec le rendez-vous. Vous pouvez aussi nous écrire à <b>"+esc(C.email||'')+"</b>.";
+      if(!known.length)return "Nos tarifs seront affichés très prochainement 💶. En attendant, vous pouvez <b>demander une soumission</b> : nous vous confirmons le prix selon l'état de votre baignoire. Vous pouvez aussi nous écrire à <b>"+esc(C.email||'')+"</b>.";
       var s='';known.forEach(function(p){s+='• <b>'+esc(p.name)+'</b> — '+esc(p.price)+' '+esc(p.unit||'')+'<br>';});
-      return "Voici nos niveaux de nettoyage 💶 :<br>"+s+"<br>Les options et les baignoires supplémentaires s'ajoutent à la réservation. Souhaitez-vous <b>réserver</b> ?";
+      return "Voici nos tarifs indicatifs 💶 :<br>"+s+"<br>Les surfaces additionnelles et les baignoires supplémentaires s'ajoutent à la demande. Le prix définitif est confirmé dans votre soumission. Souhaitez-vous <b>demander une soumission</b> ?";
     }
-    if(has('inclus','compris','comprend','service','qu est ce','quoi','fait quoi','faites'))return "Chaque nettoyage comprend 🛁 : le nettoyage complet de la baignoire, l'élimination des résidus de savon, les contours, les robinets, le traitement des dépôts, la désinfection des surfaces, les joints accessibles, puis la finition et le rinçage. En option : parois de douche, lavabo, carrelage mural.";
-    if(has('horaire','heure','ouvert','dispo','disponib','quand','jour','semaine')){
+    if(has('c est quoi','qu est ce que','resurfac','peinture','reemaill','emaill','definition','comment ca marche','explique'))return "Le resurfaçage (ou peinture / réémaillage de baignoire) 🛁 consiste à préparer la surface existante, réparer les dommages, puis appliquer un apprêt et un nouveau revêtement de finition. Votre baignoire retrouve une surface lisse et brillante, sans être remplacée et sans démolition.";
+    if(has('inclus','compris','comprend','service','fait quoi','faites','etapes'))return "Le resurfaçage comprend 🛠️ : la protection de la salle de bain, le nettoyage et le dégraissage, la réparation des éclats et fissures, la préparation de la surface, l'apprêt, le revêtement de finition en plusieurs couches, puis la finition et les conseils d'entretien. Lavabo, carrelage mural et douche peuvent s'ajouter comme surfaces additionnelles.";
+    if(has('eclat','fissure','rouille','trou','abime','cass','ecaill','decoll'))return "Dans la plupart des cas, les éclats, les fissures superficielles et les zones rouillées sont réparés avant l'application du revêtement 🔧. Pour des dommages importants ou un ancien revêtement qui s'écaille, nous évaluons la situation avec vous lors de la soumission.";
+    if(has('couleur','blanc','noir','beige','teinte'))return "Le blanc est la finition standard 🎨. Pour une autre couleur, indiquez-le dans votre demande : nous vous confirmons les possibilités avec la soumission.";
+    if(has('sech','secher','utiliser','attendre','delai','combien de temps avant'))return "Un temps de séchage est nécessaire après l'application avant la première utilisation ⏳. Nous vous indiquons le délai exact et les précautions à prendre à la fin de l'intervention.";
+    if(has('lavabo','carrelage','ceramique','douche','evier','tuile'))return "Oui, nous resurfaçons aussi le lavabo, le carrelage ou la céramique murale et la douche ou le bac de douche 🚿. Ajoutez-les simplement comme surfaces additionnelles dans votre demande de soumission.";
+    if(has('horaire','ouvert','dispo','disponib','quand','jour','semaine')){
       var o=(C.days||[]).filter(function(d){return d.on;});if(!o.length)return "Nous n'avons pas de disponibilités affichées pour le moment. Écrivez-nous à <b>"+esc(C.email||'')+"</b>.";
       var same=o.every(function(d){return d.h===o[0].h;});
-      return "Nous intervenons le <b>"+esc(fl(o.map(function(d){return d.key.toLowerCase();})))+"</b> 🕘"+(same?(", "+esc(o[0].h)):"")+". Le calendrier de réservation vous montre les jours et heures d'arrivée disponibles.";
+      return "Nous intervenons le <b>"+esc(fl(o.map(function(d){return d.key.toLowerCase();})))+"</b> 🕘"+(same?(", "+esc(o[0].h)):"")+". Dans la demande de soumission, vous pouvez indiquer la date qui vous conviendrait ; nous confirmons ensuite la date définitive.";
     }
-    if(has('reserv','rendez','commander','booking','creneau','planifier','prendre'))return "Pour réserver, c'est simple 📅 : cliquez sur <b>« Réserver »</b>, choisissez votre type de baignoire, le niveau de nettoyage et vos options, puis une date et une heure d'arrivée. Nous confirmons ensuite le rendez-vous par téléphone ou par email.";
-    if(has('type','baignoire','materiau','acrylique','email','fonte','pierre','autoportante','douche','profonde','balneo'))return "Nous nettoyons les baignoires standard, baignoires-douches, autoportantes, profondes et la plupart des autres configurations 🛁. Pour un matériau particulier ou une baignoire abîmée, indiquez-le dans vos notes : nous vérifions avant d'intervenir et nous vous informons si un traitement particulier est nécessaire.";
-    if(has('duree','temps','long','minutes','dure'))return "La durée dépend du type de baignoire, de son état et du niveau choisi ⏱️. Un nettoyage en profondeur prend plus de temps qu'un nettoyage standard. Nous vous donnons une estimation lors de la confirmation du rendez-vous.";
+    if(has('soumission','devis','estimation','reserv','rendez','commander','booking','planifier','prendre'))return "Pour demander une soumission, c'est simple 📝 : cliquez sur <b>« Demander une soumission »</b>, décrivez votre baignoire (type, état, couleur, surfaces additionnelles), indiquez vos disponibilités et laissez vos coordonnées. Nous vous recontactons par téléphone ou par email avec un prix et une proposition de date. Aucun paiement en ligne.";
+    if(has('type','baignoire','materiau','acrylique','fonte','acier','fibre','pierre','autoportante','profonde','balneo'))return "Nous resurfaçons les baignoires en fonte émaillée, en acier, en acrylique et en fibre de verre 🛁, dans la plupart des configurations : standard, baignoire-douche, autoportante, profonde. Une baignoire déjà resurfacée peut nécessiter le retrait de l'ancien revêtement : indiquez-le dans votre demande.";
+    if(has('duree','temps','long','heures','dure'))return "La durée de l'intervention dépend du type de baignoire, de son état et des réparations nécessaires ⏱️. Nous vous donnons une estimation dans votre soumission.";
     if(has('present','absent','chez moi','cle','ouvrir'))return "Une personne doit pouvoir nous ouvrir et nous indiquer la salle de bain 🔑. Ensuite, vous êtes libre de rester ou non.";
-    if(has('prepar','ranger','vider'))return "Retirez simplement vos produits et objets personnels de la baignoire et de ses contours 🧴. Nous nous occupons du reste.";
-    if(has('zone','ville','secteur','deplace','region','commune','ou intervenez','desserv'))return "Nous intervenons dans les secteurs suivants 📍 : <b>"+esc(C.zone||'')+"</b>. Si vous êtes à proximité, indiquez votre adresse à la réservation et nous confirmerons.";
-    if(has('contact','telephone','numero','appeler','mail','courriel','joindre','whatsapp'))return "Vous pouvez nous joindre au <b>"+esc(C.phone||'')+"</b> 📞 ou par email à <b>"+esc(C.email||'')+"</b> ✉️.";
-    if(has('annul','modif','report','changer'))return "Pour modifier ou annuler un rendez-vous, contactez-nous directement au <b>"+esc(C.phone||'')+"</b> ou à <b>"+esc(C.email||'')+"</b> 📞.";
-    if(has('paiement','payer','carte','especes','facture'))return "Les modalités de paiement vous sont précisées lors de la confirmation du rendez-vous 💳. Pour toute question, contactez-nous à <b>"+esc(C.email||'')+"</b>.";
-    if(has('plusieurs','deux ','trois','nombre'))return "Oui, vous pouvez faire nettoyer plusieurs baignoires 🛁🛁 : indiquez le nombre à la réservation. Chaque baignoire supplémentaire à la même adresse est facturée au tarif indiqué dans la section Tarifs.";
+    if(has('prepar','ranger','vider'))return "Retirez simplement vos produits et objets personnels de la baignoire et de la salle de bain 🧴. Nous protégeons la pièce et nous nous occupons du reste.";
+    if(has('zone','ville','secteur','deplace','region','commune','ou intervenez','desserv'))return "Nous intervenons dans les secteurs suivants 📍 : <b>"+esc(C.zone||'')+"</b>. Si vous êtes à proximité, indiquez votre adresse dans la demande et nous confirmerons.";
+    if(has('contact','telephone','numero','appeler','mail','courriel','joindre','whatsapp','photo'))return "Vous pouvez nous joindre au <b>"+esc(C.phone||'')+"</b> 📞 ou par email à <b>"+esc(C.email||'')+"</b> ✉️. Des photos de votre baignoire envoyées par email nous aident à préparer une soumission précise.";
+    if(has('annul','modif','report','changer'))return "Pour modifier ou annuler une demande ou un rendez-vous, contactez-nous directement au <b>"+esc(C.phone||'')+"</b> ou à <b>"+esc(C.email||'')+"</b> 📞.";
+    if(has('paiement','payer','carte','especes','facture'))return "Les modalités de paiement vous sont précisées avec la soumission 💳. Aucun paiement n'est demandé en ligne. Pour toute question, contactez-nous à <b>"+esc(C.email||'')+"</b>.";
+    if(has('plusieurs','deux ','trois','nombre'))return "Oui, vous pouvez faire resurfacer plusieurs baignoires 🛁🛁 : indiquez le nombre dans votre demande. Chaque baignoire supplémentaire à la même adresse est facturée au tarif indiqué dans la section Tarifs.";
     if(has('merci','super','parfait','genial','cool','ok','d accord','daccord'))return "Avec plaisir 😊 N'hésitez pas si vous avez d'autres questions. À bientôt chez "+esc(brand())+" !";
-    return "Bonne question ! Je peux vous aider sur : <b>tarifs</b> 💶, <b>ce qui est inclus</b> 🛁, <b>disponibilités</b> 🕘, <b>réservation</b> 📅, <b>zones desservies</b> 📍 ou <b>contact</b> 📞. Pour une demande précise, laissez vos coordonnées via la réservation et nous vous répondrons.";
+    return "Bonne question ! Je peux vous aider sur : le <b>resurfaçage</b> 🛁, les <b>tarifs</b> 💶, <b>ce qui est inclus</b> 🛠️, les <b>disponibilités</b> 🕘, la <b>demande de soumission</b> 📝, les <b>zones desservies</b> 📍 ou le <b>contact</b> 📞. Pour une demande précise, laissez vos coordonnées via la demande de soumission et nous vous répondrons.";
   }
   function send(text){text=(text||'').trim();if(!text)return;addMsg(esc(text),'user');chatInput.value='';botSay(getReply(text));}
   chatSend.addEventListener('click',function(){send(chatInput.value);});
