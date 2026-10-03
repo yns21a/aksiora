@@ -144,6 +144,7 @@ html[data-theme="dark"] .theme-btn .ic-moon{display:none}
 
 /* ---------- Sections éditoriales : colonne gauche collante ---------- */
 section{padding:104px 0}
+section[id],[id='contact']{scroll-margin-top:calc(var(--header-h) + 12px)}
 .ed{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:72px;align-items:start}
 .ed-side{position:sticky;top:calc(var(--header-h) + 28px)}
 .ed-side .num{display:block;font-size:.8rem;font-weight:800;letter-spacing:.2em;color:var(--aqua);margin-bottom:18px}
@@ -182,7 +183,10 @@ section{padding:104px 0}
 .ba-slider{position:relative;aspect-ratio:16/9;max-width:940px;margin-inline:auto;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-md);user-select:none;touch-action:pan-y;background:var(--white);border:1px solid var(--line)}
 .ba-img{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;display:grid;place-items:center}
 .ba-before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
-.ba-ph{display:grid;place-items:center;text-align:center;gap:10px;padding:24px;color:var(--muted);font-size:.92rem;font-weight:600;width:100%;height:100%}
+.ba-ph{display:flex;align-items:center;width:100%;height:100%;color:var(--muted);font-size:.92rem;font-weight:600}
+.ba-ph-in{display:grid;gap:10px;justify-items:center;text-align:center;width:50%;padding:12px}
+.ba-before .ba-ph{justify-content:flex-start}
+.ba-after .ba-ph{justify-content:flex-end}
 .ba-ph svg{width:48px;height:48px;color:var(--muted-2)}
 .ba-before .ba-ph{background:linear-gradient(160deg,#dbe4ea,#c9d5de)}
 .ba-after .ba-ph{background:linear-gradient(160deg,var(--aqua-50),var(--mint))}
@@ -234,9 +238,22 @@ html[data-theme="dark"] .price-todo{background:#2b2214;border-color:#6b4d1c}
 .extras-list{list-style:none;display:flex;gap:10px;flex-wrap:wrap}
 .extras-list li{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line-2);border-radius:999px;padding:10px 16px;font-size:.9rem;background:var(--white)}
 .extras-list li b{font-weight:600;color:var(--ink-2)}
-.opt-price{font-weight:800;color:var(--ink)}
+.opt-price{font-weight:800;color:var(--ink);white-space:nowrap}
 .opt-price.todo{font-size:.76rem;color:var(--warn)}
 .pricing-note{margin-top:18px;color:var(--muted);font-size:.86rem}
+.price-cards{display:none}
+.price-card{background:var(--white);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:22px 20px;position:relative}
+.price-card.pop{border-color:var(--aqua);box-shadow:0 14px 34px rgba(26,167,199,.14)}
+.price-card .ptag{display:inline-block;margin-bottom:8px;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--aqua);padding:4px 9px;border-radius:999px}
+.price-card h3{font-size:1.2rem}
+.price-card .pdesc{color:var(--muted);font-size:.9rem;margin:4px 0 10px}
+.price-card .pprice{display:flex;align-items:baseline;gap:6px;margin-bottom:12px}
+.price-card .pprice b{font-size:1.9rem;font-weight:800;letter-spacing:-.03em}
+.price-card .pprice span{color:var(--muted);font-size:.86rem}
+.price-card ul{list-style:none;display:grid;gap:8px;margin-bottom:16px}
+.price-card li{display:flex;gap:9px;align-items:flex-start;font-size:.92rem;color:var(--ink-2)}
+.price-card li svg{width:18px;height:18px;flex:0 0 auto;color:var(--aqua);margin-top:2px}
+.price-card .btn{width:100%}
 
 /* ---------- Types : bande à défilement horizontal ---------- */
 .strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:thin}
@@ -531,9 +548,25 @@ html[data-theme="dark"] .todo-box{background:#2b2214;border-color:#6b4d1c;color:
   .foot-grid{grid-template-columns:1fr}
   .mobile-cta{display:block}
   body.has-mobile-cta{padding-bottom:76px}
-  .chat-fab{bottom:86px}
+  .chat-fab{bottom:86px;visibility:hidden;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s}
+  body.has-mobile-cta .chat-fab{visibility:visible;opacity:1;transform:none}
   .chat-panel{bottom:86px;height:min(520px,calc(100vh - 160px))}
   .admin-drawer{width:100vw}
+  /* tarifs : cartes empilées au lieu du tableau */
+  .price-table-wrap{display:none}
+  .price-cards{display:grid;gap:14px}
+  .extras-list li{width:100%;justify-content:space-between}
+  /* confort tactile */
+  .icon-btn{height:44px;min-width:44px}
+  .cal-day{height:42px}
+  .field input,.field select,.field textarea,.chat-input input,.stepper input{font-size:16px}
+  .trust-list li,.svc-row{grid-template-columns:40px 1fr}
+  .ba-slider{aspect-ratio:4/3}
+  .hero-visual{padding:34px 5vw 38px}
+  .ed-side .btn{width:100%}
+  .book-summary{padding:20px}
+  .sum-list li{font-size:.86rem}
+  .foot-top{padding-bottom:28px}
 }
 </style>
 </head>
@@ -1399,6 +1432,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
     h+='<tr class="cta"><td></td>';
     plans.forEach(function(p){h+='<td class="c"><a href="#reserver" class="btn '+(p.pop?'btn-primary':'btn-ghost')+'" data-level="'+esc(p.id)+'">'+esc(t('choose'))+'</a></td>';});
     h+='</tr></tbody></table></div>';
+    h+='<div class="price-cards">'+plans.map(function(p){return '<article class="price-card'+(p.pop?' pop':'')+'">'+(p.tag?'<span class="ptag">'+esc(p.tag)+'</span>':'')+'<h3>'+esc(p.name)+'</h3><p class="pdesc">'+esc(p.desc)+'</p><div class="pprice">'+priceBlock(p.price,p.unit)+'</div><ul>'+(p.includes||[]).map(function(x){return '<li>'+CHECK+'<span>'+esc(x)+'</span></li>';}).join('')+'</ul><a href="#reserver" class="btn '+(p.pop?'btn-primary':'btn-ghost')+'" data-level="'+esc(p.id)+'">'+esc(t('choose'))+'</a></article>';}).join('')+'</div>';
     h+='<div class="extras"><h3>'+esc(t('opts'))+'</h3><ul class="extras-list"><li><b>'+esc(t('extraTub'))+'</b>'+optPrice(CFG.extraTub.price)+'</li>'+CFG.options.map(function(o){return '<li><b>'+esc(o.label)+'</b>'+optPrice(o.price)+'</li>';}).join('')+'</ul></div>';
     host.innerHTML=h;
   }
@@ -1426,7 +1460,7 @@ window.AKSIORA_isTodo = function(v){ v=String(v==null?'':v).trim(); return !v ||
     var bf=q('#baBefore'),af=q('#baAfter'),cap=q('#baCaption'),todo=q('#baTodo'); if(!bf) return;
     var ok=!isTodo(CFG.baBefore)&&!isTodo(CFG.baAfter)&&/^https?:\/\//i.test(CFG.baBefore)&&/^https?:\/\//i.test(CFG.baAfter);
     if(ok){ bf.innerHTML='';af.innerHTML=''; bf.style.backgroundImage='url("'+CFG.baBefore.replace(/"/g,'')+'")'; af.style.backgroundImage='url("'+CFG.baAfter.replace(/"/g,'')+'")'; bf.setAttribute('role','img');bf.setAttribute('aria-label',L()==='en'?'Bathtub before cleaning':'Baignoire avant le nettoyage'); af.setAttribute('role','img');af.setAttribute('aria-label',L()==='en'?'Bathtub after cleaning':'Baignoire après le nettoyage'); cap.textContent=CFG.baCaption||''; todo.hidden=true; }
-    else { bf.style.backgroundImage='';af.style.backgroundImage=''; bf.removeAttribute('role');af.removeAttribute('role'); bf.innerHTML='<div class="ba-ph">'+PH_SVG+'<span>'+esc(t('phBefore'))+'</span></div>'; af.innerHTML='<div class="ba-ph">'+PH_SVG+'<span>'+esc(t('phAfter'))+'</span></div>'; cap.textContent=t('phCap'); todo.hidden=false; }
+    else { bf.style.backgroundImage='';af.style.backgroundImage=''; bf.removeAttribute('role');af.removeAttribute('role'); bf.innerHTML='<div class="ba-ph"><div class="ba-ph-in">'+PH_SVG+'<span>'+esc(t('phBefore'))+'</span></div></div>'; af.innerHTML='<div class="ba-ph"><div class="ba-ph-in">'+PH_SVG+'<span>'+esc(t('phAfter'))+'</span></div></div>'; cap.textContent=t('phCap'); todo.hidden=false; }
   }
   function renderHero(){
     var h1=q('#heroTitle'); if(h1) h1.innerHTML=esc(CFG.heroTitle||'').replace(/\*(.+?)\*/g,'<span class="hl">$1</span>');
